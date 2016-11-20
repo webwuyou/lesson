@@ -1,0 +1,82 @@
+@charset "UTF-8";
+body {
+  font-size: 14px; }
+
+ul li a {
+  color: #000; }
+
+p {
+  color: #000; }
+
+span {
+  color: #000; }
+
+div {
+  color: #fff; }
+
+em {
+  color: #000; }
+
+/*选择器嵌套*/
+header a {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold; }
+header nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #f00; }
+
+/*属性嵌套*/
+.box {
+  border-top: 1px solid #000;
+  border-bottom: 2px solid #f00;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "aril"; }
+
+/*伪类嵌套*/
+/*伪类嵌套需要借助&*/
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; }
+.clearfix:after {
+  clear: both;
+  overflow: hidden; }
+
+a:hover {
+  color: #f00; }
+
+a:hover {
+  color: blue; }
+
+/*声明混合宏*/
+/*1、不带参数混合宏*/
+/*2、带参数的混合宏*/
+/*3、带参数和默认值的混合宏*/
+.radius1 {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px; }
+
+.radius {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px; }
+
+.radius3 {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px; }
+
+.radius4 {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px; }
+
+.radius5 {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px; }
+
+/*# sourceMappingURL=style.css.map */
