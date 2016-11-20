@@ -52,8 +52,9 @@ a:hover {
 
 /*声明混合宏*/
 /*1、不带参数混合宏*/
-/*2、带参数的混合宏*/
+/*2、不带值的参数混合宏*/
 /*3、带参数和默认值的混合宏*/
+/*4、带多个参数*/
 .radius1 {
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -78,5 +79,80 @@ a:hover {
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px; }
+
+.box-center {
+  width: 500px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -200px; }
+
+.box-center2 {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -100px; }
+
+/*混合宏的不足*/
+/*会生成冗余的代码块*/
+/*在不同的地方调用一个相同的混合宏时，并不能智能的将相同的样式代码块合并在一起*/
+.btn1 {
+  box-shadow: 10px 10px 5px #ddd;
+  border-radius: 5px;
+  margin-bottom: 5px; }
+
+.btn2 {
+  box-shadow: 10px 10px 5px #ddd;
+  border-radius: 5px; }
+
+/*拓展/继承*/
+.btn, .btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: bold;
+  color: #fff;
+  display: inline-block;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px; }
+
+.btn-default {
+  background: #fff;
+  color: #333; }
+
+.btn-primary {
+  background: #428bca; }
+
+.btn-success {
+  background: #5cb85c; }
+
+.btn-info {
+  background: #5bc0de; }
+
+.btn-warning {
+  background: #f0ad4e; }
+
+.btn-danger {
+  background: #d9534f; }
+
+/*占位符%*/
+/*占位符%声明的代码如果不被extend调用的话，不会编译出来产生任何代码*/
+/*并且通过extend调用以后，编译出来后相同的代码会合并在一起，让您的代码更简洁*/
+.mt, .mt2 {
+  margin-top: 5px; }
+
+.mt, .mt2 .mt3 {
+  padding-top: 5px; }
+
+/*混合宏VS继承VS占位符*/
+/*1、在多个地方引用同一个混合宏，不会自动合并相同的样式代码，造成代码冗余。优点是可以传递参数。如果代码块中涉及到变量，建议使用混合宏。*/
+/*2、使用继承，编译出来的css会将继承的代码块合并，通过组合选择器的方式展现，但是不能传递参数。如果代码块不需要任何变量参数，而且已经存在一个基类，建议使用继承。*/
+/*3、编译出来的代码和使用继承基本相同，只是不会生成占位符的选择器。区别，占位符是独立的，不调用的时候不会在css中产生任何代码；继承是首先有一个基类存在，不管调不调用，基类的样式都会出现在css文件中。*/
 
 /*# sourceMappingURL=style.css.map */
