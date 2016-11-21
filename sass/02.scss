@@ -1,3 +1,30 @@
 @charset "UTF-8";
 
-/*插值{}*/
+/*@if的使用*/
+
+@mixin blockOrHidden($boolean:true){
+	@if $boolean{
+		@debug "$boolean is #{$boolean}";
+		display: block;
+	}
+	@else{
+		@debug "$boolean is #{$boolean}";
+		display: none;
+	}
+}
+
+.block{
+	@include blockOrHidden;
+}
+.hidden{
+	@include blockOrHidden(false);
+}
+
+
+/*@for循环*/
+/*在sass中的循环有两种方式*/
+
+/*方式一：@for $i from <start> through <end>   使用through方式包含end这个数*/
+@for $i from 1 through 3{
+	.item-#{$i}{width: 2px*$i;}
+}

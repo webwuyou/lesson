@@ -154,5 +154,31 @@ a:hover {
 /*1、在多个地方引用同一个混合宏，不会自动合并相同的样式代码，造成代码冗余。优点是可以传递参数。如果代码块中涉及到变量，建议使用混合宏。*/
 /*2、使用继承，编译出来的css会将继承的代码块合并，通过组合选择器的方式展现，但是不能传递参数。如果代码块不需要任何变量参数，而且已经存在一个基类，建议使用继承。*/
 /*3、编译出来的代码和使用继承基本相同，只是不会生成占位符的选择器。区别，占位符是独立的，不调用的时候不会在css中产生任何代码；继承是首先有一个基类存在，不管调不调用，基类的样式都会出现在css文件中。*/
+/*sass注释*/
+/*1、类似css的注释，使用/*。编译出来后可以在css中显示
+/*2、类似JavaScript的注释，使用//。编译后在css中不会显示*/
+.zhushi1, .zhushi2, .zhushi2 p, .zhushi2 span {
+  margin-top: 10px; }
+
+.zhushi1 {
+  padding-top: 10px; }
+
+.zhushi2 p {
+  color: #f00; }
+.zhushi2 span {
+  display: inline-block; }
+
+nav {
+  font-size: 16px; }
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  nav li {
+    display: inline-block; }
+  nav a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

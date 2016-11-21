@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/*@if的使用*/
+.block {
+  display: block; }
+
+.hidden {
+  display: none; }
+
+/*@for循环*/
+/*在sass中的循环有两种方式*/
+/*方式一：@for $i from <start> through <end>   使用through方式包含end这个数*/
+.item-1 {
+  width: 2px; }
+
+.item-2 {
+  width: 4px; }
+
+.item-3 {
+  width: 6px; }
+
+/*# sourceMappingURL=style2.css.map */
