@@ -28,3 +28,16 @@
 @for $i from 1 through 3{
 	.item-#{$i}{width: 2px*$i;}
 }
+
+/*方式二：@for $i form <start> to <end>  使用to方式不包含end这个数*/
+@for $i from 1 to 3{
+	.list-#{$i}{width: 2px*$i;}
+}
+
+/*@for 实例*/
+@mixin width{$width:60px;}
+@for $i from 1 through 12{
+	.col-md-#{$i}{
+		@include width+
+	}
+}

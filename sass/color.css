@@ -1,0 +1,33 @@
+body {
+  background-color: red;
+}
+
+.box1 {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.box2 {
+  color: red;
+}
+
+.box3 {
+  color: rgba(255, 0, 0, 0.6);
+}
+
+.box4 {
+  color: #00ff48;
+}
+
+.box5 {
+  color: lime;
+}
+
+.box5-l {
+  color: #99ff99;
+}
+
+.box5-2 {
+  color: #009900;
+}
+
+/*# sourceMappingURL=color.css.map */

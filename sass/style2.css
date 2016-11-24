@@ -18,4 +18,11 @@
 .item-3 {
   width: 6px; }
 
+/*方式二：@for $i form <start> to <end>  使用to方式不包含end这个数*/
+.list-1 {
+  width: 2px; }
+
+.list-2 {
+  width: 4px; }
+
 /*# sourceMappingURL=style2.css.map */

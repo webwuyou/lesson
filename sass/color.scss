@@ -1,0 +1,22 @@
+//1、基本的颜色方法rgb(),rgba()
+
+body{background-color:rgb(255,0,0);}
+.box1{background-color: rgba(255,0,0,0.5);}
+
+// 2、hsl()方法,h色相，取值范围0-360，s饱和度，取值范围0-100%，l亮度，取值范围0-100%
+.box2{color:hsl(360,100%,50%)}
+.box3{color:hsla(0,100%,50%,0.6)}
+
+//3、adjust-hue()方法，修改色相值
+$base-color:hsl(0,100%,50%); 
+.box4{color:adjust-hue($base-color,137deg)}//可以有单位也可以没有
+
+// 4、lighten(),修改亮度，增加亮度，darken()降低亮度
+$color:hsl(120,100%,50%);
+$color-lighten:lighten($color,30%);
+$color-darken:darken($color,20%);
+.box5{
+	color:$color;
+}
+.box5-l{color:$color-lighten};
+.box5-2{color:darken($color,20%)};

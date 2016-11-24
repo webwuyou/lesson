@@ -1,0 +1,26 @@
+@charset "utf-8";
+//选择器嵌套
+// 
+.nav{height: 100px;}
+.nav ul{margin: 0;}
+.nav ul li{
+	float: left;
+	list-style: none;
+	padding: 5px;
+}
+.nav{
+	height: 100px;
+	ul{
+		margin: 0;
+		li{
+			float: left;
+			list-style: none;
+			padding: 5px;
+		}
+	}
+
+	& &-text{
+		font-size: 15px;
+	}
+
+}
