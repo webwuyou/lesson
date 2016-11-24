@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js入门第一课</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	ul ,li{list-style: none;}
+	a{text-decoration: none;}
+	li{width: 80px;}
+	li a{text-align: center;display: block;}
+	#ul1>li>a{background: #ddd;border: 1px solid #000;}
+	#ul2{display: none;}
+	#ul2 li{background: #f00;width: 100px;height: 40px;}
+	#ul2 li a{text-align: center;}
+	</style>
+</head>
+<body>
+	<ul id="ul1">
+		<li id="li1">
+			<a href="">导航</a>
+			<ul id="ul2">
+				<li><a href="">测试</a></li>
+				<li><a href="">测试</a></li>
+				<li><a href="">测试</a></li>
+			</ul>
+		</li>
+	</ul>
+
+<script>
+document.getElementById("li1").onmouseover=show;
+document.getElementById("li1").onmouseout=hide;
+function show(){
+	document.getElementById("ul2").style.display="block";
+};
+function hide(){
+	document.getElementById("ul2").style.display="none"
+}
+</script>
+
+</body>
+</html>
