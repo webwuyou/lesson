@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>onload事件</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	ul ,li{list-style: none;}
+	a{text-decoration: none;}
+	li{width: 80px;}
+	li a{text-align: center;display: block;}
+	#ul1>li>a{background: #ddd;border: 1px solid #000;}
+	#ul2{display: none;}
+	#ul2 li{background: #f00;width: 100px;height: 40px;}
+	#ul2 li a{text-align: center;}
+	</style>
+</head>
+<body>
+	<!-- 
+	onload事件，加载完再执行
+	window.onload
+	body.onload
+	img.onload
+	…… -->
+<script>
+window.onload=abc;//这里不能加();如果加了(),函数立即执行，依然获取不到下面的ul
+function abc(){
+	var li=document.getElementById("li1");
+var ul2=document.getElementById("ul2");
+li.onmouseover=show;
+li.onmouseout=hide;
+function show(){
+	ul2.style.display="block";
+}
+function hide(){
+	ul2.style.display="none";
+}
+}
+</script>
+	<ul id="ul1">
+		<li id="li1">
+			<a href="">导航</a>
+			<ul id="ul2">
+				<li><a href="">测试</a></li>
+				<li><a href="">测试</a></li>
+				<li><a href="">测试</a></li>
+			</ul>
+		</li>
+	</ul>
+
+</body>
+</html>
