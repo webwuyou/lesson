@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script>
+// 字符
+var words="liu sai";
+console.log(words.length);//获取字符长度
+console.log(words.charAt(0));//获取指定索引值为1的对应的字符，从0开始
+console.log(words.charAt(words.length-1));
+console.log(typeof(words));//查看变量类型
+console.log(words.indexOf("s"));//获取指定字符的索引号
+console.log(words.lastIndexOf("i"))//获取最后一个i的索引号
+console.log(words.substring(0,4))//截取字符串，有两个参数，分别是开始和结束的索引号
+console.log(words.replace("liu","baidu"))//替换字符串里的字符，第一个参数是要替换的字符，第二个参数是要替换成的字符
+console.log(words.split(" "))//分隔字符串
+	</script>
+</body>
+</html>

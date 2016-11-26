@@ -1,0 +1,7 @@
+// sass列表函数
+$list: 2px solid #ddd;
+.box{border:$border}
+
+1、获取list长度：length($list);
+2、获取指定索引号位置的字符nth($list,1)，注意下标从1开始
+3、获取指定字符的索引号index($list,solid)，结果为2
