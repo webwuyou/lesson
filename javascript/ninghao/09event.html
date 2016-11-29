@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>event事件的使用</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	ul,li{list-style: none;}
+	.btn{display:inline-block;padding: 10px 20px;background: #ddd;border: 1px solid #000;text-decoration: none;margin: 10px auto;}
+	.artist-list li{float: left;margin: 10px;}
+	.artist-list li h6{text-align: center;font-size: 14px;}
+	</style>
+</head>
+<body>
+<!-- 事件调用方式一，只能处理简单的事件 -->
+<a href="#" class="btn" onclick="console.log('onclick事件')" onmouseover="console.log('onmouseover事件')" onmouseout="console.log('onmouseout事件')">按钮</a>
+
+<!-- 事件调用方式二，使用匿名函数表达式 -->
+<a href="#" class="btn btn2">按钮二</a>
+	<script>
+		var btn2=document.querySelector(".btn2");
+		btn2.onclick=function(){
+			console.log("onclick事件")
+		};
+		btn2.onmouseover=function(){
+			console.log("onmouseover事件")
+		};
+		btn2.onmouseout=function(){
+			console.log("onmouseout事件")
+		}
+	</script>
+
+	<!-- window.onload事件 -->
+	<script>
+	window.onload=function(){
+		var btn2=document.querySelector(".btn2");
+		btn2.onclick=function(){
+			console.log("onclick事件")
+		};
+		btn2.onmouseover=function(){
+			console.log("onmouseover事件")
+		};
+		btn2.onmouseout=function(){
+			console.log("onmouseout事件")
+		}
+	}
+	</script>
+
+	<!-- 事件绑定 -->
+	<a href="#" class="btn btn3">按钮三</a>
+	<script>
+	var btn3=document.querySelector(".btn3");
+	btn3.addEventListener('click',showMessage,false);
+	function showMessage(event){
+		console.log("addEventListener绑定事件");
+		console.log(event);
+	}
+	</script>
+
+	<!-- 事件的冒泡，从下往上从里往外传播，事件绑定在ul上，点击img的时候，事件传递给li，再传递给ul -->
+	<ul class="artist-list">
+		<li>
+			<img src="images/artist1.jpg" alt="图片1" />
+			<h6>图片1</h6>
+		</li>
+		<li>
+			<img src="images/artist2.jpg" alt="图片2" />
+			<h6>图片2</h6>
+		</li>
+		<li>
+			<img src="images/artist3.jpg" id="img3" alt="图片3" />
+			<h6>图片3</h6>
+		</li>
+		<li>
+			<img src="images/artist4.jpg" alt="图片4" />
+			<h6>图片4</h6>
+		</li>
+	</ul>
+	<script>
+		var list=document.querySelector(".artist-list");
+		list.addEventListener("click",showAlt,false);
+		function showAlt(event){
+			alert(event.target.alt)
+		}
+	</script>
+
+	<!-- 事件的捕获，从上到下，从外到内的传播方式 -->
+	<!-- addEventListener()第三个参数设置为true就是采用捕获的方式，设置为false就是冒泡的方式 -->
+	<script>
+	var img3=document.querySelector("#img3");
+	img3.addEventListener("click",showImg,true);
+	function showImg(){
+		alert("点击了图片三")
+	}
+	</script>
+</body>
+</html>
