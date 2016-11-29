@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>array数组</title>
+</head>
+<body>
+	<script>
+	// 定义数组：
+	var array1=[]; //定义一个空数组
+	var array2=[1,2,3,4,5];//定义一个包含数字的数组，定义的同时赋值
+	var array3=["张三","李四","王五"];//定义一个字符串类型的数组，定义的同时赋值
+
+	array1.length;//获取数组长度
+	array2[0];//访问数组元素，下标从0开始
+
+	// 向数组中添加元素：
+	array3[3]="习大大";//方法一
+	console.log(array3);
+	array3.push("彭麻麻");//方法二，push方法添加的内容在最后面
+	console.log(array3);
+	array3.unshift("我是前面的","使用unshift插到前面");
+	console.log(array3);
+	//删除数组最后一个元素
+	array3.pop();
+	console.log(array3);
+	//删除数组第一个元素
+	array3.shift();
+	console.log(array3);
+	console.log(array3.length);
+	// 删除数组中指定的元素,delete只会删除元素里面的值，不会删除元素,也就是使用length得到的结果一样
+	delete array3[4];
+	console.log(array3);
+	console.log(array3.length);
+	// 彻底删除元素
+	array3.splice(3);
+	console.log(array3);
+	console.log(array3.length);
+	// 合并两个数组concat
+	array4=array3.concat(array2);
+	console.log(array4);
+	console.log(array4.length);
+	</script>
+</body>
+</html>

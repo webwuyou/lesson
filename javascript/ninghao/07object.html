@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>object对象</title>
+</head>
+<body>
+	<script>
+	// 创建对象
+	var myobject={}
+	//创建对象时赋值
+	var myobject2={
+		formedIn:"1992",
+		address:"深圳",
+	}
+	myobject2.formedIn;//获取某个元素的值方法一
+	myobject2["address"];//获取某个元素的值方法二，一定要加引号
+
+	//包含数组对象
+	var myobject3={
+		company:"宇信",
+		year:"2013年",
+		team:["张三","李四","王五","赵六"]
+	}
+	myobject3.team[1];//获取对象中数组的某个值，数组下标从0开始
+	myobject3.year="2014";// 修改某个元素的值
+	delete myobject3.company;//删除对象中的某个元素
+
+	// 给对象添加方法
+	myobject3.teamList=function () {
+		for (var i = 0; i < this.team.length; i++) {
+			document.writeln(this.team[i]);
+		}
+	}
+	myobject3.teamList();//调用对象的方法
+
+	//使用for in循环输出对象中所有属性
+	var propert;
+	for (property in myobject3){
+		console.log(myobject3[property]);
+	}
+
+	//上面会把对象所有的属性都输出，包括函数，如果只要输出数值型的属性，可以使用if语句
+	var property2;
+	for (property2 in myobject3){
+		if(typeof(myobject3[property2]) !=="function"){
+		console.log(myobject3[property2]);
+		}
+	}
+	</script>
+</body>
+</html>
