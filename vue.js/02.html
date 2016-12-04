@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>vue数据绑定</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<!-- 基本绑定 -->
+	<div id="div">{{message}}</div>
+	<script>
+		var app=new Vue({
+			el:"#div",
+			data:{
+				message:"vue使用双括号实现数据绑定"
+			}
+		})
+	</script>
+
+	<!-- v-bind方式绑定 -->
+	<div id="div2" v-bind:title="message">vue使用v-bind绑定到属性上</div>
+	<script>
+		var app=new Vue({
+			el:"#div2",
+			data:{
+				message:"vue使用v-bind实现数据绑定"
+			}
+		})
+	</script>
+
+	<!-- v-if:条件判断 -->
+	<div id="app-3">
+	<p v-if="seen">看得见</p>
+	</div>
+	<script>
+		var app3=new Vue({
+			el:"#app-3",
+			data:{
+				seen:true
+			}
+		})
+	</script>
+
+	<!-- v-for循环 -->
+	<div id="app-4">
+	<ol>
+		<li v-for="lesson in lessons">{{lesson.text}}</li>
+	</ol>
+	</div>
+	<script>
+		var app4=new Vue({
+			el:'#app-4',
+			data:{
+				lessons:[
+				{text:"javascript"},
+				{text:"vue.js"},
+				{text:"angular.js"}
+				]
+			}
+		}) 
+	</script>
+
+	<!-- v-on事件绑定 -->
+	<div id="app-5">
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage"> reverse Message</button>
+	</div>
+	<script>
+		var app5=new Vue({
+			el:"#app-5",
+			data:{
+				message:"abcde"
+			},
+			methods:{
+				reverseMessage:function(){
+					this.message=this.message.split("").reverse().join("")
+				}
+			}
+		})
+	</script>
+
+	<!-- v-model -->
+	<div id="app-6">
+	<p>{{message}}</p>
+	<input type="text" v-model="message" />
+	</div>
+	
+	<script>
+	var app6=new Vue({
+		el:"#app-6",
+		data:{
+			message:"v-model绑定"
+		}
+	})
+
+	</script>
+	
+</body>
+</html>
