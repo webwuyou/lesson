@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>scope中变量和方法的使用</title>
+	<link rel="stylesheet" href="../bootstrap.css" />
+</head>
+<body ng-app="app">
+	<div class="container" ng-controller="firstCtrl">
+	用户名：<input type="text" class="form-control" ng-model="user.uname" />
+	密码：<input type="text" class="form-control" ng-model="user.pwd" />
+	<button class="btn btn-primary btn-lg" ng-click="login()">提交</button>
+	<div class="alert alert-danger" ng-show="errorMsg.length>0" ng-bind="errorMsg"></div>
+	</div>
+
+	<script src="../angular.min.js"></script>
+	<script>
+	angular.module("app",[])
+	.controller("firstCtrl",function($scope){
+		$scope.msg="";
+		$scope.user={uname:'',pwd:''};
+		$scope.errorMsg="";
+		$scope.login=function(){
+			if($scope.user.uname=="admin" && $scope.user.pwd=="123"){
+				alert("登录成功！")
+			}else{
+				$scope.errorMsg="用户名或者密码错误！"
+			}
+		}
+	})
+	</script>
+</body>
+</html>

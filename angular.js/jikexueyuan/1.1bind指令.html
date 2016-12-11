@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ng-bind</title>
+</head>
+<body ng-app>
+<input type="text" ng-model="name" />
+<p>{{"用户名："+name}}</p>
+<p ng-bind="'用户名：'+name"></p>
+使用双括号的形式，在加载慢的时候，页面会出现双括号，用ng-bind可以避免这个问题
+<script src="../angular.min.js"></script>	
+</body>
+</html>
