@@ -13,6 +13,11 @@
 	<div class="alert alert-danger" ng-show="errorMsg.length>0" ng-bind="errorMsg"></div>
 	</div>
 
+	<div ng-controller="secondCtrl">
+	<input type="text" class="form-control" ng-model="str" />
+		反向字符：<div ng-bind="reverse()"></div>
+	</div>
+
 	<script src="../angular.min.js"></script>
 	<script>
 	angular.module("app",[])
@@ -27,6 +32,14 @@
 				$scope.errorMsg="用户名或者密码错误！"
 			}
 		}
+	})
+	.controller("secondCtrl",function($scope){
+		$scope.str="abc";
+		$scope.reverse=function(){
+			return $scope.str.split("").reverse().join("");
+			//split()把一个字符分隔成字符串数组，reverse()反向，join()把数组中的所有元素放入一个字符串中
+		}
+
 	})
 	</script>
 </body>

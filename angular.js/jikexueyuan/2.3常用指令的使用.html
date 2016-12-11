@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular常用指令</title>
+	<link rel="stylesheet" href="../bootstrap.css" />
+	<style>
+	.icon{width: 50px;height: 50px;display: block;margin: 0 auto;}
+	</style>
+</head>
+<body ng-app="app">
+	<div class="container" ng-controller="myCtrl">
+
+		<!-- ng-submit用于在表单提交后执行指定函数 -->
+		<form class="form" name="form2" action="" ng-submit="login()">
+
+			<!-- ng-src必须加双括号 -->
+			<img  ng-src="{{user.icon}}" ng-class="{'icon':user.showIcon}" ng-hide="2<1"  />
+			<!-- ng-hide和ng-show,ng-if都是显示和隐藏元素，后面跟一个表达式，true or false，区别是ng-if未显示时不会渲染dom元素 -->
+
+			<div class="form-group">
+				<label for="name">用户名：</label>
+				<input type="text" class="form-control" id="uname" ng-model="user.name" required />
+			</div>
+			<div class="form-group">
+				<label for="pwd">密码：</label>
+				<input type="text" class="form-control" id="pwd" ng-model="user.pwd" />
+			</div>
+
+
+			<!-- ng-selected用于设置select列表中的option元素的selected属性，如果返回true，将会被选中 -->
+			<div class="form-group">
+				<label for="zhiwei">职位：</label>
+				<select name="" class="form-control" id="">
+					<option value="">--请选择--</option>
+					<option value="" ng-selected="user.zhiwei=='1'">JAVA工程师</option>
+					<option value="" ng-selected="user.zhiwei=='2'">.NET工程师</option>
+					<option value="" ng-selected="user.zhiwei=='3'">前端工程师</option>
+				</select>
+			</div>
+
+			<!-- ng-check用于设置单选框或者复选框的checked属性，如果ng-checked属性返回true，将会被选中 -->
+			<div class="form-group">
+			<label for="">性别：</label>
+			<input type="radio" name="sex" ng-checked="user.sex=='1'" />男
+			<input type="radio" name="sex" ng-checked="user.sex=='0'"/>女
+			</div>
+
+
+			<div class="form-group">
+				<label for="aihao">爱好：</label>
+				<input type="checkbox" ng-checked="isChecked(1)" />篮球
+				<input type="checkbox" ng-checked="isChecked(2)" />足球
+				<input type="checkbox" ng-checked="isChecked(3)" />排球
+			</div>
+
+			<!-- ng-disabled设置表单的disable属性，返回true，则表单字段将禁用 -->
+			<!-- $invalid是angular自带的验证，注意：前面的form2是表单form的name值 -->
+			<button type="submit" class="btn btn-primary" ng-disabled="form2.$invalid">提交</button>
+		</form>
+
+		<div>
+		<ol>
+			<li>用户名：{{user.name}}</li>
+			<li>密码：{{user.pwd}}</li>
+			<li>职位：{{user.zhiwei}}</li>
+			<li>性别：{{user.sex}}</li>
+			<li>爱好：{{user.aihao}}</li>
+		</ol>
+		</div>
+
+
+	
+	</div>
+	<script src="../angular.min.js"></script>
+	<script>
+	angular.module("app",[])
+	.controller("myCtrl",function($scope){
+		$scope.user={
+			icon:"angular.jpg",
+			showIcon:true,
+			name:"",
+			pwd:"",
+			zhiwei:"3",
+			sex:"0",
+			aihao:[1,2]
+		};
+		$scope.isChecked=function(n){
+			var isOK=false;
+			for(i=0;i<$scope.user.aihao.length;i++){
+				if(n==$scope.user.aihao[i]){
+					isOK=true;
+					break;
+				}
+			}
+			return isOK;
+		};
+		$scope.login=function(){
+			alert("恭喜你，提交成功")
+		}
+	})
+	</script>
+</body>
+</html>
