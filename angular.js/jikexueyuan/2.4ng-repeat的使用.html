@@ -3,8 +3,25 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>ng-repeat指令的使用</title>
+	<link rel="stylesheet" href="../bootstrap.css" />
 </head>
-<body>
-	
+<body ng-app="app">
+<h1>地址管理：</h1>
+	<ul class="list-group" ng-controller="addressCtrl">
+		<li class="list-group-item" ng-class="{'active':$first}" ng-repeat="a in list" ng-if="!$last">{{$index+1+". "+a.address}}</li>
+		<!-- $index代表下标，$first和$last是一个boolean类型，如果是第一个元素，$first为true，最后一个元素$last为true -->
+	</ul>
+	<script src="../angular.min.js"></script>
+	<script>
+	angular.module("app",[])
+	.controller("addressCtrl",function($scope){
+		$scope.list=[
+		{id:1,address:"湖北省武汉市"},
+		{id:2,address:"广东省深圳市"},
+		{id:3,address:"湖南省长沙市"},
+		{id:4,address:"广西省桂林市"}
+		]
+	})
+	</script>
 </body>
 </html>
