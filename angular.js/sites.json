@@ -1,0 +1,19 @@
+{
+	"sites":[
+		{
+			"name":"菜鸟教程",
+			"url":"www.webwuyou.com",
+			"country":"CN"
+		},
+		{
+			"name":"angularjs",
+			"url":"angular.org",
+			"country":"USA"
+		},
+		{
+			"name":"百度",
+			"url":"www.baidu.com",
+			"country":"CN"
+		}
+	]
+}

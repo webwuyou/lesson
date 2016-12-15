@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular过滤器的使用</title>
+	<link rel="stylesheet" href="bootstrap.css" />
+</head>
+<body ng-app="app" ng-controller="myCtrl">
+	<input type="text" class="form-control" ng-model="name"  />
+	<p>{{name|uppercase}}</p> 
+	<!-- uppercase将字符串穿换成大写 -->
+
+	<p>{{name|lowercase}}</p>
+	<!-- lowercase将字符串转换成小写 -->
+
+	<p>{{money|currency}}</p>
+	<!-- currency强数字格式转换成货币格式 -->
+
+
+
+	<!-- 向指令添加过滤器 -->
+	<p ng-repeat="x in myArray | orderBy">{{x}}</p>
+	<script src="angular.min.js"></script>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("myCtrl",function($scope){
+		$scope.myArray=[3,2,5,1,4];
+		$scope.money="12";
+	})
+	</script>
+</body>
+</html>

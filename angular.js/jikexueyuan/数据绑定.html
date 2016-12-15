@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body ng-app="app" ng-controller="myCtrl">
+<input type="text" ng-model="xing" />
+<input type="text" ng-model="ming" />
+<p>全名：{{xing+" "+ming}}</p>
+<p>全民：{{fullName}}</p>
+<p>姓：{{xing}}</p>
+<p>名：{{ming}}</p>
+	<script src="../angular.min.js"></script>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("myCtrl",function($scope){
+		$scope.xing="liu";
+		$scope.ming="sai";
+		$scope.fullName=$scope.xing+$scope.ming;
+		// 注意这里一定要加$scope
+		$scope.$watch("xing",function(){
+			$scope.fullName=$scope.xing+$scope.ming;
+		});
+		$scope.$watch("xing",function(){
+			$scope.fullName=$scope.xing+$scope.ming;
+		})
+	})
+	</script>
+</body>
+</html>

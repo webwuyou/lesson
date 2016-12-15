@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angularjs http</title>
+	<link rel="stylesheet" href="bootstrap.css" />
+</head>
+<body ng-app="app" ng-controller="siteCtrl">
+	<ul class="list-group">
+		<a href="" class="list-group-item" ng-repeat="x in names"></a>
+	</ul>
+	<script src="angular.min.js"></script>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("siteCtrl",function($scope,$http){
+		$http.get("sites.json").success(function(response){
+			$scope.name=response.sites
+		})
+	})
+	</script>
+
+</body>
+</html>

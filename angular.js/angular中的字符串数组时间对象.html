@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular中的字符串，时间，数组，对象</title>
+	<link rel="stylesheet" href="bootstrap.css" />
+</head>
+<body ng-app="app" ng-controller="myCtrl">
+	<p>字符串：{{str}}</p>
+	<p>时间：{{date}}</p>
+	<ul class="list-group">
+	<li class="list-group-item" ng-repeat="x in myarray" ng-bind="x"></li>
+	</ul>
+	<ul class="list-group">
+	<li class="list-group-item active">{{myObject.name}}</li>
+	<li class="list-group-item">{{myObject.sex}}</li>
+	<li class="list-group-item">{{myObject.website}}</li>
+	</ul>
+	<div ng-bind="myObject.name"></div>
+	<div ng-bind="myObject.sex"></div>
+	<div ng-bind="myObject.website"></div>
+
+	定时器
+	<div>{{shijian}}</div>
+	<script src="angular.min.js"></script>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("myCtrl",function($scope){
+		// angular中的字符串
+		$scope.str="liusai";
+
+		// angular时间
+		var date=new Date();
+		$scope.date=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+		
+		// angular数组
+		$scope.myarray=["星期一","星期二","星期三","星期四","星期五","星期六","星期天"];
+
+		// angular中的对象
+		$scope.myObject={
+			name:"liusai",
+			sex:"man",
+			website:"www.webwuyou.com"
+		};
+		var now1=new Date();
+		var h=now1.getHours(),m=now1.getMinutes(),s=now1.getSeconds();
+		$scope.time=function(){
+			$scope.$apply(function(){
+				console.log($scope.shijian);
+				var now=new Date();
+				var h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
+				$scope.shijian=h+":"+m+":"+s;
+			})
+		};
+		$scope.SetTimerInterval=setInterval($scope.time,1000);
+
+	})
+	</script>
+</body>
+</html>

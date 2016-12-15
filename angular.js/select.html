@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular select的使用</title>
+</head>
+<body ng-app="app" ng-controller="selectCtrl">
+
+	<!-- 使用ng-options的方式实现select下拉框 -->
+	<select ng-model="selectedName" ng-options="x for x in names"></select>
+
+	<!-- 使用ng-repeat实现下拉框 -->
+	<select>
+	<option value="" ng-repeat="x in names">{{x}}</option>
+	</select>
+
+	<!-- ng-repeat和ng-options区别 -->
+	<!-- ng-repeat的选项是一个字符串，ng-options的选项是一个字符串 -->
+
+	1、ng-repeat方式
+	<select ng-model="site"   >
+	<option  value="{{x.url}}" ng-repeat="x in sites" >{{x.site}}</option>
+	</select>
+	<p>{{site}}</p>
+
+	2、ng-options实现
+	<select ng-model="site" ng-options="x.site for x in sites"></select>
+	你选择的是{{site.site}}，网址为{{site.url}}
+
+	3、数据源为对象
+	x,y分别为键值对
+	<select ng-model="web" ng-options="x for (x,y) in webs"></select>
+	您选择的网址是{{web}}
+
+	4、多重对象
+	<select ng-model="selectCars" ng-options="x for (x,y) in cars"></select>
+	你选择的是，车型：{{selectCars.brand}}，产地：{{selectCars.address}}，颜色：{{selectCars.color}}
+	<script src="angular.min.js"></script>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("selectCtrl",function($scope){
+		$scope.names=["张三","李四","王五","赵六"];
+		$scope.sites=[
+			{site:"google",url:"www.google.com"},
+			{site:"qq",url:"www.qq.com"},
+			{site:"baidu",url:"www.baidu.com"}
+		];
+		$scope.webs={
+					web1:"www.baidu.com",
+					web2:"www.qq.com",
+					web3:"www.360.com"
+		};
+		$scope.cars={
+			car1:{brand:"福特",address:"广州",color:"红色"},
+			car2:{brand:"大众",address:"上海",color:"灰色"},
+			car3:{brand:"宝马",address:"北京",color:"黑色"},
+		}
+	})
+	</script>
+
+</body>
+</html>
