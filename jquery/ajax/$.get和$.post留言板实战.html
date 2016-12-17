@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+	<form action="message.php" class="form-group">
+		<div class="form-group-item">
+			<label for="name">用户名：</label>
+			<input type="text" class="form-control" id="name" />
+		</div>
+		<div class="form-group-item">
+			<label for="email">邮箱：</label>
+			<input type="text" class="form-control" id="email" />
+		</div>
+		<div class="form-group-item">
+			<textarea class="form-control" name="" id="msg" cols="30" rows="10"></textarea>
+		</div>
+		<div class="form-group-item">
+		<input type="button" class="btn btn-primary" value="提交" />
+		</div>
+		<div class="message"></div>
+	</form>
+	<script>
+	$(function(){
+		$(".btn").click(function(){
+			$.get("message.php",{
+				name:$("#name").val(),
+				email:$("#email").val(),
+				msg:$("#msg").val()
+			},function(data,status,xhr){
+				$(".message").html(data);
+			})
+		})
+	})
+	</script>
+</body>
+</html>

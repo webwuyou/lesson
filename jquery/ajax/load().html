@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jquery中ajax load()方法</title>
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+	<button class="btn btn-primary">load()异步加载数据</button>
+	<button class="bnt btn-success">练习load()</button>
+	<div id="btn"></div>
+	<div id="btn2"></div>
+	<script>
+	$(function(){
+		$(".btn-primary").click(function(){
+			// $("#btn").load("1.html h1");
+			$("#btn").load("test.php",{
+				url:"www.webwuyou.com.com"
+			},function(response,status,xhr){
+				alert(response+123);//reponse参数，从服务器返回的内容
+				alert(status);//status，如果成功返回数据，success，否则error
+				alert(xhr);//XMLHttpRequest对象
+				if(status=="success"){
+					alert("请求成功后的处理")
+				}else{
+					alert("请求失败后的处理")
+				};
+				//可以使用第三个参数获取返回内容和返回状态
+				alert(xhr.responseText);//通过XMLHttpRequest对象获取返回内容
+				alert(xhr.responseXML);
+				alert(xhr.status);//通过XMLHttpRequest对象获取返回状态码，成功200
+				alert(xhr.statusText)//通过XMLHttpRequest对象获取状态说明，成功ok
+			})
+		})
+	}) 
+	</script>
+	<script>
+	$(function(){
+		$(".btn-success").click(function(){
+			$("#btn2").load("1.html",{
+				name:"前端无忧网"
+			},function(response,status,xhr){
+				alert(response);
+				alert(status);
+				alert(xhr.responseText);
+				alert(xhr.status);
+				alert(xhr.statusText)
+
+
+
+			})
+		})
+	})
+	</script>
+
+	load()是一个局部方法，适合做静态文件的异步获取，而对于需要传递参数到服务器页面的，$.get()和$.post()全局方法更合适。
+</body>
+</html>

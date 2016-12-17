@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ajax $.get()方法的使用</title>
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+	<button class="btn1 btn btn-primary">$.get()方式一</button>
+	<button class="btn2 btn btn-primary">$.get()方式二</button>
+	<button class="btn3 btn btn-primary">$.get()方式三</button>
+	<div id="div"></div>
+	<script>
+	$(function(){
+		// $(".btn1").click(function(){
+			
+		// 	// get方法一，在url问号后面传参
+		// 	// $.get("test.php?url=webwuyou&name=admin",function(response,status,xhr){
+		// 	// 	alert(response);
+		// 	// 	alert(status);
+		// 	// 	alert(xhr.responseText);
+		// 	// 	$("#div").html(response);
+		// 	// });
+
+		// 	//$.get()第二种方式，通过第二个参数data，字符串形式键值对传参，最后自动转换成问号形式附加在url后面
+		// 	// $.get("test.php","url=webwuyou&a=b",function(response,status,xhr){
+		// 	// 	$("#div").html(response);
+		// 	// });
+
+		// 	//$.get()第三种方式，通过第二个参数data，对象的键值对传参，最后自动转换成问号形式附加在url后面
+		// 	$.get("test.php",{
+		// 		url:"webwuyou",
+		// 		name:"admin"
+		// 	},function(response,status,xhr){
+		// 		$("#div").html(response);
+		// 	})
+		// });
+
+
+		// get方法一，在url问号后面传参
+		$(".btn1").click(function(){
+			$.get("test.php?url=webwuyou&name=admin",function(response,status,xhr){
+				$("#div").html(response);
+			})
+		});
+
+		//$.get()第二种方式，通过第二个参数data，字符串形式键值对传参，最后自动转换成问号形式附加在url后面
+		$(".btn2").click(function(){
+			$.get("test.php","url=webwuyou",function(response,status,xhr){
+				$("#div").html(response);
+			})
+		});
+
+		//$.get()第三种方式，通过第二个参数data，对象的键值对传参，最后自动转换成问号形式附加在url后面
+		$(".btn3").click(function(){
+			$.get("test.php",{
+				url:"webwuyou",
+				name:"admin"
+			},function(response,status,xhr){
+				$("#div").html(response);
+			})
+		})
+
+		//$.get()和$.post()方法有四个参数(url,data,fn,type)，前三个和load一样，第四个参数为服务器返回的内容格式，包括xml,html,script,json,jsonp,text
+		
+		
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ajax $.post()方法的使用</title>
+	<script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+	<button class="btn1">$.post方式一</button>
+	<button class="btn2">$.post方式二</button>
+	<button class="btn3">$.post方式三</button>
+	<button class="btn4">$.post xml</button>
+	<button class="btn5">$.post json</button>
+	<div id="div"></div>
+	<script>
+	$(function(){
+		// 注意：post方式不能使用问号的方式来传参
+		$(".btn1").click(function(){
+			$.post("post.php?url=webwuyou",function(response,status,xhr){
+				$("#div").html(response);
+			})
+		});
+
+		// 第一种方式，通过第二个data参数，字符串形式的键值对来传参，自动转换成http消息实体传参
+		$(".btn2").click(function(){
+			$.post("post.php","url=webwuyou",function(response,status,xhr){
+				$("#div").html(response);
+			})
+		});
+
+		//第二种方式，通过对象键值对来传参，
+		$(".btn3").click(function(){
+			$.post("post.php",{
+				url:"webwuyou"
+			},function(response,status,xhr){
+				$("#div").html(response);
+			},"html") //PHP文件返回的数据是纯文本，默认是html或text，所以第四个参数返回类型可以不写，如果强行按照xml或者json数据格式返回的话，那么就无法获取数据，如果返回的数据本身就是xml或者json，第四个参数type默认就是xml或者json了，如果默认是xml，强行设置为html，则会将xml标签也返回
+		});
+
+		// 获取xml文件里面的内容
+		$(".btn4").click(function(){
+			$.post("post.xml",function(response,status,xhr){
+				alert(response);
+				alert($(response).find("url").text());
+			},"xml")
+		});
+
+		$(".btn5").click(function(){
+			$.post("sites.json",function(response,status,xhr){
+				alert(response);
+				var name=response.name;
+				var password=response.password;
+				var url=response.url;
+				var texHtml="<ul><li>"
+				+name+":</li><li>"
+				+password+":</li><li>"
+				+url+":</li></ul>"
+				$("#div").html(texHtml);
+			},"json")
+		})
+		
+		
+	})
+	</script>
+	<!-- $.get()方法三种方式都可以用，$.post()只能使用后两种方式 -->
+</body>
+</html>

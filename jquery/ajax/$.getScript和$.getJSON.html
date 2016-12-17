@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ajax getScript()和getJSON()方法的使用</title>
+	<script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+	<button class="btn1">getJSON()</button>
+	<button class="btn2">getScript()</button>
+	<div id="div"></div>
+	<script>
+	$(function(){
+		// $.getJSON()方法和$.getScript()只有三个参数，没有第四个参数type
+		$(".btn1").click(function(){
+			$.getJSON("sites.json",function(data,status,xhr){
+				$("#div").html(data.name+"<br>"+data.password+"<br>"+data.url)
+			})
+		});
+
+		// 一般情况下，页面初次加载时就加载了全部js文件，这样对性能是不好的，$.getScript()可以在需要的时候再加载指定的js文件,$.getScript()一般一个url参数
+		$(".btn2").click(function(){
+			$.getScript("test.js")
+		})
+	})
+	</script>
+</body>
+</html>
