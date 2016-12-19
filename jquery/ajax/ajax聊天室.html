@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ajax 聊天室实战</title>
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<script src="../jquery-1.11.1.js"></script>
+	<style>
+	.content{border: 1px solid #ddd;padding: 20px 10px;margin: 20px auto;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h1>ajax简单留言板</h1>
+				<div class="form">
+					<form action="">
+						<div class="form-group">
+							<label for="">姓名：</label>
+							<input type="text" class="form-control" name="name" id="name" />
+						</div>
+						<div class="form-group">
+						<label for="">内容：</label>
+						<textarea id="msg" name="msg" class="form-control" cols="30" rows="10"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary">发送</button>
+					</form>
+				</div>
+
+				<div class="content"></div>
+
+			</div>
+		</div>
+	</div>
+	<script>
+	$(function(){
+		var timestamp=0;
+		$(".btn").click(function(){
+			$.post("ajax.php",{
+				name:$("#name").val(),
+				msg:$("#msg").val()
+			},function(xml){
+				addMessage(xml)
+			});
+			return false;
+		});
+		
+	})
+	</script>
+</body>
+</html>

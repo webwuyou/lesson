@@ -33,8 +33,8 @@
 	$(function(){
 		$(".btn-primary").click(function(){
 			// 错误提示1：通过.error局部方法
-			$.post("post2.php").error(function(xhr,errorText,errorType){
-				alert(errorText+":"+errorType);
+			$.post("post2.php").error(function(xhr,status,errorType){
+				alert(status+":"+errorType);
 				alert(xhr.status+":"+xhr.statusText)
 			});
 		});
@@ -48,8 +48,8 @@
 					$("#div").html(data);
 				},
 				// 错误提示2，通过error属性方法
-				error:function(xhr,errorText,errorType){
-					alert(errorText+":"+errorType);
+				error:function(xhr,status,errorType){
+					alert(status+":"+errorType);
 					alert(xhr.status+":"+xhr.statusText)
 				}
 
@@ -72,7 +72,9 @@
 				document.write("<p></p>"+i+"<br>")
 			};
 			alert(errorType);
-		})
+		});
+
+
 
 	})
 	</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ajax 跨域</title>
+	<script src="../jquery-1.7.2.js"></script>
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+</head>
+<body>
+<form action="" class="form">
+	<div class="form-group">
+	<label for="">用户名：</label>
+	<input type="text" class="form-control" name="name" />
+	</div>
+	<div class="form-group">
+	<label for="">邮箱：</label>
+	<input type="text" class="form-control" name="email" />
+	</div>
+	<div class="form-group">
+	<label for="">内容：</label>
+	<textarea  id="" class="form-control" name="msg" cols="10" rows="5"></textarea>
+	</div>
+	<button type="button" class="btn btn-primary">获取本地文件</button>
+	<button type="button" class="btn btn-success">callback=?获取跨域文件</button>
+	<button type="button" class="btn btn-error">jsonp获取跨域文件</button>
+	</form>
+	<div class="loading">正在加载中</div>
+	<div id="div"></div>
+	<script>
+	$(function(){
+		$(".btn-primary").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"jsonp.php",
+				dataType:"json",//因为url是php文件，必须强制数据类型为json才可以获取
+				success:function(data,status,xhr){
+					alert(data.a)
+				}
+			})
+		});
+
+		// 跨域获取jsonp.php文件方式一，需要加callback=?
+		$(".btn-success").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"http://www.webwuyou.com/jsonp.php?callback=?",
+				dataType:"json",//因为url是php文件，必须强制数据类型为json才可以获取
+				success:function(data,status,xhr){
+					alert(data.a);
+					console.log(data)
+				}
+			})
+		});
+
+		$(".btn-error").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"http://www.webwuyou.com/jsonp.php2",
+				dataType:"json",
+				beforeSend:function(){
+					alert("发送请求之前执行");
+				},
+				success:function(data,status,xhr){
+					alert("请求成功！");
+					alert(data.b);
+				},
+				error:function(xhr,status,errorType){
+					alert("请求错误");
+					alert(xhr);
+					alert(status);
+					alert(errorType);
+				},
+				complete:function(){
+					alert("请求完成后执行")
+				}
+			})
+		})
+
+
+	})
+	</script>
+</body>
+</html>
