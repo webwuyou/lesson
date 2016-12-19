@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ajax 错误提示</title>
+	<script src="../jquery-1.7.2.js"></script>
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<style>
+	.loading{display: none;}
+	</style>
+</head>
+<body>
+	<form action="" class="form">
+	<div class="form-group">
+	<label for="">用户名：</label>
+	<input type="text" class="form-control" name="name" />
+	</div>
+	<div class="form-group">
+	<label for="">邮箱：</label>
+	<input type="text" class="form-control" name="email" />
+	</div>
+	<div class="form-group">
+	<label for="">内容：</label>
+	<textarea  id="" class="form-control" name="msg" cols="10" rows="5"></textarea>
+	</div>
+	<button type="button" class="btn btn-primary">提交</button>
+	<button type="button" class="btn btn-danger">提交</button>
+	<button type="button" class="btn btn-error">提交</button>
+	</form>
+	<div class="loading">正在加载中</div>
+	<div id="div"></div>
+	<script>
+	$(function(){
+		$(".btn-primary").click(function(){
+			// 错误提示1：通过.error局部方法
+			$.post("post2.php").error(function(xhr,errorText,errorType){
+				alert(errorText+":"+errorType);
+				alert(xhr.status+":"+xhr.statusText)
+			});
+		});
+
+		$(".btn-danger").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"post2.php",
+				data:$("form").serialize(),
+				success:function(data,status,xhr){
+					$("#div").html(data);
+				},
+				// 错误提示2，通过error属性方法
+				error:function(xhr,errorText,errorType){
+					alert(errorText+":"+errorType);
+					alert(xhr.status+":"+xhr.statusText)
+				}
+
+			})
+		});
+
+		$(".btn-error").click(function(){
+			$.post("post2.php");
+		});
+		// 错误提示3，全局方法ajaxError
+		$(document).ajaxError(function(event,xhr,setting,errorType){
+			alert(event.type);
+			alert(event.target);
+			for(var i in event){
+				document.write(i+"<br>")
+			};
+			alert(setting.url);
+			alert(setting.type);
+			for(var i in setting){
+				document.write("<p></p>"+i+"<br>")
+			};
+			alert(errorType);
+		})
+
+	})
+	</script>
+
+</body>
+</html>

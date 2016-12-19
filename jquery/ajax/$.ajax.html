@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ajax $.ajax()方法的使用</title>
+	<link rel="stylesheet" href="../bootstrap.min.css" />
+	<script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+<button class="btn1">$.ajax()基础用法</button>
+<button class="btn2">$.ajax()表单用法</button>
+<button class="btn3">$.ajax()表单序列化</button>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<form action="">
+<label for="">姓名：</label>
+<input type="text" class="form-control" id="name" name="name" />
+<label for="">邮箱：</label>
+<input type="text" class="form-control" id="email" name="email" />
+<input type="radio" class="input-control" name="sex" value="男" />男
+<input type="radio" class="input-control" name="sex" value="女" />女
+<p></p>
+<label for="">留言：</label>
+<textarea  class="form-control" id="msg" name="msg" cols="30" rows="10"></textarea>
+<button type="button" class="btn btn-primary">提交</button>
+</form>
+</div>
+</div>
+</div>
+<div id="div"></div>
+	<script>
+	$(function(){
+		$(".btn1").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"test.php",
+				data:{
+					url:"webwuyou",
+					name:"admin"
+				},
+				success:function(data,status,xhr){
+					$("#div").html(data)
+				}
+			})
+		});
+
+		// 表单使用
+		// $(".btn-primary").click(function(){
+		// 	$.ajax({
+		// 		type:"POST",
+		// 		url:"message.php",
+		// 		data:{
+		// 			name:$("#name").val(),
+		// 			email:$("#email").val(),
+		// 			content:$("#msg").val()
+		// 		},
+		// 		success:function(data,status,xhr){
+		// 			$("#div").html(data)
+		// 		}
+		// 	})
+		// });
+
+		// 表单序列化
+		// 在有多个表单项的时候，使用上面的data方式传参，写的非常麻烦，维护性差
+		$(".btn-primary").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"message.php",
+				data:$("form").serialize(),
+				success:function(data,status,xhr){
+					$("#div").html(data)
+				}
+			})
+		});
+
+		// 表单序列化serialize()还可以直接获取单选框、复选框和下拉框的内容
+		// 将单选框复选框的值序列化为字符串形式，只会将选中的值序列化
+		$("input:radio").click(function(){
+			alert($(this).serialize());
+			alert(decodeURIComponent($(this).serialize()));//解码
+		});
+
+		// 返回json格式
+		// $("input:radio").click(function(){
+		// 	alert($(this).serializeArray());
+		// 	console.log($(this).serializeArray());
+		// 	var a=$(this).serializeArray();
+		// 	alert(a[0].value)
+		// });
+
+		// 多个ajax请求初始化，当有多个ajax请求，并且很多参数都一样时，可以把相同的参数写到$.ajaxSetup里面，再在每个ajax中单独写各自不同的配置项
+		$.ajaxSetup({
+			type:"POST",
+			url:"message.php",
+			data:$("form").serialize()
+		});
+
+		$("form").click(function(){
+			$.ajax({
+				success:function(){
+					//请求成功后的操作
+				}
+			})
+		})
+
+
+		
+	})
+	</script>
+</body>
+</html>

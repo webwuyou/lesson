@@ -1,5 +1,5 @@
 <?php
-echo "姓名：".$_GET["name"]."<br>";
-echo "邮箱：".$_GET["email"]."<br>";
-echo "留言内容：".$_GET["msg"]
+echo "姓名：".$_POST["name"]."<br>";
+echo "邮箱：".$_POST["email"]."<br>";
+echo "内容：".$_POST["msg"]."<br>";
 ?>
