@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>$scope中的$apply方法</title>
+	<script src="angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+	{{name}}
+	
+	</div>
+	<script>
+	var time=new Date();
+	var app=angular.module("myApp",[]);
+	app.controller("myCtrl",function($scope){
+		$scope.name="张三";
+		setTimeout(function(){
+			$scope.$apply(function(){
+			$scope.name="2222";
+			})
+		},1000);
+	})
+	</script>
+	1、$apply方法作用
+	$scope提供$apply方法传播Model的变化
+	2、$apply方法使用情景
+	angular外部的控制器（DOM事件，外部的回调函数如jquer ui空间等）调用了angular函数之后，必须调用$apply。在这种情况下，你需要命令angular刷新自己(模型、视图等)，$apply就是用来做这件事情的。
+	3、$apply注意事项
+	只要可以，请把要执行的代码和函数传递给$apply去执行，而不要自己执行哪些函数然后再调用$apply。
+	$scope.$apply(function(){
+		$scope.name="张三";
+		fn();
+	})
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>$scope中$watch方法的使用</title>
+	<script src="angular.min.js"></script>
+	<link rel="stylesheet" href="bootstrap.css" />
+</head>
+<body ng-app="app">
+$watch监听model的变化
+	总价小于100时，运费10块，总价大于100时，免运费
+	<div ng-controller="myCtrl">
+		价格：<input type="text" ng-model="shopping.price" />
+		数量：<input type="text" ng-model="shopping.number" />
+		<p>费用：{{sum() | currency:'￥'}}</p>
+		<p>运费：{{shopping.free  | currency:'￥'}}</p>
+		<p>总价：{{sum()+shopping.free | currency:"￥"}}</p>
+	</div>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("myCtrl",(function($scope){
+		$scope.price="5";
+		$scope.number="1";
+		$scope.shopping={
+			price:5,
+			number:1,
+			free:10
+		};
+		$scope.sum=function(){
+			return $scope.shopping.price*$scope.shopping.number;
+		};
+		$scope.$watch($scope.sum,function(newValue,oldValue){
+			console.log(newValue);
+			console.log(oldValue);
+			$scope.shopping.free=newValue>=100?0:10;
+		})
+
+	}))
+	</script>
+</body>
+</html>
