@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>使用cssText修改属性</title>
+	<style>
+	#div1{width: 200px;border: 1px solid #000;}
+	#div2{width: 100px;height: 100px;border: 1px solid #f00;margin-top: 30px;}
+	</style>
+</head>
+<body>
+	<div id="div1">div1</div>
+	<div id="div2">div2</div>
+	<input type="button" value="按钮一" id="btn1" />
+	<input type="button" value="按钮二" id="btn2" />
+	<input type="button" value="按钮三" id="btn3" />
+	<script>
+	window.onload=function(){
+		oDiv1=document.getElementById("div1");
+		oDiv2=document.getElementById("div2");
+		oBtn1=document.getElementById("btn1");
+		oBtn2=document.getElementById("btn2");
+		oBtn3=document.getElementById("btn3");
+		oBtn1.onclick=function(){
+			oDiv1.style.width="100px";
+			oDiv1.style.height="200px";
+		};
+		oBtn3.onclick=function(){
+			oDiv1.style.width="500px";
+		};
+		oBtn2.onclick=function(){
+			oDiv2.style.cssText="width:200px;height:200px"
+		};
+		// oBtn3.onclick=function(){
+		// 	oDiv2.style.cssText="width:100px;"
+		// };
+	}
+	</script>
+	主要区别：style.width=""相当于添加行内样式，后面的是添加样式；style.cssText是替换样式，
+</body>
+</html>

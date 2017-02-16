@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>9-综合实例：生成一组新闻及思路分析</title>
+</head>
+<body>
+	<ul id="list"></ul>
+	<button id="btn">生成新闻</button>
+	<script>
+	var arrNews=[
+	"最高法原副院长奚晓明获刑无期 涉案1.14亿元",
+	"家藏2亿现金官员受贿细节:商人分3次送900万",
+	'江苏医生被砍续:凶手系"黄牛" 被批评后怀恨报复',
+	"污染问题曝光 陕西户县环保局原领导班子集体被免",
+	"的撒打算西户县环保局原领导班子集体被免",
+	'任性90后小夫妻 去年情人节"闪婚"今年"闪离"'
+	];
+	var len=arrNews.length;
+	var oUl=document.getElementById("list");
+	var oBtn=document.getElementById("btn");
+	// oBtn.onclick=function(){
+	// 	// oUl.innerHTML='';
+	// 	for (var i = 0; i < len; i++) {
+	// 		oUl.innerHTML+="<li>"+arrNews[i]+"</li>"
+	// 	}
+	// };
+	// 这样做的问题是每次点击都会生成新闻
+	// 解决方案：1、点击后禁用按钮或者隐藏按钮，用户体验不好
+	// 2、每次点击按钮前，清空ul的innerHTML，性能不好
+	// 3、判断
+	
+	var onOff=true;
+	oBtn.onclick=function(){
+		if(onOff){
+			// onOff=false;  OK
+			for (var i = 0; i < len; i++) {
+				oUl.innerHTML+="<li>"+arrNews[i]+"</li>"
+			}
+			onOff=false;
+		}
+		// onOff=false;  OK
+	}	
+	
+
+	
+	</script>
+</body>
+</html>
