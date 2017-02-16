@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js条件判断</title>
+</head>
+<body>
+<input type="button" id="btn1" value="+" />
+<input type="button" id="btn2" value="-" />
+<p id="pid">你的房客反馈的，你的房客反馈的，你的房客反馈的，你的房客反馈的，你的房客反馈的，你的房客反馈的，你的房客反馈的，</p>
+	<script>
+	/*形式一：
+	if (条件) {
+		……
+	}
+
+	形式二：
+	if (条件) {
+		……
+	} else {
+		……
+	}
+
+	形式三：
+	if (条件1) {
+		……
+	} else if (条件2) {
+		……
+	} else if (条件3) {
+		……
+	} else {
+		……
+	}*/
+
+	var oBtn1=document.getElementById("btn1");
+	var oBtn2=document.getElementById("btn2");
+	var oPid=document.getElementById("pid");
+	var num=15;
+	oBtn1.onclick=function(){
+		num++;
+		oPid.style.fontSize=num+'px';
+	};
+	oBtn2.onclick=function(){
+		num--;
+		oPid.style.fontSize=num+'px';
+	};
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js数组</title>
+</head>
+<body>
+	<script>
+	//js数组
+	// var arr=["我是数组",2,'数组'];
+	// alert(arr.length);//数组长度
+	// alert(arr[0]);//数组下标
+	// arr.push("往数组的最后添加数据");
+	// arr.push(5);
+	// alert(arr);
+	</script>
+	<p>图片切换实例</p>
+	<style>
+	*{margin: 0;padding: 0;}
+	#img_box{width: 400px;height: 400px;background: #ccc;border: 10px solid #000;position: relative;}
+	#prev,#next{position: absolute;width: 40px;height: 40px;background: #000;opacity:0.2;text-align: center;line-height: 40px;color: #fff;font-weight: bold;text-decoration: none;font-size: 34px;top:180px;}
+	#prev{left: 0;}
+	#next{right: 0;}
+	#img_box a:hover{opacity: 0.8}
+	#num,#text{position: absolute;height: 40px;line-height: 40px;color: #fff;background: #000;filter:Alpha(opacity=80) ;opacity: 0.8;width: 100%;text-align: center;}
+	#num{top: 0;}
+	#text{bottom:0}
+	img{width: 400px;height: 400px;}
+	</style>
+	<div id="img_box">
+	<a href="javascript:;" id="prev"><</a>
+	<a href="javascript:;" id="next">></a>
+	<p id="num">图片数量加载中……</p>
+	<p id="text">图片文字加载中……</p>
+	<img src="" id="img1" alt="" />
+	</div>
+	<script>
+	var oPrev=document.getElementById("prev");
+	var oNext=document.getElementById("next");
+	var oNum=document.getElementById("num");
+	var oText=document.getElementById("text");
+	var oImg=document.getElementById("img1");
+
+	var arrUrl=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+	var arrText=['第1张图片文字','第2张图片文字','第3张图片文字','第4张图片文字',];
+
+	var num=0;
+	// 初始化
+	function showImage(){
+		oNum.innerHTML=num+1+"/"+arrUrl.length;
+		oText.innerHTML=arrText[num];
+		oImg.src=arrUrl[num];
+	};
+	showImage();
+
+	// 下一张切换
+	oNext.onclick=function(){
+		num++;
+		if(num==arrUrl.length){
+			num=0;
+		}
+		showImage();
+	};
+	// 上一张切换
+	oPrev.onclick=function(){
+		num--;
+		if(num<=-1){
+			num=arrUrl.length-1;
+		};
+		showImage();
+	}
+	</script>
+</body>
+</html>

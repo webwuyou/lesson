@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js属性操作注意事项</title>
+</head>
+<body>
+	<input type="button" id="btn1" value="+" />
+	<input type="button" id="btn2" value="-" />
+	<p id="pid">js属性操作注意事项，js属性操作注意事项，js属性操作注意事项，js属性操作注意事项，js属性操作注意事项，js属性操作注意事项，js属性操作注意事项，js属性操作注意事项，</p>
+	<script>
+	window.onload=function(){
+		var oBtn1=document.getElementById("btn1");
+		var oBtn2=document.getElementById("btn2");
+		var oPid=document.getElementById("pid");
+		var num=15;
+		oBtn1.onclick=function(){
+			// num+=1;
+			num++;
+
+			oPid.style.fontSize=num+'px';// 注意要加px
+		};
+		oBtn2.onclick=function(){
+			num--;
+			// js中操作属性名时不能有横杠，必用驼峰命名，paddingTop
+			oPid.style.fontSize=num+'px';
+		}
+	}
+	</script>
+</body>
+</html>

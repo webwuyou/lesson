@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>document.getElementsByTagName获取元素</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>我是第1个li元素</li>
+		<li>我是第2个li元素</li>
+		<li>我是第3个li元素</li>
+	</ul>
+	<ol id="ol">
+		<li>我是第1个li元素</li>
+		<li>我是第2个li元素</li>
+		<li>我是第3个li元素</li>
+	</ol>
+	<script>
+	var oUl=document.getElementById("ul");//ById效率最高，获取唯一的元素，静态方法
+	var oLi=document.getElementsByTagName("li");//ByTagName获取多个元素，类似数组的长度和下标，动态方法
+	alert(oLi.length);
+	var oLi2=oUl.getElementsByTagName("li");
+	alert(oLi2.length);
+	var oUl2=document.getElementsByTagName("ul");//即使只有一个元素，使用ByTagName获取的也是数组形式，使用时必须使用oUl2[0]的形式
+	alert(oUl2);
+
+	// 获取元素第三种方法，title和body页面中只有一个
+	document.title="123";
+	document.body.innerHTML="abc";
+	</script>
+</body>
+</html>

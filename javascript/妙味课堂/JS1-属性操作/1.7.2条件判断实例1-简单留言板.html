@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js条件判断简单留言板</title>
+	<style>
+	#msg_box{width: 500px;height: 500px;border: 1px solid #000;}
+	#msg_btn{margin-top: 10px;}
+	</style>
+	
+</head>
+<body>
+	<div id="msg_box"></div>
+	<div id="msg_btn">
+		<span>前端无忧网：</span>
+		<input type="text" id="otext" />
+		<input type="button" value="提交" id="obtn" />
+	</div>
+	<script>
+	var oBox=document.getElementById("msg_box");
+	var oText=document.getElementById("otext");
+	var oBtn=document.getElementById("obtn");
+	oBtn.onclick=function(){
+		if(oText.value!=''){
+			oBox.innerHTML=oBox.innerHTML+oText.value+'<br/>';
+			oText.value='';
+		}
+	}
+
+	</script>
+</body>
+</html>

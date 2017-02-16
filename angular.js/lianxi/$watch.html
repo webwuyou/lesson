@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="../bootstrap.css" />
+	<script src="../angular.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="myCtrl">
+	<form action="" class="form">
+	<div class="form-group">
+	<label for="">数量：</label>
+	<input type="text" class="form-control" ng-model="shopping.price" />
+	</div>
+	<div class="form-group">
+	<label for="">单价：</label>
+	<input type="text" class="form-control" ng-model="shopping.num" />
+	</div>
+
+	</form>
+	<p>总价：{{sum()}}</p>
+	<p>运费：{{shopping.fre}}</p>
+	<p>合计：{{sum()+shopping.fre}}</p>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("myCtrl",function($scope){
+		$scope.shopping={
+			price:5,
+			num:1,
+			fre:10
+		};
+		$scope.sum=function(){
+			return $scope.shopping.price*$scope.shopping.num;
+		};
+		$scope.$watch($scope.sum,function(newValue,oldValue){
+			$scope.shopping.fre=newValue>=100?0:10
+		})
+
+	})
+	</script>
+</body>
+</html>

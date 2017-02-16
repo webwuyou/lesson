@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>循环播放和顺序播放</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	.title{margin: 20px auto;}
+	#img_box{width: 400px;height: 400px;background: #ccc;border: 10px solid #000;position: relative;}
+	#prev,#next{position: absolute;width: 40px;height: 40px;background: #000;opacity:0.2;text-align: center;line-height: 40px;color: #fff;font-weight: bold;text-decoration: none;font-size: 34px;top:180px;}
+	#prev{left: 0;}
+	#next{right: 0;}
+	#img_box a:hover{opacity: 0.8}
+	#num,#text{position: absolute;height: 40px;line-height: 40px;color: #fff;background: #000;filter:Alpha(opacity=80) ;opacity: 0.8;width: 100%;text-align: center;}
+	#num{top: 0;}
+	#text{bottom:0}
+	img{width: 400px;height: 400px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBtn1=document.getElementById("btn1");
+		var oBtn2=document.getElementById("btn2");
+		var oPrev=document.getElementById("prev");
+		var oNext=document.getElementById("next");
+		var oNum=document.getElementById("num");
+		var oText=document.getElementById("text");
+		var oImg=document.getElementById("img");
+
+		var arrUrl=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+		var arrText=['这是第一张图片','这是第2张图片','这是第3张图片','这是第4张图片',]
+
+		// 初始化
+		var num=0;
+		function showImg(){
+			oNum.innerHTML=num+1+'/'+arrUrl.length;
+			oText.innerHTML=arrText[num];
+			oImg.src=arrUrl[num];
+		};
+		showImg();
+
+		// 循环播放
+		oBtn1.onclick=function(){
+
+			// 下一张切换
+			oNext.onclick=function(){
+				num++;
+				if(num==arrUrl.length){
+					num=0;
+				};
+				showImg();
+			};
+
+			// 上一张切换
+			oPrev.onclick=function(){
+				num--;
+				if(num==-1){
+					num=arrUrl.length-1;
+				};
+				showImg();
+			}
+		};
+
+		// 顺序播放
+		oBtn2.onclick=function(){
+			// 下一张切换
+			oNext.onclick=function(){
+				num++;
+				if(num==arrUrl.length){
+					alert("不要再点了，已经是最后一张！");
+					num=arrUrl.length-1;
+				};
+				showImg();
+			};
+
+			// 上一张切换
+			oPrev.onclick=function(){
+				num--;
+				if(num==-1){
+					alert("已经是第一张");
+					num=0;
+				};
+				showImg();
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<div class="title">
+		<button id="btn1">循环播放</button>
+		<button id="btn2">顺序播放</button>
+	</div>
+	<div id="img_box">
+		<a href="javascript:;" id="prev"><</a>
+		<a href="javascript:;" id="next">></a>
+		<p id="num">图片数量正在加载中……</p>
+		<p id="text">图片描述正在加载中……</p>
+		<img src="" id="img" alt="" />
+	</div>
+
+</body>
+</html>

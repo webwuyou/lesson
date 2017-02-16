@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular dom操作</title>
+	<script src="angular.min.js"></script>
+	<script src="jquery.js"></script>
+	<script src="sanitize.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="firstController">
+<div ng-cloak ng-show="s">{{text}}</div>
+<div ng-cloak ng-hide="s">{{text}}</div>
+<div ng-cloak ng-if="s">{{text}}+ng-if</div>
+
+<!-- ng-switch类似于switch语句 -->
+<!-- ng-switch-default默认值，ng-switch-when -->
+<div ng-switch on="s">
+<p ng-switch-default>默认效果</p>
+<p ng-switch-when="false">false效果</p>
+<p ng-switch-when="true">true效果</p>
+
+</div>
+<input type="checkbox" ng-model="open" />
+<detials id="detials" ng-open="open"	>
+	<h1>ng-open</h1>
+	<p >angular js ng-open</p>
+</detials>
+<div ng-bind="text"></div>
+<div ng-bind-template="{{text}} {{text2}}"></div>
+<div ng-bind="h1"></div>
+<div ng-bind-html="h1"></div>
+
+<ul>
+	<li ng-repeat="n in arr1">{{n}}</li>
+</ul>
+
+<ul>
+	<li ng-repeat="n in arr2">{{n}}</li>
+</ul>
+
+</div>
+	<script>
+	var app=angular.module("myApp",['ngSanitize']);//请注意这里要加入依赖
+	app.controller("firstController",function($scope){
+		$scope.s="true2";
+		$scope.text="angularjs dom操作";
+		$scope.text2="ng-bind-template可以绑定多个";
+		$scope.h1="<h1>这是ng-bind-html的用法</h1>";
+
+		// ng-init在数组中的使用
+		$scope.arr1=['a','b','c','d'];
+		$scope.arr2=[['a','b'],['c','d']];
+		alert($("h1").text());//在angular中使用jquery
+
+	})
+	</script>
+</body>
+</html>

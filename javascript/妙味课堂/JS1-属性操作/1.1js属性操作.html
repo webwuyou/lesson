@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="text1" />
+	<select name="" id="sec">
+	<option value="北京">北京</option>
+	<option value="上海">上海</option>
+	<option value="杭州">杭州</option>
+	</select>
+	<input id="btn1" type="button" value="按钮" />
+	<div id="div"></div>
+	<script>
+	// 属性操作？
+	// 属性名：属性值
+	// 
+	// 属性读操作：获取、找到
+	// 元素.属性名
+window.onload=function(){
+	var oBtn=document.getElementById('btn1');
+	
+	oBtn.onclick=function(){
+		alert(oBtn.id);
+		alert(oBtn.value);
+		alert(oBtn.type);
+	};
+	var otext=document.getElementById('text1');
+	oBtn.onclick=function(){
+		alert(otext.value);
+	};
+
+	var oSec=document.getElementById("sec");
+	oBtn.onclick=function(){
+		alert(oSec.value); 
+	};
+
+	// 字符串连接 +号
+	oBtn.onclick=function(){
+		alert(otext.value+"在"+oSec.value);
+	}
+
+	// 属性写操作，用来替换或者修改
+	// 元素.属性名=新的值
+	otext.value="2017年"
+
+	// 获取html元素里面的内容
+	
+	var ODiv=document.getElementById("div");
+	ODiv.innerHTML="使用innerHTML修改html元素的内容"
+	
+}
+</script>
+</body>
+</html>

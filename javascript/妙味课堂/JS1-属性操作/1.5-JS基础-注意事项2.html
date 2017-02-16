@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js 注意事项2</title>
+</head>
+<body>
+<input type="button" id="btn1" />
+	<script>
+	// 相对路径不要拿来做判断
+	// 颜色值不要拿来做判断 color:red #f00 rgb(255,255,0)
+	// innerHTML的值不要来做判断
+	window.onload=function(){
+		var oBtn1=document.getElementById("btn1");
+		oBtn1.onclick=function(){
+			// 注意：修改input的type值在IE6,7,8中不兼容，点击的时候可以让按钮隐藏，让复选框再显示
+			oBtn1.type="checkbox";
+		};
+
+		// 浮动问题
+		oDiv.style.float="left";//不兼容低版本IE
+		oDiv.style.styleFloat="left";//兼容IE浏览器
+		oDiv.style.cssFloat="left";//兼容非IE
+
+		比较好的解决办法是定义一个left和right的class，通过js来修好className
+
+
+	}
+
+	</script>
+</body>
+</html>

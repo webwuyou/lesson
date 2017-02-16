@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js条件判断实例2-图片切换</title>
+</head>
+<body>
+	<img src="1.jpg" id="img1" alt="" />
+	<script>
+	window.onload=function(){
+		var oImg=document.getElementById("img1");
+		var flag=true;
+		oImg.onclick=function(){
+			if(flag){
+				oImg.src='2.jpg';
+				flag=false;
+			}else{
+				oImg.src='1.jpg';
+				flag=true;
+			}
+		}
+	}
+	</script>
+</body>
+</html>

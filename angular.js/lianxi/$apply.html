@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="myCtrl">
+<div id="div">{{time}}</div>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("myCtrl",function($scope){
+		var now=new Date();
+		$scope.time=now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+		$scope.setTime=function(){
+			$scope.$apply(function(){
+				var now=new Date();
+				$scope.time=now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+			})
+			
+		};
+		$scope.set=setInterval($scope.setTime,1000);
+	}); 
+		
+	</script>
+</body>
+</html>

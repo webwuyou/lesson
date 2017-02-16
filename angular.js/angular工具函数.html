@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular 工具函数</title>
+	<script src="angular.min.js"></script>
+</head>
+<body>
+<div ng-app="app" ng-controller="firstControl">
+<p>angular.uppercase()转换为小写</p>{{name}}
+<p>angular.lowercase()转换为大写</p>{{name2}}
+<p>angular.isArray()判断是否为数组</p>{{isArray}}
+<p>angular.equals()判断是否为数组</p>{{equals}}
+
+</div>
+	<script>
+	var app=angular.module("app",[]);
+	app.controller("firstControl",function($scope){
+		$scope.name="zhang san";
+		$scope.name2="LI SI";
+		$scope.arr=[1,2,3];
+		$scope.uppercase=angular.uppercase($scope.name);//转换成大写
+		$scope.lowercase=angular.lowercase($scope.name2);//转换成小写
+		$scope.isArray=angular.isArray($scope.arr);//判断是否为数组
+		$scope.equals=angular.equals($scope.name,$scope.arr);//判断是否相等
+		$scope.arr1={name:"张三"};
+		$scope.arr2={age:25};
+		console.log($scope.arr2);
+		$scope.arr2=angular.extend($scope.arr2,$scope.arr1);//extend继承，第一个参数继承第二个参数的值；b要继承a，angular.extend(b,a)
+		console.log($scope.arr2);
+		var json={"name":"李四","age":"100"};
+		console.log(json);
+		$scope.json=angular.toJson(json);
+		console.log(json);
+		console.log($scope.json);
+
+		$scope.a={name:"张三"};
+		$scope.b={age:25};
+		$scope.c=333;
+		console.log($scope.a);
+		console.log($scope.b);
+		$scope.d=angular.copy($scope.a,$scope.b);//第一个参数被复制的对象，第二个参数目标对象，可省略
+		console.log($scope.b);
+
+
+		
+
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular 样式指令</title>
+	<script src="angular.min.js"></script>
+	<style>
+	.red{background:red;}
+	.h1{font-size: 24px;font-weight: bold;color: #fff;}
+	.yellow{background: yellow;}
+	</style>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+	<!-- ng-cloak和ng-bind作用类似，防止出现双括号 -->
+		<div ng-cloak ng-class="{red:true,h1:true}">{{text}}</div>
+		<div ng-cloak ng-class="{{class}}">{{text}}</div>
+		<div ng-cloak ng-class="{red:s}">{{text}}</div>
+		<div ng-cloak style="color: red">{{text}}</div>
+		<div ng-cloak ng-style="{color:'blue'}">{{text}}</div>
+		<div ng-bloak ng-style="{{style}}">{{text}}</div>
+		<p><a href="http://www.baidu.com">angular js</a></p>
+		<p><a ng-href="http://www.baidu.com">angular js</a></p>
+		<p><a ng-href="{{url}}">angular js</a></p>
+		<p><a href="{{url}}">angular js</a></p>
+		<p><img src="{{src}}" alt="{{text}}" /></p>
+		<p><img ng-src="{{src}}" ng-attr-alt="{{text}}" /></p>
+	</div>
+	<script>
+		var app=angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope){
+			$scope.text="angularjs 样式指令";
+			$scope.s=true;
+			$scope.class="{yellow:true}";
+			$scope.style="{color:'red',background:'green'}";
+			$scope.url="http://www.baidu.com";
+			$scope.src="https://www.baidu.com/img/bd_logo1.png"
+			// 更多的html属性可以通过ng-attr-*的形式拓展，比如ng-attr-title,ng-attr-alt
+		})
+	</script>
+</body>
+</html>

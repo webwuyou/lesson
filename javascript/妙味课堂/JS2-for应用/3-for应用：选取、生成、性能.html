@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>for循环应用</title>
+</head>
+<body>
+	<ul id="list">
+		<li>我是第1个li元素</li>
+		<li>我是第2个li元素</li>
+		<li>我是第3个li元素</li>
+	</ul>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById("list");
+		var aLi=oUl.getElementsByTagName('li');
+
+		var arrText=['今天','明天','后天'];
+		// alert(aLi.length);
+		
+		var len=aLi.length;//性能问题，数组长度直接写在外面,这样在循环的时候不用每次去计算数组的长度
+		for(var i=0;i<len;i++){
+			aLi[i].innerHTML=arrText[i];
+			aLi[i].onclick=function(){
+				alert(i)//？？为什么点击任何一个li都是3
+			}
+		}
+	}
+	</script>
+</body>
+</html>

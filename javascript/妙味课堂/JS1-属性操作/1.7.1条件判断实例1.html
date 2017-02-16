@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>条件判断实例1</title>
+	<script>
+	window.onload=function(){
+		var btn1=document.getElementById('btn1');
+		var btn2=document.getElementById("btn2");
+		var pid=document.getElementById("pid");
+		var num=15;
+		btn1.onclick=function(){
+			if(num<22){
+				num++;
+				pid.style.fontSize=num+'px';
+			}
+		};
+		btn2.onclick=function(){
+			if(num>10){
+				num--;
+				pid.style.fontSize=num+'px';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" value="+" id="btn1" />
+	<input type="button" value="-" id="btn2" />
+	<div id="pid">新闻内容添加中，新闻内容添加中，新闻内容添加中，新闻内容添加中，新闻内容添加中，新闻内容添加中，新闻内容添加中，新闻内容添加中，新闻内容添加中，</div>
+
+</body>
+</html>

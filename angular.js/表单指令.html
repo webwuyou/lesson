@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular 表单常用指令</title>
+	<script src="angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<input type="button" value="{{text}}" ng-disabled="isDisabled" />
+		<input type="text" value="{{text}}" ng-readonly="isDisabled" />
+		<input type="checkbox" ng-value="text" ng-checked="isDisabled" />
+	</div>
+	<script>
+	var app=angular.module("myApp",[]);
+	app.controller("myCtrl",function($scope,$interval){
+		$scope.isDisabled="true";
+		$scope.text="angular 技术";
+		$scope.n=10;
+		$scope.text=$scope.n+"秒后才可以点击";
+		var time=$interval(function(){
+			$scope.n--;
+			$scope.text=$scope.n+"秒后才可以点击";
+			if($scope.n==0){
+				$interval.cancel(time);//清除定时器
+				$scope.text="可以点击了";
+				$scope.isDisabled=false;
+			}
+
+		},1000)
+	})
+	</script>
+</body>
+</html>

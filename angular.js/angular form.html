@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>angular form的使用</title>
+	<script src="angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="formCtrl">
+	<!-- novalidate属性是在html5中新增的，禁用了浏览器的默认验证 -->
+		<form novalidate>
+		first name:
+		<input type="text" ng-model="person.firstName" /><br />
+		last name:
+		<input type="text" ng-model="person.lastName" /><br />
+		<button ng-click="reset()">reset</button>
+		</form>
+		<p>fullname：{{person}}</p>
+		<p>fullname：{{person2}}</p>
+	</div>
+	<script>
+	var app=angular.module("myApp",[]);
+	app.controller("formCtrl",function($scope){
+		$scope.person2={firstName:"习",lastName:"大大"};
+		$scope.reset=function(){
+			$scope.person=angular.copy($scope.person2);
+		};
+		$scope.reset();
+	})
+	</script>
+</body>
+</html>
