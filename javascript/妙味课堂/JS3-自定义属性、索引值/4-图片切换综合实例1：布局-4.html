@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js图片切换综合实例1布局</title>
+	<style>
+	*{margin: 0;
+	padding: 0;}
+	ul,li{list-style: none}
+	#img_box{position: relative;width: 500px;height: 500px;}
+	#img_box img{width: 500px;height: 500px;}
+	#img_box #text, #img_box #num{position: absolute;width: 500px;height: 40px;background: #000;filter:Alpha(opacity=50);opacity:0.5;color: #fff;text-align: center;line-height: 40px;}
+	#img_box #text{bottom: 0;}
+	#img_box #num{top: 0;}
+	.icon{position: absolute;top: 0;left: 520px;}
+	.icon li{width: 50px;height: 50px;background: #ccc;margin-bottom: 10px;}
+	.icon li.active{background: #f00;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div id="img_box">
+		<img src="img/loading.gif" id="img1" alt="" />
+		<div id="num">图片数量加载中</div>
+		<div id="text">图片标题加载中</div>
+		</div>
+		<div class="icon">
+		<ul id="list">
+			
+		</ul>
+		</div>
+	</div>
+	<script>
+	window.onload=function(){
+		var oImg=document.getElementById("img1");
+		var oNum=document.getElementById("num");
+		var oText=document.getElementById("text");
+		var oUl=document.getElementsByTagName("ul")[0];
+		var oLi=oUl.getElementsByTagName("li");
+
+		var arrUrl=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg',];
+		var arrText=['第1张图片','第2张图片','第3张图片','第4张图片',]
+		var num=0;
+
+		// 初始化
+		for (var i = 0; i < arrUrl.length; i++) {
+			oUl.innerHTML+="<li></li>"
+		}
+		oImg.src=arrUrl[num];
+		oNum.innerHTML=num+1+"/"+arrUrl.length;
+		oText.innerHTML=arrText[num];
+		oLi[num].className="active";
+
+		for (var i = 0; i < arrUrl.length; i++) {
+			oLi[i].index=i;
+			oLi[i].onclick=function(){
+				oImg.src=arrUrl[this.index];
+				oNum.innerHTML=this.index+1+"/"+arrUrl.length;
+				oText.innerHTML=arrText[this.index];
+				for (var i = 0; i < arrUrl.length; i++) {
+					oLi[i].className="";
+				};
+				this.className="active";
+			}
+		}
+
+	}
+	</script>
+</body>
+</html>

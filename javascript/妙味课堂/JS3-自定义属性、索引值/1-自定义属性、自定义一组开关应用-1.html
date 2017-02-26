@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js自定义属性</title>
+</head>
+<body>
+	<div id="did">js自定义属性</div>
+	自定义属性：就是给元素增加原本没有的属性；
+	js可以为任何HTML元素添加任意个自定义属性
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("did");
+		oDiv.abc="123";
+		alert(oDiv.abc);
+	}
+	</script>
+</body>
+</html>
