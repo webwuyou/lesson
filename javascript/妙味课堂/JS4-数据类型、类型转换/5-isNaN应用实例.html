@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js isNaN实例</title>
+</head>
+<body>
+	<script>
+	// NaN:not a number，不是数字的数字类型
+	// 一旦程序中出现NaN，肯定进行了非法的运算操作 alert('200px'-100)
+	var a=Number('abc');
+	// alert(a);//NaN
+	// alert(typeof(a));//number
+	// alert(Number('100px'));//NaN
+
+	////////////////////////////////////////////
+	// isNaN,判断某个值不是数字，如果是数字false，不是数字返回true //
+	////////////////////////////////////////////
+	
+	// alert(isNaN(20));//false，是数字
+	// alert(isNaN("20"));//false，是数字
+	// alert(isNaN("20px"));//true，不是数字
+
+	// isNaN()方法里面实际是使用Number()方法来进行数据转换
+	// iSNaN('20')=>Number('20')=>20=>false
+	// alert(Number('100'))
+	// alert(NaN==NaN)  false
+	</script>
+	<input type="text" name="" id="" />
+	<input type="button" value="判断输入值是不是数字" />
+	<script>
+	window.onload=function(){
+		var aInp=document.getElementsByTagName('input');
+		var str='';
+
+		aInp[1].onclick=function(){
+			alert(typeof str);//注意，html中获取的值都是字符串，比如属性值，id值,innerHTML
+			str = aInp[0].value;
+			if(isNaN(str)){
+				alert(str+"不是数字")
+			}else{
+				alert(str+"是数字")
+			}
+		}
+	}
+	</script>
+
+
+</body>
+</html>

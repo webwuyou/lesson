@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js中强制类型转换和隐式类型转换</title>
+</head>
+<body>
+	<script>
+	// Number,parseInt,parseFloat都是强制类型转换(显式类型转换)
+	
+	/* 隐式类型转换
+
+	+    	  100+'50'      变成字符串
+	- * / %   '100'-3  		变成数字
+	++ --					变成数字
+	> <		 '100'>'9' false	数字的比较是比大小，字符串的比较是按位来比较
+	!取反					把右边的数据类型转换成布尔值
+	==		'2'==2 true		==只比较内容，不管数据类型，===必须要数据类型也一样才相等	
+	 隐式类型转换*/
+
+	var a="100";
+	alert(a-10);//90，减号转换成数字
+
+	var a2="10";a2++;
+	alert(a2);// ++ --变成数字
+
+	alert('10'>9);//true  数字的比较是数字的大小
+	alert('1000'>'9')//false 字符串的比较是一位一位的来比较，先让1和9来比较
+
+	alert(!'abc');//false
+	alert(!100);//flase
+
+	alert('2'==2);//true
+	alert('2'===2);//false
+	</script>
+</body>
+</html>

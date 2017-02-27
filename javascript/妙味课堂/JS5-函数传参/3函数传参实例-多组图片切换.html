@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>函数参数实例，多组图片切换</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	.box{width: 500px;height: 500px;position: relative;float: left;margin-right: 100px;}
+	.box img{width: 500px;height: 500px;}
+	.box span, .box p{display: block;position: absolute;width: 500px;height: 40px;background: #000;filter:alpha(opacity=60);opacity:0.6;left: 0;text-align: center;line-height: 40px;color: #fff;font-size: 14px;}
+	.box span{top: 0;}
+	.box p{bottom: 0;}
+	ul,li{list-style: none;}
+	ul{position: absolute;right: -50px;top: 0}
+	ul li{width: 40px;height: 40px;background: #333;margin-bottom: 10px;cursor: pointer;}
+	ul li.active{background: #f90;}
+	</style>
+</head>
+<body>
+	<div id="pic1" class="box">
+		<img src="" alt="" />
+		<span>数量正在加载中……</span>
+		<p>文字说明正在加载中……</p>
+		<ul></ul>
+	</div>
+	<div id="pic2" class="box">
+		<img src="" alt="" />
+		<span>数量正在加载中……</span>
+		<p>文字说明正在加载中……</p>
+		<ul></ul>
+	</div>
+	<script>
+	window.onload=function(){
+		imgSlider("pic1",['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'],['第1张图片','第2张图片','第3张图片','第4张图片'],'onclick');
+		imgSlider("pic2",['img/2.jpg','img/3.jpg','img/4.jpg'],['第2张图片','第3张图片','第4张图片'],'onmouseover');
+
+	};
+
+	function imgSlider(id,arrUrl,arrText,event){
+		var oDiv=document.getElementById(id);
+		var oImg=oDiv.getElementsByTagName('img')[0];
+		var oSpan=oDiv.getElementsByTagName('span')[0];
+		var oP=oDiv.getElementsByTagName('p')[0];
+		var oUl=oDiv.getElementsByTagName('ul')[0];
+		var oLi=oUl.getElementsByTagName("li");
+		
+		
+		var num=0;
+
+		// 初始化
+		for(var i=0;i<arrUrl.length;i++){
+			oUl.innerHTML+='<li></li>'
+		};
+		oImg.src=arrUrl[num];
+		oSpan.innerHTML=num+1+"/"+arrUrl.length;
+		oP.innerHTML=arrText[num];
+		oLi[num].className="active";
+
+		for (var i = 0; i < arrUrl.length; i++) {
+			oLi[i].index=i;//自定义属性
+			//不同的事件使用[]而不是.
+			oLi[i][event]=function(){
+				oImg.src=arrUrl[this.index];
+				oSpan.innerHTML=this.index+1+'/'+arrUrl.length;
+				oP.innerHTML=arrText[this.index];
+				for (var j = 0; j < arrUrl.length; j++) {
+					oLi[j].className=''
+				}
+				this.className='active';
+			}
+		}
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js函数传参-参数类型</title>
+</head>
+<body>
+	<script>
+	// js函数传递参数，参数=js的数据类型：数字、字符串、布尔值、函数、对象、未定义
+	function fn1(a,b){
+		alert(a+b)
+	};
+	fn1(200,'px');
+
+	function fn2(a){
+		alert(a)
+	};
+	fn2('前端无忧网');
+
+	// 参数为匿名函数类型
+	function fn3(fn){
+		fn('参数为匿名函数');
+	};
+	fn3(function (a){alert(a)});
+
+	//参数为有名函数
+	function fn4(fn){
+		fn();
+	};
+	function fn5(){
+		alert(5)
+	};
+	fn4(fn5);//注意函数参数，只需要写函数名
+
+	//参数为对象
+	fn6(window,document);
+	function fn6(w,d){
+		w.onload=function(){
+			d.body.innerHTML="函数参数为对象"
+		}
+	}
+	</script>
+</body>
+</html>
