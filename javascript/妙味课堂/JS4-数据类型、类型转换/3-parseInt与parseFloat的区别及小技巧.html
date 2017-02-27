@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>parseInt与parseFloat</title>
+</head>
+<body>
+	<script>
+	// parseInt从左往右转换，当遇到字母时停止转换,也不能转换布尔、函数、对象等
+	
+		/*	
+		var a="100px";
+		alert(Number(a));//NaN
+		alert(parseInt(a));//100
+
+		var a2="100px35646";
+		alert(parseInt(a2));//100
+
+		var a3="+200px";
+		alert(parseInt(a3));//200，parseInt可以转换+，-和空格
+
+		var a4="  300px";
+		alert(parseInt(a4));//300 直接忽视前面的空格
+
+		var a41=[];
+		alert(parseInt(a41));//NaN，parseInt不能转换布尔值、数组
+
+		var a5="12.34元";
+		alert(parseInt(a5));//12，parseInt不认识小数点.
+		alert(parseFloat(a5));//12.34，parseFloat可以识别小数
+		alert(parseFloat("12.3.4元"));//12.3，parseFloat只能识别一个小数点，多余的后面直接不转换
+		*/
+
+		// 判断num是整数还是小数
+		var num="200.55";
+		if(parseInt(num)==parseFloat(num)){
+			alert(num+"是整数！")
+		}else{
+			alert(num+"是小数！");
+		}
+	</script>
+</body>
+</html>

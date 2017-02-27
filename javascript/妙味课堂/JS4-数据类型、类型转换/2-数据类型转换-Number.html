@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js数据类型转换number</title>
+</head>
+<body>
+	<script>
+	// Number是整体转换
+	var a="100";
+	alert(a+100);//100100
+	alert(Number(a)+100);//200，Number必须要首字符大写
+
+	var a1="  11 ";
+	alert(Number(a1));//11，不管前后有多少空格返回11
+
+	var a2="";
+	alert(Number(a2));//0，空字符串返回0
+
+	var a3=true;
+	alert(Number(a3));//1，true=>1，false=>0
+
+	var a5=[];
+	alert(Number(a5));//0，空数据返回0
+	var a51=["00100"];
+	alert(Number(a51));//100
+	var a52=[345];
+	alert(Number(a52));//345
+	
+	var a6=null;
+	alert(Number(a6));//0
+
+	
+
+////////////// 不能转换////////////
+
+	var a7;
+	alert(Number(a7));//NaN
+
+	var json={};
+	alert(Number(json));//NaN，所有json使用Number方法都不能转换成数字
+
+	var a53=[1,2,3];
+	alert(Number(a53));//NaN
+
+
+	var a4=function(){alert("a4")};
+	alert(Number(a4));//NaN，不能转换函数
+
+
+	</script>
+</body>
+</html>
