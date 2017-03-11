@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js运算符、控制流程上</title>
+	<style>
+	li{list-style: none;height: 24px;margin-bottom: 5px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var aLi=document.getElementsByTagName("li");
+		var arr=["red","yellow","blue","green"];
+		var str='';//方法二，定义一个空字符串存入当前颜色
+		for (var i = 0; i < aLi.length; i++) {
+			// aLi[i].index=i;//方法一，添加自定义属性作为索引值
+			aLi[i].style.background=arr[i%arr.length];
+			aLi[i].onmouseover=function(){
+				str=this.style.background;
+				this.style.background="gray";
+			};
+			aLi[i].onmouseout=function(){
+				// this.style.background=arr[this.index%arr.length];
+				this.style.background=str;
+			}
+		}
+
+		// var a=12<90&&20;
+		// alert(a);//false
+		// var a=120<90&&20;
+		// alert(a);//true
+		// var a=12<90||20;
+		// alert(a);//true
+		// var a=12>90||20;
+		// alert(a);//20
+		var b=!200;//可以强制类型转换
+		alert(b);//false
+	}
+	</script>
+</head>
+<body>
+运算符：
+算数运算符：+ - * / %(取模，求余数)
+赋值运算符：= += -= *= /= %=
+关系运算符：< > <= >= == != === !==
+逻辑运算符：&& || ！
+运算符优先级：括号
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	</script>
+</body>
+</html>

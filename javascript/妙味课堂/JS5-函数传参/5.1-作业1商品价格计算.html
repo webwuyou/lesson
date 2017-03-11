@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>作业1商品价格计算</title>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<span>12.5</span>元
+			小计：<em>0元</em>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<span>10.5</span>元
+			小计：<em>0元</em>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<span>8</span>元
+			小计：<em>0元</em>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<span>10</span>元
+			小计：<em>0元</em>
+		</li>
+	</ul>
+	<p>你购买了<i>0</i>件商品，总价<i>0</i>元，其中最贵的单价是<i>0</i>元</p>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById("list");
+		var aLi=oUl.getElementsByTagName("li");
+		var oP=document.getElementsByTagName("p");
+		var aI=document.getElementsByTagName('i');
+		
+		for (var i = 0; i < aLi.length; i++) {
+			fn(aLi[i])
+		};
+		function fn(aLi){
+			var aBtn=aLi.getElementsByTagName('input');
+			var oStrong=aLi.getElementsByTagName('strong')[0];
+			var oSpan=aLi.getElementsByTagName('span')[0];
+			var oEm=aLi.getElementsByTagName('em')[0];
+
+			var num=Number(oStrong.innerHTML);
+			var price=parseFloat(oSpan.innerHTML);
+
+			
+
+			// 减少
+			aBtn[0].onclick=function(){
+				num--;
+				if(num<0){
+					num=0
+				};
+				oStrong.innerHTML=num;
+				oEm.innerHTML=num*price+"元"
+			};
+			// 添加
+			aBtn[1].onclick=function(){
+				num++;
+				oStrong.innerHTML=num;
+				oEm.innerHTML=num*price+"元";
+				aI[0].innerHTML=num;
+
+			};
+			
+				for (var i = 0; i < aLi.length; i++) {
+				num+=num;
+				alert(0);
+				aI[0].innerHTML=num;
+			};
+
+
+
+
+		}
+
+	}
+	</script>
+
+
+</body>
+</html>

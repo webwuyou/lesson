@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>3-currentStyle与getComputedStyle应用-3(话筒太近，注意调小音量）</title>
+	<link rel="stylesheet" href="style.css" />
+	<!-- <style>
+	#did{width: 300px;height: 120px;background: #f00;}
+	</style> -->
+</head>
+<body>
+	<input type="button" value="提交" />
+	<div id="did" ></div>
+	<script>
+	var oBtn=document.getElementsByTagName("input")[0];
+	var oDiv=document.getElementById("did");
+	oBtn.onclick=function(){
+		// alert(oDiv.style.width);//.style.width只能获取到行内样式，不能获取到style标签中的样式
+		// alert(getComputedStyle(oDiv).width);//获取计算器计算之后的宽度 IE6 7 8不兼容
+		// alert(oDiv.currentStyle.width);//标准浏览器不兼容
+		// if(oDiv.currentStyle){
+		// 	alert(oDiv.currentStyle.width)
+		// }else{
+		// 	alert(getComputedStyle(oDiv).width)
+		// }
+		alert(getStyle(oDiv,"width"));
+		alert(getStyle(oDiv,"height"));
+		alert(getStyle(oDiv,"backgroundColor"));
+	}
+
+	function getStyle(obj,attr){
+		if(obj.currentStyle){
+			return obj.currentStyle[attr]
+		}else{
+			return getComputedStyle(obj)[attr]
+		}
+	}
+	</script>
+</body>
+</html>

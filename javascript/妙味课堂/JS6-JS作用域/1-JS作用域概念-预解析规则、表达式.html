@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js作用域、预解析规则、表达式</title>
+</head>
+<body>
+	<script>
+	// 作用域：
+	// 域：空间、范围、区域……
+	// 作用：读、写操作
+
+	/*
+	浏览器，js解析器步骤：
+	1、预解析，找一些东西：var、function、参数……
+	a=未定义；
+	所有变量，在正式运行代码之前，都提前赋了一个值，未定义；
+	所有的函数函数，在正式运行之前，都是整个函数块；
+
+	2、逐行解读代码
+	表达式：= + - * / % ++ -- ! Number()
+	*/
+	alert(a);//undifine
+	var a=1;
+	alert(a);
+	function a(){alert(2)};
+	alert(a);
+	var a=3;
+	alert(a);
+	function a(){alert(4)};
+	alert(a);
+
+
+	</script>
+</body>
+</html>

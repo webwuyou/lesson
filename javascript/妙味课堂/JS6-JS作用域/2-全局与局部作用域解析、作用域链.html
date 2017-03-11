@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>JS全局与局部作用域解析、作用域链</title>
+</head>
+<body>
+	<script>
+	/*
+	var a=1;
+	function fn1(){
+		alert(a);
+		var a=2;
+	}
+	fn1();//undefined
+	alert(a);//1
+	*/
+
+	// 1、预解析：var function 参数 ……
+	// a=...(未定义)
+	// fn1=function fn1(){
+	// 		alert(a);
+	// 		var a=2;
+	// 	}
+	// 2、逐行解读代码：a=1
+	// fn1()函数调用
+	// 函数也是一个作用域
+	// 	(1)	预解析
+	// 		a=...，局部a
+	// 	(2)逐行解读代码
+	// 	alert(a)//未定义
+	// 	var a=2只是改变函数内的局部变量a
+	// 	
+	var a=1;
+	function fn1(){
+		alert(a);
+		a=2;
+	}
+	fn1();
+	alert(a);
+	</script>
+</body>
+</html>

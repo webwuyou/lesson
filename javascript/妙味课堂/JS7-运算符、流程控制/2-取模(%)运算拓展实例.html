@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js取模运算实例拓展</title>
+</head>
+<style>
+li{list-style: none;height: 24px;}
+</style>
+<body>
+
+<script>
+window.onload=function(){
+	var aLi=document.getElementsByTagName('li');
+	var arr=['red','yellow','green','blue'];
+	var str='#000';
+	for (var i = 0; i < aLi.length; i++) {
+		aLi[i].style.background=arr[i%arr.length];
+		aLi[i].onmouseover=function(){
+			str=this.style.background;
+			this.style.background=str;
+		};
+		aLi[i].onmouseout=function(){
+			this.style.background=str;
+		}
+	};
+}
+</script>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

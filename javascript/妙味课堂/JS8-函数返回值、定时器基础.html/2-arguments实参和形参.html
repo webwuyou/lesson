@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>arguments</title>
+</head>
+<body>
+	<script>
+		function fn1(a,b){//形参
+			alert(a+b)
+		}
+		fn1(1,2);//实参
+		// 其实，不写形参也可以，默认保存在arguments中
+		
+		fn2(1,2,3);
+		function fn2(){
+			// arguments=>[1,2,3]----实参的集合
+			alert(arguments);
+			alert(arguments.length);//3
+			alert(arguments[0]);//1
+		}
+
+		// 当参数个数不确定时，可以使用arguments
+		
+		alert(fn3(1,2,3));
+		alert(fn3(1,2,3,4));
+		function fn3(){
+			var n=0;
+			for (var i = 0; i < arguments.length; i++) {
+				n+=arguments[i];
+			}
+			return n
+		}
+	</script>
+</body>
+</html>

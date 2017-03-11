@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js调用局部数据、全局声明、for嵌套函数中i的取值</title>
+</head>
+<script>
+window.onload=function(){
+	var aBtn=document.getElementsByTagName("input");
+	for (var i = 0; i < aBtn.length; i++) {
+		aBtn[i].onclick=function(){
+			alert(i);//3
+			for (var j = 0; j < aBtn.length; j++) {
+				aBtn[j].style.background="#f00";
+			}
+		}
+	};
+
+	/*js作用域黄金守则
+	1、js没有块级作用域(你可以自己闭包或其他方法实现)，只有函数级作用域，函数外面的变量函数里面可以找到，函数里面的变量外面找不到*/
+	// var a=10;
+	// function aaa(){
+	// 	alert(a);//10
+	// }
+	// function bbb(){
+	// 	var a=20;
+	// 	aaa();
+	// }
+	// bbb();
+
+
+	// function aaa(){
+	// 	var a=b=10; //a是局部变量，b是全局变量
+	// }
+	// aaa();
+	// alert(a);//a is not defined
+	// alert(b);//10
+	
+	// function aaa(){
+	// 	var a=b=10;
+	// }
+	// aaa();
+	// // alert(a);
+	// alert(b);//10
+	
+	// /*黄金守则第二条
+	// 变量的查找是就近原则，去寻找var定义的变量，当就近没有找到的时候就去查找外层*/
+	// var a=10;
+	// function aaa(){
+	// 	alert(a);//undefined
+	// 	var a=20;
+	// }
+	// aaa();
+
+	// var a=10;
+	// function aaa(){
+	// 	alert(a);//10
+	// 	a=20;
+	// }
+	// aaa();
+	// alert(a);//20
+	
+	// var a=10;
+	// function aaa(){
+	// 	bbb();
+	// 	alert(a);//10
+	// 	function bbb(){
+	// 		var a=20;//bbb()中的a确是为20，但是这个a是局部函数，外面读取不到这个变量
+	// 	}
+	// }
+	// aaa();
+
+	// // 黄金守则第三条
+	// // 当参数跟局部变量重名时，优先级是等同的
+	
+	// var a=10;
+	// function aaa(a){
+	// 	alert(a);//10
+	// 	var a=20;
+	// }
+	// aaa(a);
+	
+	// alert(a);//undefined
+	// var a=[1,2,3];
+	// var b=a;
+	// b=[1,2,3,4];
+	// alert(a);//[1,2,3]
+
+	// var a=10;
+	// function aaa(a){
+	// 	a+=3;
+	// }
+	// aaa(a);
+	// alert(a);//10
+
+}
+</script>
+<body>
+	<input type="button" value="按钮1" />
+	<input type="button" value="按钮2" />
+	<input type="button" value="按钮3" />
+	
+</body>
+</html>

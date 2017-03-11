@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>反选</title>
+</head>
+<body>
+	<input type="button" value="反选" /><br />
+	<input type="checkbox" checked="checked" name="" id="" /><br />
+	<input type="checkbox" name="" id="" /><br />
+	<input type="checkbox" checked name="" id="" /><br />
+	<input type="checkbox" name="" id="" /><br />
+	<script>
+	window.onload=function(){
+		var aInp=document.getElementsByTagName("input");
+		aInp[0].onclick=function(){
+			for (var i = 1; i < aInp.length; i++) {
+				aInp[i].checked=!aInp[i].checked;//使用！取反
+			}
+		}
+	}
+	</script>
+</body>
+</html>

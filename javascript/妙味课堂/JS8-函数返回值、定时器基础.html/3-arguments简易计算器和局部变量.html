@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>arguments简易计算器和局部变量</title>
+</head>
+<body>
+	<script>
+	// var a=1;
+	// function fn1(){
+	// 	alert(a);//undefined
+	// 	var a=2
+	// }
+	// fn1();
+	// alert(a);//1
+
+	// var b=1;
+	// function fn2(b){
+	// 	arguments[0]=3;
+	// 	alert(b);//3
+	// 	var b=2;
+	// 	alert(arguments[0]);//2
+	// }
+	// fn2(b);
+	// alert(b);//1
+	
+	function fn(){
+		var str=arguments[arguments.length-1];
+		var n=0;
+		if(str==='+'){
+			for (var i = 0; i < arguments.length-1; i++) {
+				n+=arguments[i]
+			}
+			return n;
+		}else if(str==='-'){
+			n=arguments[0];
+			for (var i = 1; i < arguments.length-1; i++) {
+				n-=arguments[i]
+			}
+			return n;
+		}
+	}
+
+	alert(fn(1,2,3,4,5,'+'));
+	alert(fn(10,2,4,5,6,'-'));
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js定时器setTimeout详解</title>
+</head>
+<body>
+	<script>
+	/*
+	定时器：时间概念
+	var timer=setInterval(函数,毫秒);	重复执行
+	clearInterval(timer);				清除定时器
+
+	var timer=setTimeout(函数,毫秒); 执行一次
+	clearTimeout(timer);				清除
+	*/
+window.onload=function(){
+	var oAd=document.getElementById('ad');
+	setTimeout(function(){
+		oAd.style.display="inline-block";
+		setTimeout(function(){
+			oAd.style.display='none'
+		},3000)
+	},2000)
+
+
+}
+	</script>
+	<img src="img/1.jpg" id="ad" alt="" style="display:none" />
+</body>
+</html>

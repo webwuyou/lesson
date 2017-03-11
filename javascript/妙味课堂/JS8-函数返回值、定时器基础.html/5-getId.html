@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>自己封装getId</title>
+</head>
+<body>
+	<script>
+	/*
+	Jquery
+	$(function(){
+		$("#div").click=function(){
+			$(this).css("background",'#f00')
+		}
+	})
+	 */
+	// window.onload=function(){
+	// 	alert($('div').innerHTML)
+	// }
+	// function $(id){
+	// 	return document.getElementById(id);
+	// }
+	
+	// getId.js
+	function $(v){
+		if(typeof(v)==='function'){
+			window.onload=v;
+		}else if(typeof(v)==='string'){
+			return document.getElementById(v)
+		}else if(typeof(v)==='object'){
+			return v
+		}
+	}
+	$(function(){
+		$('div').onclick=function(){
+			$(this).style.background='red'
+		}
+	})
+
+	</script>
+	<div id="div">123</div>
+</body>
+</html>

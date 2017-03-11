@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>传参实例商品价格计算</title>
+</head>
+<body>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById("list");
+		var aLi=oUl.getElementsByTagName('li');
+		fn(aLi[0]);
+		for (var i = 0; i < aLi.length; i++) {
+			fn(aLi[i])
+		}
+		function fn(aLi){
+			
+			var aBtn=aLi.getElementsByTagName('input');
+			var oStrong=aLi.getElementsByTagName('strong')[0];
+			var oEm=aLi.getElementsByTagName('em')[0];
+			var oSpan=aLi.getElementsByTagName('span')[0];
+			var num=Number(oStrong.innerHTML);//html元素中获得都是string，需要转换
+			var price=parseFloat(oEm.innerHTML);
+
+			aBtn[0].onclick=function(){
+				num--;
+				if(num<0){num=0};
+				oStrong.innerHTML=num;
+				oSpan.innerHTML=num*price+"元";
+			};
+
+			aBtn[1].onclick=function(){
+				num++;
+				oStrong.innerHTML=num;
+				oSpan.innerHTML=num*price+"元";
+			};
+
+		}
+		
+	}
+	</script>
+	<ul id="list">
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>12.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>10.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>8.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>11元</em>
+			小计：<span>0元</span>
+		</li>
+	</ul>
+</body>
+</html>
