@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>图片时钟</title>
+</head>
+<body>
+	<script>
+	window.onload=function(){
+		var oP=document.getElementById('time');
+		var aImg=document.getElementsByTagName('img');
+		setInterval(getTime,1000);
+		getTime();
+		function getTime(){
+			var myTime=new Date();
+			var iHours=myTime.getHours();
+			var iMin=myTime.getMinutes();
+			var iSec=myTime.getSeconds();
+			var str=toNum(iHours)+toNum(iMin)+toNum(iSec);
+			// str=toNum(iHours)+':'+toNum(iMin)+':'+toNum(iSec);
+			for (var i = 0; i < str.length; i++) {
+			aImg[i].src='img/'+str.charAt(i)+'.jpg'
+		}
+			oP.innerHTML=str;
+		}
+		function toNum(n){return n<10?'0'+n:''+n}
+		
+	}
+	</script>
+	<p id="time"></p>
+	<img src="img/1.jpg" alt="" />
+	<img src="img/2.jpg" alt="" />
+	<img src="img/3.jpg" alt="" />
+	<img src="img/4.jpg" alt="" />
+	<img src="img/5.jpg" alt="" />
+	<img src="img/6.jpg" alt="" />
+	
+	
+</body>
+</html>

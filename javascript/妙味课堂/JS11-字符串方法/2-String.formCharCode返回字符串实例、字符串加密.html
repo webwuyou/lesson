@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>String.formCharCode返回字符串实例</title>
+	<!-- <script>
+	var str='';
+	for (var i = 0; i < 15000; i++) {
+		str+=String.fromCharCode(i)+' '
+	}
+	document.body.innerHTML=str;
+	</script> -->
+</head>
+<body>
+	<input type="text" />
+	<input type="button" value="加密" />
+	<div id="div1">加密后的内容</div>
+	<script>
+	var aInp=document.getElementsByTagName('input');
+	var oDiv=document.getElementById('div1');
+	var str='';
+	aInp[1].onclick=function(){
+		var val=aInp[0].value;
+		for (var i = 0; i < val.length; i++) {
+			str+=String.fromCharCode(val.charCodeAt(i)-10000)
+		}
+	oDiv.innerHTML=str;
+	}
+	</script>
+</body>
+</html>

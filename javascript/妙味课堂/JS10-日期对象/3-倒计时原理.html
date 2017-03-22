@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js倒计时原理</title>
+	<script>
+	window.onload=function(){
+		setInterval(myTime,1000);
+		function myTime(){
+			//现在的时间点（在变）
+			//未来的时间点（不变）
+			var iNow=new Date();
+			var iNew=new Date(2017,2,20,13,21,50);//数据形式，月份从0开始
+			var iNew2=new Date('June 10,2017 12:30:50');//字符串形式
+			var t=Math.floor((iNew-iNow)/1000);//毫秒=》秒,有小数，Math.floor(m)返回小于等于参数的最大整数，parseInt直接去点小数点后面的值
+			// alert(t);//秒
+			var iDay=Math.floor(t/84600);
+			var iHour=Math.floor(t%84600/3600);
+			var iMin=Math.floor(t%84600%3600/60);
+			var iSec=t%60;
+			var str=iDay+'天'+iHour+'时'+iMin+'分'+iSec+'秒'
+			// alert(str)
+			document.body.innerHTML=str;
+
+			// 天：Math.floor(t/86400)
+// 时：Math.floor(t%86400/3600)
+// 分：Math.floor(t%86400%3600/60)
+// 秒：t%60
+
+// 数字形式：new Date( 2013,4,1,9,48,12 );
+// 字符串形式：new Date('June 10,2013 12:12:12');
+
+// January、February、March、April、May、June、
+// July、August、September、October、November、December
+
+		}
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>字符串基础-封装检测数字的方法</title>
+	<script>
+	// var str="09azAZ妙味课堂";
+	// alert(str.length);
+	// alert(str.charAt());//妙，默认是第0个
+	// alert(str.charAt(2));//课，取值范围0-字符串长度-1
+	// alert(str.charCodeAt());//22937，返回Uncode编码
+	// alert(str.charCodeAt(1));//22619
+	// alert(String.fromCharCode(65));//String.formCharCode()返回编码对应的值
+	
+	// alert(str.charCodeAt());//48
+	// alert(str.charCodeAt(1));//57
+	// alert(str.charCodeAt(2));//97
+	// alert(str.charCodeAt(3));//122
+	// alert(str.charCodeAt(4));//65
+	// alert(str.charCodeAt(5));//90
+	//0~9 48~57    a~z 97~122    A~Z 65~90
+	
+	</script>
+</head>
+<body>
+	<input type="text" />
+	<input type="button" value="检测是否是数字" />
+	<script>
+		// 判断是否为数字
+	var aInp=document.getElementsByTagName('input');
+	aInp[1].onclick=function(){
+	var val=aInp[0].value;
+		if(checkNumber(val)){
+			alert("恭喜你"+val+"是数字")
+		}else{
+			alert("你输入的不是数字")
+		}
+	};
+	function checkNumber(str){
+		for (var i = 0; i < str.length; i++) {
+			var n=str.charCodeAt(i);
+			if(n<48||n>57){
+				return false;
+			}
+		}
+		return true
+	}
+	
+	</script>
+<!-- 	<script>
+// alert( detectNum('123456') );
+var aInp = document.getElementsByTagName('input');
+aInp[1].onclick = function () {
+	
+	var val = aInp[0].value;
+	
+	if ( detectNum(val) ) {
+		alert( '恭喜，'+ val +'全是数字' );
+	} else {
+		alert('输入有误');
+	}
+};
+function detectNum ( str ) {
+	var n = 0;
+	for ( var i=0; i<str.length; i++ ) {
+		n = str.charCodeAt(i);
+		if ( n<48 || n>57 )return false;
+	}
+	return true;
+}
+</script> -->
+</body>
+</html>

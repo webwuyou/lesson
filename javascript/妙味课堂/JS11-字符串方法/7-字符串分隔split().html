@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>字符串分隔split()</title>
+</head>
+<body>
+	<script>
+	var str='www.webwuyou.com';
+	alert(str.split());//['www.webwuyou.com']
+	alert(str.split(''));//['w','w','w','.','w','e','b','w','u','y','o','u','.','c','o','m']
+	alert(str.split('aaa'));//['www.webwuyou.com'] 如果分隔字符不存在，截取就是整个字符串
+	alert(str.split('.'));//['www','webwuyou','com']
+	alert(typeof str);//分隔之后变为数组
+
+	var str2='/www.webwuyou.com/'
+	alert(str2.split('/'));//[,'www.webwuyou.com',]
+	alert(str2.split('/').length);//3
+
+	var str3='2017-03-22-13-13';
+	alert(str3.split('-'));//['2017','03','22','13','13']
+	alert(str3.split('-',2));//['2017','03'] 后面一个参数限制截取长度
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>抖动原理及实现过程</title>
+	<style>
+	#img1{width: 200px;height: 300px;position: absolute;top: 200px;left: 300px;}
+	</style>
+</head>
+<body>
+	<img src="img/1.jpg" alt="" id="img1" />
+	<script>
+	window.onload=function(){
+		oImg=document.getElementById('img1');
+		oImg.onclick=function(){
+			shake(oImg,'left',20,function(){
+				shake(oImg,'top',30)
+			})
+		}
+	}
+	function shake(obj,attr,dir,endFn){
+			var pos=parseInt(getStyle(obj,attr));
+			var arr=[];
+			var num=0;
+			var timer=null;
+			for (var i = dir; i > 0; i-=2) {
+				arr.push(i,-i);
+			}
+			arr.push(0);
+			clearInterval(timer);
+			timer=setInterval(function(){
+				obj.style[attr]=pos+arr[num]+'px';
+				num++;
+				if(num==arr.length){
+					clearInterval(timer)
+					endFn&&endFn();//如果回调函数存在就执行
+				}
+			},50)
+			function getStyle(obj,attr){
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+			}
+		
+		}
+	</script>
+</body>
+</html>

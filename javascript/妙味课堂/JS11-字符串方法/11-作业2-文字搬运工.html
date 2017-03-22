@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>文字搬运工</title>
+	<style>
+	#content{border: 10px solid #c0c0c0;padding: 10px;overflow: hidden;}
+	#div1,#div3{width: 300px;height: 200px;float: left;}
+	textarea{width: 300px;height: 200px;border: 1px solid #000;background: #efefd7;padding: 0;}
+	#div2{float: left;margin: 8px 10px 0;}
+	#div2 a{background: #f76301;color: #fff;font-size: 14px;padding: 10px 20px;text-decoration: none;}
+	#div3{background: #62eff8;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById('content');
+		var aDiv=oDiv.getElementsByTagName('div');
+		var oA=oDiv.getElementsByTagName('a')[0];
+		var oP=oDiv.getElementsByTagName('p')[0];
+	}
+	</script>
+</head>
+<body>
+	<div id="content">
+		<div id="div1"><textarea name="" id=""></textarea></div>
+		<div id='div2'>
+			<a href="">文字右移</a>
+			<p>0/120</p>
+		</div>
+		<div id="div3"></div>
+	</div>
+</body>
+</html>

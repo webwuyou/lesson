@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>字符串分隔split实例-彩色文字</title>
+	<style>
+	#div{width: 500px;height: 400px;border: 1px solid #ddd;margin-bottom: 10px;}
+	span { padding:5px 15px; font-family:微软雅黑; }
+
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById('div');
+		var aInp=document.getElementsByTagName('input');
+		var arrColor=[ '#FFC', '#CC3', '#6FC', '#9C9' ];
+		aInp[1].onclick=function(){
+			var val=aInp[0].value;
+			var arrText=val.split('');
+			for (var i = 0; i < arrText.length; i++) {
+				arrText[i]='<span style="background:'+arrColor[i%arrColor.length]+';">'+arrText[i]+'</span>';
+				// oDiv.innerHTML+='<span style="background:'+arrColor[i%arrColor.length]+'>'+arrText[i]+'</span>'
+			}
+			oDiv.innerHTML+=arrText.join('')
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div"></div>
+	<input type="text" />
+	<input type="button" value="提交" />
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>indexOf查看下标值</title>
+</head>
+<body>
+	<script>
+	// var str="www.webwu";
+	// for (var i = 0; i < str.length; i++) {
+	// 	if(str.charAt(i)==='e'){
+	// 		alert(i)// =>5
+	// 	}
+	// }
+	// alert(str.indexOf("b"));// =>6
+	// alert(str.indexOf('A'));// =>-1，表示没有找到
+	// alert(str.indexOf('w',3))// =>4，第二个参数表示起始位置，取值范围0-字符长度
+
+	var str2="前端无忧网是一个独具特色的前端交流网站，前端无忧网反对传统的收费模式，免费的分享前端教程和学习经验！";
+	var s='前端';
+	var n=0;
+	// alert(str2.indexOf(s,0));//0
+	// alert(str2.indexOf(s,2));//13
+	// for (;str2.indexOf(s,n)!=-1;) {
+	// 	alert(str2.indexOf(s,n));
+	// 	n=str2.indexOf(s,n)+s.length
+	// }
+	// while(str2.indexOf(s,n)!=-1){
+	// 	alert(str2.indexOf(s,n));
+	// 	n=str2.indexOf(s,n)+s.length
+	// }
+	alert(str2.indexOf(s,-3));//0，indexOf从前往后找，负数当做0处理
+	alert(str2.lastIndexOf(s,41));//40 lastIndexOf从后往前找
+	</script>
+</body>
+</html>

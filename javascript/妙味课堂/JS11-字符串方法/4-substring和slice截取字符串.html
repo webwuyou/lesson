@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>4-比较类、截取类、substring应用实例</title>
+</head>
+<body>
+	<script>
+	// 纯数字之间比较，两个操作数都是数字，则进行数值比较
+	// alert(5>3);//true
+
+	// 数字字符串和纯数字比较，两个操作数有一个是数值，则将另一个转换为数值，再进行数值比较
+	// alert('1000'>2);//true
+
+	//数字字符串之间比较
+	// alert('1000'>'2');//false
+	// alert('1000'.charCodeAt())//49
+	// alert('2'.charCodeAt())//50
+
+	// 非零字符串比较，两个操作数都是字符串，则比较两个字符串对应的编码值
+	// alert('百度'>'腾讯');//false
+	// alert('百'.charCodeAt());//30334
+	// alert('腾'.charCodeAt());//33150
+
+	//数字和非数字字符串比较，非数字字符串转换成数字时会变转换成NaN，当NaN和数字比较时不论大小都返回false
+	// alert(10>'刘');//false
+	// alert(10<'a');//false
+
+	// 字符串截取
+	// substring()
+	// slice()
+	// 
+	var str="前端无忧网是一个独具特色的前端交流网站，前端无忧网反对传统的收费模式，免费的分享前端教程和学习经验"
+	// alert(str.substring(5));//
+	// alert(str.substring(0,5));//前端无忧网
+	// alert(str.substring(2,5));//无忧网
+	// alert(str.substring(5,0));//前端无忧网，自动检测两个数的大小，交换位置，大的往后移，小的往前移
+	// alert(str.substring(5,-3));//前端无忧网 负数当做0处理
+
+	alert(str.slice(2,0));//找不到 slice()不交换参数的位置
+	alert(str.slice(-2));//经验，负数从后面到着往前数
+	alert(str.slice(-2,-1));//经
+	</script>
+</body>
+</html>

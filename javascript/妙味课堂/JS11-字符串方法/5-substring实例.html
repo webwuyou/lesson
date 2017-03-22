@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>substring实例</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	p { border:10px solid #ccc; background:#FFC; width:400px; padding:20px; font-size:16px; font-family:微软雅黑; margin:40px auto 0; }
+	</style>
+	<script>
+	window.onload=function(){
+		var oP=document.getElementsByTagName('p')[0];
+		var oSpan=oP.getElementsByTagName('span')[0];
+		var oA=oP.getElementsByTagName('a')[0];
+		var str=oSpan.innerHTML;
+		var onOff=true;
+		oA.onclick=function(){
+			if(onOff){
+				oSpan.innerHTML=str.substring(0,20);
+				oA.innerHTML='<<展开';
+				// onOff=false;
+			}else{
+				oSpan.innerHTML=str;
+				oA.innerHTML='<<收缩';
+				// onOff=true
+			}
+			onOff=!onOff
+		}
+	}
+	</script>
+</head>
+<body>
+	<p id="pid"><span>习近平指出，当前，中美关系发展面临重要机遇。我同特朗普总统通过通话和通信保持着良好沟通。我们都认为，中美两国完全可以成为很好的合作伙伴。br只要双方坚持这个最大公约数，中美关系发展就有正确方向。希望双方按照我同特朗普总统达成的共识和精神，加强高层及各级别交往，拓展双边、地区、全球层面各领域合作，妥善处理和管控敏感问题，推动中美关系在新起点上健康稳定向前发展。</span><a href="javascript:;"><<收起</a></p>
+</body>
+</html>

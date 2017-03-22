@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js系统时间</title>
+</head>
+<body style="font-size: 60px">
+	<script>
+	window.onload=function(){
+		setInterval(getTime,1000)
+		getTime();//避免刷新时出现1秒空白
+		function getTime(){
+			var myTime=new Date();//myTime typeof为时间对象
+			//下面全部为number
+			var iYear=myTime.getFullYear();
+			var iMonth=myTime.getMonth()+1;//月份是从0开始的，需要加1
+			var iDate=myTime.getDate();
+			var iWeek=myTime.getDay();
+			var iHours=myTime.getHours();
+			var iMin=myTime.getMinutes();
+			var iSec=myTime.getSeconds();
+
+			//if语句只有一句话时，可以不写大括号
+			if(iWeek==0) iWeek='星期日';
+			if(iWeek==1) iWeek='星期一';
+			if(iWeek==2) iWeek='星期二';
+			if(iWeek==3) iWeek='星期三';
+			if(iWeek==4) iWeek='星期四';
+			if(iWeek==5) iWeek='星期五';
+			if(iWeek==6) iWeek='星期六';
+			var str='';
+			str=iYear+'年'+iMonth+'月'+iDate+'日 '+iWeek+' '+toNum(iHours)+':'+toNum(iMin)+':'+toNum(iSec)
+			document.body.innerHTML=str;
+		}
+
+		//时分秒为各位数字时在前面加0
+		function toNum(n){
+			return n<10?'0'+n:''+n
+		}
+		
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>高亮显示关键词实例、查找替换关键词实例</title>
+	<style>
+		p { border:10px solid #ccc; background:#FFC; width:400px; padding:20px; font-size:16px; font-family:微软雅黑; margin:40px auto 0; }
+		span{background: yellow}
+	</style>
+	<script>
+	window.onload=function(){
+		var oP=document.getElementsByTagName('p')[0];
+		var aInp=document.getElementsByTagName('input');
+		aInp[1].onclick=function(){
+			var val=aInp[0].value;
+			alert(oP.innerHTML.split(val))
+			if(!val) return;
+			oP.innerHTML=oP.innerHTML.split(val).join('<span>'+val+'</span>');
+		}
+
+	}
+	</script>
+</head>
+<body>
+<input type="text" />
+<input type="button" value="查找" />
+	<p>前端无忧网创立于2013年。前端无忧网是一个独具特色的前端交流网站，前端无忧网反对传统的收费模式，免费的分享前端教程和学习经验！如果你是前端爱好者，不管是小白还是大牛，前端无忧网都欢迎你。</p>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>定时器管理-开关设置</title>
+	<style>
+	#div{width: 100px;height: 100px;background: red;position: absolute;top: 50px;left: 30px;}
+	</style>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn" />
+	<div id="div"></div>
+	<script>
+	window.onload=function(){
+		oBtn=document.getElementById('btn');
+		oDiv=document.getElementById('div');
+		// var timer=null;一般不要在函数外面定义变量
+		// oDiv.timer=null;//可以使用自定义属性
+		oBtn.onclick=function(){
+			clearInterval(oDiv.timer);
+			// alert(parseInt(getStyle(oDiv,'left')));//30px，需要数据类型转换；
+			oDiv.timer=setInterval(function(){
+				var speed=parseInt(getStyle(oDiv,"left"))+19;
+				if(speed>800){
+					speed=800;
+				};
+				oDiv.style.left=speed+'px';
+				//如果speed不为800，则永远不会停止
+				if(speed==800){
+					clearInterval(oDiv.timer);
+				}
+				
+			},100)
+		};
+
+		function getStyle(obj,attr){
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr]
+		}
+	}
+	</script>
+</body>
+</html>

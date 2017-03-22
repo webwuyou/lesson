@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>js倒计时实例</title>
+	<style>
+	input{width: 400px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var aInp=document.getElementsByTagName('input');
+		var timer=null;
+
+		aInp[2].onclick=function(){
+			clearInterval(timer);
+			var iNew=new Date(aInp[0].value);
+			timer=setInterval(function(){
+				var iNow=new Date();
+				if(iNew-iNow>=0){
+					var t=Math.floor((iNew-iNow)/1000);
+					var str='';
+					str=Math.floor(t/84600)+'天'+Math.floor(t%84600/3600)+'时'+Math.floor(t%84600%3600/60)+'分'+Math.floor(t%60)+'秒';
+					aInp[1].value=str
+				}else{
+					clearInterval(timer)
+				}
+				
+			},1000)
+			
+		}
+	}
+	</script>
+</head>
+<body>
+	距离：<input type="text" value="March 20,2017 14:45:00" /><br />
+	还剩：<input type="text" />
+	<input type="button" value="开始倒计时吧" />
+</body>
+</html>
