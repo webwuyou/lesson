@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>数组的添加和删除方法</title>
+</head>
+<body>
+	<script>
+	// var arr=[1,2,3];
+	
+	// 数组的添加方法
+	
+	// 从后面添加
+	// arr.push('abc');
+	// alert(arr.push('abc'));//返回新数组长度
+	// alert(arr);//1,2,3,abc
+
+	// 从前面添加
+	// alert(arr.unshift(0));//返回新数组的长度  IE6 7不支持unshift的返回值
+	// arr.unshift(0)
+	// alert(arr);
+
+	// 数组的删除
+	
+	// 从最后删除
+	var arr2=['张三','李四','王五','赵六'];
+	arr2.pop();//返回被删除的元素
+	alert(arr2);//['张三','李四','王五']
+
+	// 从前面删除
+	arr2.shift();//返回被删除的元素
+	alert(arr2);//[李四','王五']
+	</script>
+</body>
+</html>

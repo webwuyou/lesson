@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>splice()数组删除、替换、添加</title>
+</head>
+<body>
+	<script>
+	// splice数组删除
+	// splice(0,1)第一个参数表示从数组的第几位开始删除，第二个参数表示删除几个
+	var arr=['张三','李四','王五','赵六'];
+	// arr.splice(0,1);//['李四',王五','赵六'];
+	// arr.splice(1,1);//['张三',王五','赵六'];
+	// arr.splice(1,2);//['张三','赵六'];
+	// alert(arr);
+	
+	// splice数组替换
+	// splice(0,1,'aaa')  第一个参数表示要从数组的第几位开始替换，第二个参数表示替换的个数。第三个替换的内容
+	// 
+	// arr.splice(0,1,'aaa');//['aaa','李四','王五','赵六']
+	// arr.splice(1,2,'aaa');//['张三','aaa','赵六']
+	// alert(arr);
+	
+	// splice数组添加
+	// 在张三后面添加，第一个参数就是下标1，第二个为0，第三个表示添加的内容
+	
+	// arr.splice(1,0,'张三后面');//['张三','张三后面','李四',王五','赵六']
+	arr.splice(1,0,'张三2','张三3');//['张三','张三2','张三3','李四',王五','赵六']
+	alert(arr)
+
+	</script>
+</body>
+</html>

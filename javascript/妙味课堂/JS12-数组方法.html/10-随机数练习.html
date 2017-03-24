@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>随机数练习-随机产生500个从0-1000之间不重复的数</title>
+	<script>
+	window.onload=function(){
+		var str='';
+		var num=1;
+		for (var i = 0; i < 500; i++) {
+			str+=num+'：'+Math.round(Math.random()*1000)+'<br />';
+			num++;
+		}
+		document.body.innerHTML=str
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

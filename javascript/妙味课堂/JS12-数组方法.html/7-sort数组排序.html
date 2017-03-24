@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>sort数组排序</title>
+</head>
+<body>
+	<script>
+	var arr=['d','b','a','c'];
+	alert(arr.sort());//a,b,c,d
+	var arr2=[32,12,4,9,2,57,100];
+	alert(arr2.sort());//100,12,2,32,4,57,9
+	//sort()方法默认是以字符串的方式来比较，需要借助比较函数来比较大小
+	
+	alert(arr2.sort(function(a,b){
+		return a-b;//从小到大排序
+	}));//2,4,9,12,32,57,100
+
+	alert(arr2.sort(function(a,b){
+		return b-a;//从大到小排序
+	}));//100,57,32,12,9,4,2
+
+	var arrW=['300px','200px','1000px','23px'];
+	alert(arrW.sort(function(a,b){
+		return parseInt(a)-parseInt(b);
+	}));//23px,200px,300px,1000px
+	</script>
+</body>
+</html>

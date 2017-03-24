@@ -14,20 +14,37 @@
 	<script>
 	window.onload=function(){
 		var oDiv=document.getElementById('content');
-		var aDiv=oDiv.getElementsByTagName('div');
+		var aDi=oDiv.getElementsByTagName('div');
+		var oText=oDiv.getElementsByTagName('textarea')[0];
 		var oA=oDiv.getElementsByTagName('a')[0];
 		var oP=oDiv.getElementsByTagName('p')[0];
+		oA.onclick=function(){
+			var aSpan=document.getElementsByTagName('span');
+			var val1=oText.value;
+			var val2=aDi[2].innerHTML;
+			alert(val2);
+			aSpan[0].innerHTML=val1.length;
+			aSpan[1].innerHTML=val2.length;
+			var arr=val1.split('');
+			alert(arr);
+			for (var i = 0; i < arr.length; i++) {
+				arr.shift();
+			}
+			val1=arr.join('');
+			// alert(arr);
+			val2='qq'
+		}
 	}
 	</script>
 </head>
 <body>
 	<div id="content">
-		<div id="div1"><textarea name="" id=""></textarea></div>
+		<div id="div1"><textarea name="" id="">前端无忧网创立于2013年。前端无忧网是一个独具特色的前端交流网站，前端无忧网反对传统的收费模式，免费的分享前端教程和学习经验！如果你是前端爱好者，不管是小白还是大牛，前端无忧网都欢迎你。</textarea></div>
 		<div id='div2'>
-			<a href="">文字右移</a>
-			<p>0/120</p>
+			<a href="javascript:;">文字右移</a>
+			<p><span>0</span>/<span>0</span></p>
 		</div>
-		<div id="div3"></div>
+		<div id="div3">3</div>
 	</div>
 </body>
 </html>
