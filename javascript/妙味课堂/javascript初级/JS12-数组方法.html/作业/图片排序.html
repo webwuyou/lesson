@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>图片排序</title>
+<style>
+*{margin:0;padding: 0;}
+ul,li{list-style: none;}
+#btn{text-align: center;}
+#btn input{background: #47cad5;border: none;color: #fff;font-size: 14px;width: 100px;height:40px}
+#content{width: 1200px;margin: 0 auto;overflow: hidden;}
+#content ul li{float: left;margin: 10px;}
+#content ul li p{text-align: center;}
+#content ul li img{width: 280px;height: 180px;}
+</style>
+<script>
+window.onload=function(){
+	var aInp=document.getElementsByTagName('input');
+	var oDiv=document.getElementById('content');
+	aLi=oDiv.getElementsByTagName('li');
+	// alert(aLi.length);
+	var arr=[];
+	Math.random();
+	for (var i = 0; i < aLi.length; i++) {
+		arr.push(aLi[i]);
+	}
+
+	aInp[1].onclick=function(){
+		
+		alert(arr)
+	}
+}
+</script>
+</head>
+<body>
+	<div id="btn">
+	<input type="button" value="从小到大" />
+	<input type="button" value="打乱顺序" />
+	</div>
+	<div id="content">
+	<ul>
+		<li>
+			<img src="img/1.jpg" alt="" />
+			<p>1图片</p>
+		</li>
+		<li>
+			<img src="img/2.jpg" alt="" />
+			<p>2图片</p>
+		</li>
+		<li>
+			<img src="img/3.jpg" alt="" />
+			<p>3图片</p>
+		</li>
+		<li>
+			<img src="img/4.jpg" alt="" />
+			<p>4图片</p>
+		</li>
+		<li>
+			<img src="img/5.jpg" alt="" />
+			<p>5图片</p>
+		</li>
+		<li>
+			<img src="img/6.jpg" alt="" />
+			<p>6图片</p>
+		</li>
+		<li>
+			<img src="img/7.jpg" alt="" />
+			<p>7图片</p>
+		</li>
+		<li>
+			<img src="img/8.jpg" alt="" />
+			<p>8图片</p>
+		</li>
+	</ul>
+	
+	</ul>
+	</div>
+</body>
+</html>

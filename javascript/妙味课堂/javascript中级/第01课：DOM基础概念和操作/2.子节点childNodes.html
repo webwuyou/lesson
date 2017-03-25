@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>子节点childNodes</title>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById('ul1');//标准下9
+		//非标准下4
+		alert(oUl.childNodes.length);
+		/*
+			元素.childNodes：只读 属性 子节点的列表集合
+
+			标准下：包含了文本和元素类型的节点，也会包含非法嵌套的子节点
+			非标准下，只包含元素类型的子节点，IE7以下不会包含非法嵌套的子节点
+
+			存在兼容问题
+
+			childNodes只包含一级子节点，不包含后辈孙级以下的节点
+
+			DOM节点的类型有很多种 12种
+			元素节点    			1
+			属性节点				2
+			文本节点				3
+
+		 */
+		// nodeType判断节点类型
+		alert(oUl.nodeType);//1  元素节点
+		alert(oUl.childNodes[0].nodeType);//3  文本节点
+
+		// attribute属性
+		alert( oUl.attributes.length );//ul属性节点个数
+		alert(oUl.attributes[0].nodeType);//2  属性节点
+
+		alert(oUl.attributes[0].name);//id 属性节点名称
+		alert(oUl.attributes[0].value);//ul1 属性节点值
+
+		for (var i = 0; i < oUl.childNodes.length; i++) {
+			oUl.childNodes[i].style.background="red"
+		}
+		
+	}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>0001</li>
+		<li>0002</li>
+		<li>0003</li>
+		<li>0004</li>
+		<p>ppppp</p>
+	</ul>
+</body>
+</html>
