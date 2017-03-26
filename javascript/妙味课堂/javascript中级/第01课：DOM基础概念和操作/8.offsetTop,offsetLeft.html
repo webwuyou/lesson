@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" id="html1">
+<head>
+	<meta charset="UTF-8" />
+	<title>offsetTop和offsetLeft</title>
+	<style>
+	div{padding: 40px 50px;}
+	#div1{background: green;}
+	#div2{background: blue;}
+	#div3{background: red;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv3=document.getElementById("div3");
+		/*
+			元素.offsetTop：属性 只读 当前元素到定位父级的距离(偏移值)，也就是到当前元素的offsetParent的距离
+
+			如果没有定位父级
+				offsetParent=>body
+				offsetLeft=>html
+
+			如果有定位父级
+			IE7以下：如果自己没有定位，那么offsetLeft[Top]是到body的距离
+					如果自己有定位，那么就是到定位父级的距离
+			其他：到定位父级的距离
+		 */
+		
+		// alert(oDiv3.offsetParent.id);//div2
+		alert(oDiv3.offsetTop);
+		//没有定位父级，
+		//标准下40*2+body默认marginTop8=88，
+		//IE7以下自己没有定位40*2=80
+		//自己有定位40*2+body默认marginTop15=95(到html的距离)
+		
+		//有定位父级(到div2的距离)
+		// 标准下40
+		// 非标准下自己没有定位80 (到body的距离)
+		// 如果自己也有定位40
+		// 
+		
+		
+		alert(oDiv3.offsetLeft);
+
+		// 有父级定位
+		// 标准50
+		// 非标准自己没有定位50*2=100
+		// 自己有定位50
+		
+		// 没有父级定位
+		// 标准下50+50+body默认marginLeft8=108(到html的距离)
+		// 非标准下自己没有定位100
+		// 自己有定位50+50+默认marginLeft8=108
+	}
+	</script>
+</head>
+<body id="body1">
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+	</div>
+</body>
+</html>

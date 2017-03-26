@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>元素宽高</title>
+	
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById('div1');
+		alert(oDiv.style.width);//100px 注意有单位
+		alert(oDiv.clientWidth);//120
+		alert(oDiv.offsetWidth);//122
+		/*
+			style.width 	样式宽 100px
+			clientWidth		可视区域宽 样式宽+padding  120
+			offsetWidth		占位宽	样式宽+padding+边框
+		 */
+	}
+	</script>
+</head>
+<body>
+	<div id="div1" style="width: 50px;height: 100px;border: 1px solid #000;padding: 10px;margin: 10px;"></div>
+</body>
+</html>

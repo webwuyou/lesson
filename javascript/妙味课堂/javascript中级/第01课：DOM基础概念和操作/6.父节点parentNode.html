@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>父节点parentNode</title>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById('ul1');
+		var oFirst=oUl.firstElementChild||oUl.firstChild;
+		alert(oFirst.id)//li1
+		/*
+			元素.parentNode 只读 属性 当前节点的父节点 没有兼容问题
+		 */
+		var aA=document.getElementsByTagName('a');
+		for (var i = 0; i < aA.length; i++) {
+			aA[i].onclick=function(){
+				this.parentNode.style.display='none';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="ul1">
+		<li id="li1">0001 <a href="javascript:;">隐藏</a></li>
+		<li>0002 <a href="javascript:;">隐藏</a></li>
+		<li>0003 <a href="javascript:;">隐藏</a></li>
+		<li>0004 <a href="javascript:;">隐藏</a></li>
+	</div>
+</body>
+</html>

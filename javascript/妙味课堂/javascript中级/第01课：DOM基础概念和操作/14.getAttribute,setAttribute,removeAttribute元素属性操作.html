@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>getAttribute,setAttribute,removeAttribute获取、设置、删除元素属性</title>
+	<script>
+	window.onload=function(){
+		var oText=document.getElementById('text1');
+		var oImg=document.getElementById('img1');
+		oText.value='222';
+		alert(oText.value);//222
+		alert(oText.id);//text1
+		alert(oText[name]);
+		alert(oText.name);
+	}
+	</script>
+</head>
+<body>
+	<input type="text" id="text1" value='111' name="属性" />
+	<img src="bdlogo.gif" id="img1" style="width:100px" alt="" />
+</body>
+</html>

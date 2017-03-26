@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" id="html1">
+<head>
+	<meta charset="UTF-8" />
+	<title>offsetParent父节点</title>
+	<style>
+	div{padding: 30px 20px;}
+	#div1{background: green;zoom: 1;}
+	#div2{background: blue;position: relative;}
+	#div3{background: red;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv3=document.getElementById("div3");
+		// alert(oDiv3.parentNode.id);//div2
+		// parentNode 父节点
+		
+		/*
+			元素.offsetParent： 只读 属性 离当前元素最近的一个有定位属性的父节点
+			
+			如果有定位父级，所有浏览器返回 离当前元素最近的定位父节点
+			
+
+			如果没有定位父级，默认是body
+			IE7以下，如果当前元素没有定位默认是body，如果有定位则是html
+			IE7以下，并且当前元素没有定位，如果当前元素的某个父级触发了layout，那么offsetParent就是这个触发layout的父节点
+
+
+		 */
+		alert(oDiv3.offsetParent.id);//没有定位 默认是body1
+		// alert(oDiv3.offsetParent.id);//有定位，IE7以下是html
+		// alert(oDiv3.offsetParent.id);//没有定位，触发layout，div1
+	}
+	</script>
+</head>
+<body id="body1">
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+	</div>
+</body>
+</html>

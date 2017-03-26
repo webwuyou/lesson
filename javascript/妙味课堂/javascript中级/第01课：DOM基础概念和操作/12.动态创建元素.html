@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>动态创建元素</title>
+	<script>
+	window.onload=function(){
+		var aInp=document.getElementsByTagName('input');
+		var oUl=document.getElementById('ul1');
+
+		/*
+			document.createElement(元素名)  动态创建元素
+			document.createElement('li');
+		 */
+
+		 /*
+		 	添加元素到页面中
+		 	父级.appendChild(要添加的元素)	方法  添加子元素 	在父级的最后面添加新元素
+		 	oUl.appendChild(oLi)
+		  */
+		 
+		 /*
+		 	父级.removeChild(要删除的元素)  方法  删除元素
+		  */
+		 
+		 /*
+		 	父级.insertBefore(新元素,被插入的元素)	在指定元素的前面添加新元素
+		 	在IE7以下，如果第二个参数不存在会报错
+		 	在标准下，如果第二个参数不存在，会以appendChild方式进行添加
+		  */
+
+		aInp[1].onclick=function(){
+			var oLi=document.createElement('li');
+			oLi.innerHTML=aInp[0].value;
+			oA=document.createElement('a');
+			oA.innerHTML='删除';
+			oA.href='javascript:;';
+			oA.onclick=function(){
+				oUl.removeChild(this.parentNode);
+			}
+			oLi.appendChild(oA);
+			// oUl.appendChild(oLi);
+			
+			// oUl.insertBefore(oLi,oUl.children[0]);
+			if(oUl.children[0]){
+				oUl.insertBefore(oLi,oUl.children[0])
+			}else{
+				oUl.appendChild(oLi);
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="text" />
+	<input type="button" value="留言" />
+	<ul id="ul1"></ul>
+</body>
+</html>
