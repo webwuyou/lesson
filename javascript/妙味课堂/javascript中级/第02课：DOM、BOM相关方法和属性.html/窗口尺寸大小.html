@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>窗口尺寸大小</title>
+	
+</head>
+<body style="height: 3000px;margin: 0;">
+	<div id="div1" style="border:1px solid red;width: 100px;height:100px;padding: 10px;margin: 10px;">测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中测试内容添加中</div>
+
+	<script>
+	/*
+		可视区域的尺寸  浏览器窗口看的见的区域，缩小浏览器窗口会改变大小
+		oDIv.clientWidth;//div的可视区域宽度
+		document.documentElement.clientWidth;//文档可视区域的宽度
+
+		可视区域宽高没有兼容问题
+	 */
+	// alert(document.documentElement.clientWidth);//默认1920，文档可视区域宽度
+	// alert(document.documentElement.clientHeight);//文档可视区域高度
+
+	/*
+		滚动距离	滚动条滚动的距离
+		oDiv.scrollTop;
+		document.documentElement.scrollTop;//IE，ff都兼容，但是chrome不兼容
+		document.body.scrollTop;
+
+	 */
+	document.onclick=function(){
+		// alert(document.documentElement.scrollTop);//IE、FF
+		// alert(document.body.scrollTop);//chrome
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		alert(scrollTop)
+	}
+
+	/*
+		内容滚动高度
+	 */
+	// alert(document.getElementById('div1').scrollHeight);
+
+	/*
+		文档高
+	 */
+	alert(document.documentElement.offsetHeight);//3018  
+	// IE有兼容问题，如果内容没有可视区域高，那么文档高就是可视区域高
+	alert(document.body.offsetHeight);//推荐使用这种方式
+
+	</script>
+</body>
+</html>

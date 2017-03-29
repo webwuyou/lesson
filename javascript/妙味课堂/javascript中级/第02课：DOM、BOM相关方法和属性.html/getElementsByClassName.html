@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>getElementsByClassName</title>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById('ul1');
+		var aLi=getElementsByClassName(oUl,'li','box')
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].style.background='red';
+		}
+		
+
+		function getElementsByClassName(parent,tagName,className){
+			var aEles=parent.getElementsByTagName(tagName);
+			var arr=[];
+			for (var i = 0; i < aEles.length; i++) {
+				var arrClassName=aEles[i].className.split(' ');
+				for (var j = 0; j < arrClassName.length; j++) {
+					if(arrClassName[j]==className){
+						arr.push(aEles[i]);
+						break;
+					}
+				}
+			}
+			return arr;
+		}
+
+
+		
+
+
+
+	}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>0001</li>
+		<li class="box box">0002</li>
+		<li class="box1">0003</li>
+		<li class="box box2">0004</li>
+	</ul>
+	<ul id="ul2">
+		<li>0001</li>
+		<li class="box box">0002</li>
+		<li class="box1">0003</li>
+		<li class="box box2">0004</li>
+	</ul>
+</body>
+</html>

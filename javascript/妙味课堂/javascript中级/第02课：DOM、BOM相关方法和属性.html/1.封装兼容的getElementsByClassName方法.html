@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>封装兼容的getElementsByClassName方法</title>
+	<script>
+	window.onload=function(){
+		// var aLi=document.getElementsByClassName('box');//在IE8以下，不支持getElementsByClassName方法
+		var oUl1=document.getElementById('ul1');
+		var oUl2=document.getElementById('ul2');
+
+		var aLi=getElementsByClassName(document,'li','box');//4
+		var aLi=getElementsByClassName(oUl2,'li','box');//1
+		alert(aLi.length);
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].style.background='red';
+		}
+		
+
+		// 封装兼容的getElementsByClassName方法
+		function getElementsByClassName(parent,tagName,className){
+			var aEles=parent.getElementsByTagName(tagName);
+			var arr=[];
+			for (var i = 0; i < aEles.length; i++) {
+				var aClassNames=aEles[i].className.split(' ');
+				for (var j = 0; j < aClassNames.length; j++) {
+					if(aClassNames[j]==className){
+						arr.push(aEles[i]);
+						break;//如果有两个一样的class，跳出
+					}
+				}
+			}
+			return arr;
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>0001</li>
+		<li class="box box">0002</li>
+		<li class="box1">0003</li>
+		<li class="box box2">0004</li>
+	</ul>
+	<ul id="ul2">
+		<li>0001</li>
+		<li class="box box">0002</li>
+		<li class="box1">0003</li>
+		<li class="box box2">0004</li>
+	</ul>
+	<div><p class="box">ppppppp</p></div>
+</body>
+</html>

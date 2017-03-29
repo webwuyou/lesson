@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>常用BOM方法</title>
+	<script>
+	window.onload=function(){
+
+		/*
+			BOM： Browser Object MOdel	浏览器对象模型
+		 */
+		
+		var aInp=document.getElementsByTagName("input");
+		var opener=null;
+		/*
+			window.open(页面地址url，打开方式)	方法	打开一个新窗口（页面）
+				如果url为空，默认打开一个空白页面
+				如果打开方式为空，默认为新窗口方式打开
+
+			所有window方法都可以省略window，window.open() =>open() 
+
+			返回值：返回新打开的窗口的window对象
+		 */
+		aInp[0].onclick=function(){
+			// open('http://www.webwuyou.com','_self');
+			opener=window.open();
+			// alert(opener);//object window
+			opener.document.body.style.background="red"  //跨域就不行
+		}
+
+		/*
+			close() 方法	关闭窗口  哪个window对象调用close，就关闭哪个窗口
+		 */
+		aInp[1].onclick=function(){
+			window.close();//关闭当前窗口
+			/*
+				1.ff：默认无法关闭
+				2.chrome：默认直接关闭
+				3.IE：询问用户是否关闭
+			 */
+		}
+
+		aInp[2].onclick=function(){
+			opener.close();//关闭打开的新窗口
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" value="打开新窗口" />
+	<input type="button" value="关闭窗口" />
+	<input type="button" value="关闭新窗口" />
+</body>
+</html>

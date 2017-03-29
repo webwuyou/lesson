@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>表单事件</title>
+	<script>
+	window.onload=function(){
+		/*
+			onsubmit：事件 当提交表单的时候触发
+				submit：方法	提交表单 oForm.onsubmit()
+		 */
+		var oForm=document.getElementById("form1");
+		oForm.onsubmit=function(){
+			// alert("提交了")
+			if(this.text1.value==''){
+				alert('请输入内容');
+				return false;
+			}
+		}
+
+		/*
+			onreset：事件 表单重置的时候触发
+
+		 */
+		oForm.onreset=function(){
+			// alert("重置")
+			var re=confirm("你确认要重置吗？");//返回值为true或者false
+			// if(re){
+			// 	return true;
+			// }else{
+			// 	return false;
+			// }
+			return confirm("你确认重置吗？")
+		}
+	}
+	</script>
+</head>
+<body>
+	<form action="http://www.webwuyou.com" id="form1">
+	<input type="text" name="text1" />
+	<input type="text" name="text2" value='222' />
+	<input type="submit" name="submit" value="提交" />
+	<input type="reset" value="reset" value="重置" />
+	</form>
+</body>
+</html>
