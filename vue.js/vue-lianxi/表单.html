@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>复选框如果是一个，为逻辑值</h1>
+		<input type="checkbox" v-model="checked">
+		<p>{{checked}}</p>
+
+		<h1></h1>
+		<input type="checkbox" value="张三" v-model="checkNames">张三
+		<input type="checkbox" value="李四" v-model="checkNames">李四
+		<input type="checkbox" value="王五" v-model="checkNames">王五
+		<input type="checkbox" value="赵六" v-model="checkNames">赵六
+		<p>{{checkNames}}</p>
+
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				checked:false,
+				checkNames:[]
+			}
+		})
+	</script>
+</body>
+</html>

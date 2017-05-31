@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(value,key) in person">{{key}}:{{value}}</li>
+		</ul>
+	</div>
+	<script>
+		let app=new Vue({
+			el:'#app',
+			data:{
+				person:
+					{
+						name:'张三',
+						age:25,
+						sex:'男'
+					}
+			}
+		})
+	</script>
+
+	<div id="app2">
+  <ul>
+    <li v-for="(value, key) in object">
+    {{ key }} : {{ value }}
+    </li>
+  </ul>
+</div>
+​
+<script>
+new Vue({
+  el: '#app2',
+  data: {
+    object: {
+      name: '菜鸟教程',
+      url: 'http://www.runoob.com',
+      slogan: '学的不仅是技术，更是梦想！'
+    }
+  }
+})
+</script>
+</body>
+</html>

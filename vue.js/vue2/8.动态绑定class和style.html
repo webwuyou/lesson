@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{color: red}
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	
+	<!-- 1、v-on:class动态绑定class，为true时渲染，为false时不渲染 -->
+	<!-- 对象语法 -->
+	<div id="demo1">
+		<p :class="{red:isRed,danger:isDanger,error:isError}">我是p标签</p>
+	</div>
+	<script>
+		let demo1=new Vue({
+			el:"#demo1",
+			data:{
+				isRed:true,
+				isDanger:true,
+				isError:false
+			}
+		})
+	</script>
+
+	<!-- 数组语法 -->
+	<div id="demo2">
+		<p :class="[activeClass,errorClass]">我是p标签</p>
+	</div>
+	<script>
+		let demo2=new Vue({
+			el:'#demo2',
+			data:{
+				activeClass:'active',
+				errorClass:'error'
+			}
+		})
+	</script>
+
+	<!-- 绑定内联样式style -->
+	<div id="demo3">
+		<p :style="{color:colorStyle,fontSize:fontSizeStyle}">我是p标签</p>
+	</div>
+	<script>
+		let demo3=new Vue({
+			el:'#demo3',
+			data:{
+				colorStyle:'red',
+				fontSizeStyle:'24px'
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<!-- 文本 -->
+	<!-- 注意，表单会优先显示v-model绑定的内容，如果绑定的内容为空，才会显示placeholder的内容 -->
+	<div id="app1">
+		<input type="text" v-model="message" placeholder="必填项">
+		<p>{{message}}</p>
+	</div>
+	<script>
+		let app1=new Vue({
+			el:'#app1',
+			data:{
+				message:'请输入姓名'
+			}
+		})
+	</script>
+	
+	<!-- 多行文本 -->
+	<div id="app2">
+		<textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
+		<p>{{message}}</p>
+	</div>
+	<script>
+		let app2=new Vue({
+			el:'#app2',
+			data:{
+				message:'多行文本框，不能直接使用{{}}形式插入'
+			}
+		})
+	</script>
+
+	<!-- 复选框 -->
+	<!-- 单个复选框，逻辑值，true或者false -->
+	<div id="app3">
+		<input type="checkbox" v-model="checked">
+		<p>{{checked}}</p>
+	</div>
+	<script>
+		let app3=new Vue({
+			el:'#app3',
+			data:{
+				checked:true
+			}
+		})
+	</script>
+
+	<!-- 多个复选框 -->
+	<!-- 多个复选框，绑定到同一个数组 -->
+	<!-- 注意，获取的是value里面的值 一定要写value-->
+	<div id="app4">
+		<input type="checkbox" value="张三" v-model='checkedArr'>张三
+		<input type="checkbox" value="李四" v-model='checkedArr'>李四
+		<input type="checkbox" value="王五" v-model='checkedArr'>王五
+		<input type="checkbox" value="赵六" v-model='checkedArr'>赵六
+		<input type="checkbox" value="田七" v-model='checkedArr'>田七
+		<p>{{checkedArr}}</p>
+	</div>
+	<script>
+		let app4=new Vue({
+			el:'#app4',
+			data:{
+				checkedArr:[]
+			}
+		})
+	</script>
+	
+	<!-- <div id="app5">
+		<input type="checkbox" value="1" v-model="arr">1
+		<input type="checkbox" value="2" value="1" v-model="arr">2
+		<input type="checkbox" value="3" v-model="arr">3
+		<input type="checkbox" value="4" v-model="arr">4
+		<p>{{arr}}</p>
+	</div>
+	<script>
+		var app5=new Vue({
+			el:'#app5',
+			data:{
+				arr:[]
+			}
+		})
+	</script> -->
+
+	<!-- 单选按钮 -->
+	<div id="app5">
+		<input type="radio" name="sex" value="男" v-model="sex">男
+		<input type="radio" name="sex" value="女" v-model="sex">女
+		<p>{{sex}}</p>
+	</div>
+	<script>
+		let app5=new Vue({
+			el:'#app5',
+			data:{
+				sex:''
+			}
+		})
+	</script>
+
+	<!-- 选择列表 -->
+	<div id="app6">
+		<select v-model="selected">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+		<p>{{selected}}</p>
+	</div>
+	<script>
+		let app6=new Vue({
+			el:'#app6',
+			data:{
+				selected:''
+			}
+		})
+	</script>
+
+	<!-- 修饰符 -->
+	<!-- 在默认情况下，v-model在input中同步输入框的值和数据，添加lazy以后，转变为在change中触发 -->
+	<!-- v-model.lazy -->
+
+	<!-- 将用户输入的值转换成number类型 -->
+	<!-- v-model.number -->
+	
+	<!-- 自动过滤首尾空格 -->
+	<!-- v-model.trim -->
+
+	<div id="app7">
+		<input type="text" v-model.trim="msg">
+		<p>{{msg}}</p>
+	</div>
+	<script>
+		let app7=new Vue({
+			el:'#app7',
+			data:{
+				msg:'修饰符'
+			}
+		})
+	</script>
+</body>
+</html>

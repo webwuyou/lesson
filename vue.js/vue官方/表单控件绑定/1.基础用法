@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model='message' placeholder="v-model在单选框中的使用">
+		<p>{{message}}</p>
+	</div>
+
+	<script>
+		let vm=new Vue({
+			el:"#app",
+			data:{
+				message:'v-model绑定text输入框内容'
+			}
+		})
+	</script>
+
+	<div id="textarea">
+	注意在textarea中使用{{}}
+		<textarea v-model="message"></textarea>
+		<p>{{message}}</p>
+	</div>
+	<script>
+		let app2=new Vue({
+			el:'#textarea',
+			data:{
+				message:'v-model绑定textarea中的内容'
+			}
+		})
+	</script>
+
+</body>
+</html>

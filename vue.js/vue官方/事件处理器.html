@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<!-- 可以使用v-on指令来监听事件 -->
+	<div id="app1">
+		<button v-on:click="num++">增加1</button>
+		<p>{{num}}</p>
+
+
+	</div>
+	<script>
+		let app1=new Vue({
+			el:'#app1',
+			data:{
+				num:0
+			}
+		})
+	</script>
+
+	<div id="app2">
+		<button v-on:click="sum">增加1</button>
+		<p>{{num}}</p>
+		<button v-on:click="alert">hello</button>
+	</div>
+	<script>
+		let app2=new Vue({
+			el:'#app2',
+			data:{
+				num:0,
+				name:"vue js"
+			},
+			methods:{
+				sum(){
+					this.num++
+				},
+				alert(e){
+					alert('hello'+this.name+'!');
+					alert(e.target.tagName)
+				}
+			}
+		})
+	</script>
+
+	<!-- 事件修饰符 -->
+	<!-- 阻止单击事件冒泡 -->
+	<a v-on:click.stop="fn"></a>
+
+	<!-- 提交事件不再重载页面 -->
+	<form v-on:submit.prevent="onsubmit"></form>
+	
+	<!-- 修饰符可以串联 -->
+	<a v-on:click.stop.prevent="fn"></a>
+
+	<!-- 只有修饰符 -->
+	<form v-on:submit.prevent></form>
+
+	<!-- 使用事件捕获 -->
+	<div v-on:click.capture="fn"></div>
+
+	<!-- 只有当事件在该元素本身（而不是子元素）触发时触发回调 -->
+	<div v-on:click.self="fn"></div>
+
+	<!-- 点击事件将只会触发一次 -->
+	<a v-on:click.once="fn"></a>
+
+
+	<!-- 按键修饰符 -->
+	<!-- 在监听键盘事件时，经常需要监听常见的键值，在监听键盘事件时可以添加按键修饰符 -->
+
+	<!-- 只有键值是13 的按键抬起时触发submit事件 -->
+	<input v-on:keyup.13="submit">
+
+	<!-- 按键别名，好记，效果同上 -->
+	<input v-on:keyup.enter="submit">
+
+	<!-- 全部的按键别名 -->
+	<!-- .enter
+	.tab
+	.delete
+	.esc
+	.space
+	.up
+	.down
+	.left
+	.right -->
+
+	<!-- .ctrl
+	.alt
+	.shift
+	.meta -->
+
+	<!-- 可以自定义按键修饰符 -->
+
+</body>
+</html>

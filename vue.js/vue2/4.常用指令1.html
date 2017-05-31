@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	
+	<!-- 1、v-text作用和{{一样}} -->
+	<div id="demo1" v-text="msg"></div>
+	<script>
+		let demo1=new Vue({
+			el:'#demo1',
+			data:{
+				msg:'hello vue'
+			}
+		})
+	</script>
+
+	<!-- 2、v-html展示包含html标签的内容 -->
+	<div id="demo2" v-html="msg"></div>
+	<script>
+		let demo2=new Vue({
+			el:'#demo2',
+			data:{
+				msg:'<b>hello vue</b>'
+			}
+		})
+	</script>
+
+	<!-- 3、v-show控制元素的显示与隐藏，取值为true和false，通过设置css的display属性 -->
+	<div id="demo3">
+		<p v-show="show1">我是true</p>
+		<p v-show="show2">我是false</p>
+	</div>
+	<script>
+		let demo3=new Vue({
+			el:'#demo3',
+			data:{
+				show1:true,
+				show2:false
+			}
+		})
+	</script>
+	
+	<!-- 4、v-if的取值也是true和false，为true时显示，为false不渲染 -->
+	<div id="demo4">
+		<p v-if="if1">我是true</p>
+		<p v-if="if2">我是false</p>
+	</div>
+	<script>
+		let demo4=new Vue({
+			el:'#demo4',
+			data:{
+				if1:true,
+				if2:false
+			}
+		})
+	</script>
+	<!-- 如果需要频繁切换显示和隐藏的，就用v-show，如果运行后不太可能改变显示和隐藏的，用v-if -->
+	
+	<!-- v-else不需要对应的值，但是要求前一个兄弟节点必须使用v-if -->
+	<!-- v-else和v-if只有一个会被渲染出来 -->
+	<div id="demo5">
+		<p v-if="if_1">我是if</p>
+		<p v-else>我是else</p>
+	</div>
+	<script>
+		let demo5=new Vue({
+			el:'#demo5',
+			data:{
+				if_1:true
+			}
+		})
+	</script>
+</body>
+</html>

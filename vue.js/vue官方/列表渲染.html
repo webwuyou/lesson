@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+<!-- 遍历数组 -->
+<!-- 第二个参数是下标索引 -->
+	<div id="app1">
+		<ul>
+			<li v-for="item in items">{{item}}</li>
+		</ul>
+		<dl>
+			<dd v-for="(item,index) in items">{{index}}:{{item}}</dd>
+		</dl>
+	</div>
+	<script>
+		let app1=new Vue({
+			el:'#app1',
+			data:{
+				items:['张三','李四','王五','赵六','田七']
+			}
+		})
+	</script>
+
+<!-- 遍历对象 -->
+<!-- 第一个参数value，第二个参数key值，第三个参数下标索引 -->
+	<div id="app2">
+		<ul>
+			<li v-for='value in object'>{{value}}</li>
+		</ul>
+		<dl>
+			<dd v-for="(value,key) in object">{{key}}:{{value}}</dd>
+		</dl>
+		<p v-for='(value,key,index) in object'>{{index}}.{{key}}-{{value}}</p>
+	</div>
+	<script>
+		let app2=new Vue({
+			el:'#app2',
+			data:{
+				object:{
+					name:'张三',
+					age:28,
+					sex:'男'
+				}
+			}
+		})
+	</script>
+
+	<!-- 整数迭代 -->
+	<div id="app3" >
+		<span v-for='n in 10'> {{n}} </span>
+	</div>
+	<script>
+		let app3=new Vue({
+			el:'#app3',
+		})
+	</script>
+
+	<!-- 使用template循环多个元素快，template并不会解析到页面中 -->
+	<div id="app4">
+		<ul>
+			<template v-for="(value,key) in object">
+				<li>{{key}}</li>
+				<p>{{value}}</p>
+			</template>
+		</ul>
+	</div>
+	<script>
+		let app4=new Vue({
+			el:'#app4',
+			data:{
+				object:{
+					name:'李四',
+					age:20,
+					sex:'女'
+				}
+			}
+		})
+	</script>
+
+	<!-- 过滤排序 -->
+	<div id="app5">
+		<ul>
+			<li v-for='n in evennumber'>{{n}}</li>
+		</ul>
+	</div>
+	<script>
+		let app5=new Vue({
+			 el:'#app5',
+			 data:{
+			 	number:[1,2,3,4,5]
+			 },
+			 computed:{
+			 	evennumber:function(){
+			 		return this.number.filter(function(number){
+			 			return number%2===0;
+			 		})
+			 	}
+			 }
+		})
+	</script>
+
+</body>
+</html>

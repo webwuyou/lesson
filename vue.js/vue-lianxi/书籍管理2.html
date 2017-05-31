@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div class="container" id="app">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>序号</td>
+					<td>书名</td>
+					<td>作者</td>
+					<td>价格</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for='book in books'>
+					<td>{{book.id}}</td>
+					<td>{{book.name}}</td>
+					<td>{{book.author}}</td>
+					<td>{{book.price}}</td>
+					<td><button class="btn btn-danger" @click="removeBook(book)">删除</button></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="info alert-info">添加你喜欢的书籍</div>
+		<div class="form-group">
+			<label for="">书名</label>
+			<input type="text" class="form-control" placeholder="请输入书名" v-model='myBook.name'>
+		</div>
+		<div class="form-group">
+			<label for="">作者</label>
+			<input type="text" class="form-control" placeholder="请输入价格" v-model="myBook.author">
+		</div>
+		<div class="form-group">
+			<label for="">价格</label>
+			<input type="text" class="form-control" placeholder="请输入价格" v-model="myBook.price">
+		</div>
+		<button class="btn btn-primary" @click="addBook">提交</button>
+
+	</div>
+
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				myBook:[
+					{
+						id:0,
+						name:'',
+						author:'11',
+						price:'0'
+					}
+				],
+				books:[
+					{
+						id:1,
+						name:"红楼梦",
+						author:'曹雪芹',
+						price:'32.0'
+					},
+					{
+						id:2,
+						name:'水浒传',
+						author:"施耐奄",
+						price:'30.0'
+					},
+					{
+						id:3,
+						name:'三国演义',
+						author:'罗贯中',
+						price:'24.0'
+					},
+					{
+						id:4,
+						name:'西游记',
+						author:'吴承恩',
+						price:'20.0'
+					}
+				]
+			},
+			methods:{
+				// 添加书籍
+				addBook(){
+					this.myBook.id=this.books.length+1;
+					this.books.push(this.myBook);
+					this.myBook=[
+						{
+							id:0,
+							name:'',
+							author:'',
+							price:'0'
+						}
+					]
+				},
+
+				// 删除书籍
+				removeBook(a){
+					this.books.splice(a,1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

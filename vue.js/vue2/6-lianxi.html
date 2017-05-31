@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;list-style-type: none;}
+		a{text-decoration: none;}
+		ul{width: 1200px;margin: 0 auto;}
+		ul li{margin: 0 2.5%;width: 20%;float: left;overflow: hidden;}
+		ul li img{width: 100%;height: 100%;}
+		ul li a{display: block;text-align: center;line-height: 40px;}
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<ul id="list">
+		<img-list v-for="item in imgList" v-bind:detail="item"></img-list>
+	</ul>
+
+	<script>
+		// 使用Vue.component来注册组件
+		// 一定要先注册组件，再实例化
+		Vue.component('img-list',{
+			props:['detail'],
+			template:`
+					<li><a href="">
+							<img v-bind:src="detail.img" alt="">
+							<p>{{detail.title}}</p>
+						</a></li>
+			`
+		});
+		let list=new Vue({
+			el:'#list',
+			data:{
+				imgList:[
+					{
+						img:"1.jpg",
+						title:'日落美景'
+					},
+					{
+						img:'2.jpg',
+						title:'美女倒影'
+					},
+					{
+						img:'3.jpg',
+						title:'漂浮气球'
+					},
+					{
+						img:'4.jpg',
+						title:'山海相接'
+					}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

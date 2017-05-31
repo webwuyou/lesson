@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model.lazy='msg'>
+		<p>{{msg|reverseVal}}</p>
+	</div>
+	<script>
+		let app=new Vue({
+			el:'#app',
+			data:{
+				msg:'hello',
+			},
+			// 添加过滤器
+			filters:{
+				reverseVal(val){
+					return val.split('').reverse().join('');
+				}
+			}
+		})
+	</script>
+	<div id="app2">
+    {{ a }}
+    <button v-on:click="plus()">加1</button>
+  </div>
+	<script>
+		let vm = new Vue({
+		    //挂载元素
+		  el:'#app2',
+		    //实例vm的数据
+		  data:{
+		         a:0
+		    },
+		    //方法
+		  methods:{
+		        plus(){
+		            return this.a+10;
+		        }
+		    }
+		 });
+
+	</script>
+</body>
+</html>

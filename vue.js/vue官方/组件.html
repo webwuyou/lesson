@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+<!-- 全局组件 -->
+	<div id="app1">
+		<custom></custom>
+		<components-name></components-name>
+	</div>
+	
+	<script>
+	// 语法：Vue.component('名称',{选项对象})
+	// 注意：一定要在初始化跟实例前注册组件
+
+	Vue.component('custom',{
+		template:'<div><h2>我是全局定义的组件，在所有地方都可以使用</h2></div>'
+	})
+		let app1=new Vue({
+			el:'#app1',
+			data:{
+				message:'局部注册组件'
+			},
+			// 局部注册组件
+			components:{
+				'components-name':{
+					template:'<h1>局部注册组件</h1>'
+				}
+			}
+		})
+	</script>
+
+	<!-- 组件中的data必须是函数 -->
+	<div id="app2">
+		<custom-list></custom-list>
+		<custom-list></custom-list>
+		<custom-list></custom-list>
+	</div>
+	<script>
+			Vue.component('custom-list',{
+				template:`<h2 v-on:click="count++">{{count}}</h2>`,
+				data:function(){
+					return {
+						count:0
+					}
+				}
+			})
+			let app2=new Vue({
+				el:'#app2',
+				data:{
+
+				}
+			})
+		</script>
+
+		<!-- 父组件与子组件通信 -->
+		<!-- 父组件通过props传递数据给子组件 -->
+		<div id="app3">
+			<child :my-message="parentMessage"></child>
+		</div>
+		<script>
+		// 特别注意，在组件里面使用驼峰写法，模板里面用-的形式
+		Vue.component('child',{
+			props:['myMessage'],
+			template:'<h1>{{myMessage}}</h1>'
+		})
+			let app3=new Vue({
+				el:'#app3',
+				data:{
+					parentMessage:'父组件的数据'
+				}
+			})
+		</script>
+
+		<!-- prop验证 -->
+		<!-- 可以为组件的props制定验证规则，如果传入的数据不符合规格，Vue会发生警告。 -->
+
+		<div id="app4"></div>
+		<script>
+			Vue.component('my-props',{
+				props:{
+					propA:null,//任何类型都可以
+					propB:Number,//必须是数字
+					propC:{
+						type:String,//必须是字符串
+						required:true,//必传
+						default:'默认值'
+					},
+					propD:[String,Number],//多种类型
+
+					// 自定义验证,大于10
+					propE:{
+						validator:function(value){
+							return value>10
+						}
+					}
+				}
+			})
+			let app4=new Vue({
+				el:'#app4',
+				data:{
+
+				}
+			})
+		</script>
+
+		<!-- 子组件向父组件传递数组 -->
+		<!-- 通过自定义事件 -->
+</body>
+</html>

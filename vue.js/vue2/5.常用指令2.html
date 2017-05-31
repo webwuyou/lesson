@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	
+	<!-- 1、v-for循环 -->
+	<!-- 第一个参数列表项，第二个参数索引值 -->
+	<div id="demo1">
+		<p v-for="a in arr">{{a}}</p>
+		<hr>
+		<div v-for="(a,b) in lesson">{{b}}.{{a}}</div>
+	</div>
+	<script>
+		let demo1=new Vue({
+			el:'#demo1',
+			data:{
+				arr:['张三','李四','王五','Tom'],
+				lesson:['html','css','javascript','jquery','bootstrap','vue','node js']
+			}
+		})
+	</script>
+	
+	<!-- 2、v-bind绑定属性 -->
+	<!-- v-bind可以简写为: -->
+	<div id="demo2">
+		<a :href="href" :title="title">v-bind绑定属性</a>
+	</div>
+	<script>
+		let demo2=new Vue({
+			el:'#demo2',
+			data:{
+				title:'title标签',
+				href:'http://www.baidu.com'
+			}
+		})
+	</script>
+
+	<!-- 3、绑定事件 -->
+	<div id="demo3">
+		<button v-on:click="say">点击</button>
+		<!-- 绑定事件并且传参 -->
+		<button v-on:click="hello('vue')">点击</button>
+	</div>
+	<script>
+		let demo3=new Vue({
+			el:'#demo3',
+			methods:{
+				say(){
+					console.log("hello");
+				},
+				hello(name){
+					console.log('hello '+name)
+				}
+			}
+		})
+	</script>
+	
+	<!-- 4、v-model一般用在表单实现双向绑定 -->
+	<div id="demo4">
+		<input type="text" v-model="text">
+		<p>{{text}}</p>
+	</div>
+	<script>
+		let demo4=new Vue({
+			el:'#demo4',
+			data:{
+				text:'请输入内容'
+			}
+		})
+	</script>
+	
+	<!-- 5、v-once只渲染一次 -->
+	<div id="demo5">
+		<input type="text" v-once="msg">
+		<p>{{msg}}</p>
+	</div>
+	<script>
+		let demo5=new Vue({
+			el:'#demo5',
+			data:{
+				msg:'hello,vue'
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<td @click="sortBy('id')">序号</td>
+						<td @click="sortBy('author')">书名</td>
+						<td @click="sortBy('name')">作者</td>
+						<td @click="sortBy('price')">价格</td>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- 列表渲染 -->
+					<tr v-for="book in books" v-if="book.id%2==0">
+						<td>{{book.id}}</td>
+						<td>{{book.name}}</td>
+						<td>{{book.author}}</td>
+						<td>{{book.price}}</td>
+						<td><button type="button" class="btn btn-danger" @click="delBook(book)">删除</button></td>
+					</tr>
+					<tr v-else>
+						<td>{{book.id}}</td>
+						<td>{{book.name}}</td>
+						<td>{{book.author}}</td>
+						<td>{{book.price}}</td>
+						<td><button type="button" class="btn btn-success" @click="delBook(book)">删除</button></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="add-book">
+				添加书籍
+				<div class="form-group">
+					<label for="">书名</label>
+					<input type="text" class="form-control" placeholder="书名" v-model="book.author">
+				</div>
+				<div class="form-group">
+					<label for="">作者</label>
+					<input type="text" class="form-control" placeholder="作者" v-model="book.name">
+				</div>
+				<div class="form-group">
+					<label for="">价格</label>
+					<input type="text" class="form-control" placeholder="价格" v-model="book.price">
+				</div>
+				<button class="btn btn-primary" @click="addBook">添加</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		let app=new Vue({
+			el:'#app',
+			data:{
+				book:{
+					id:0,
+					author:'',
+					name:'',
+					price:''
+				},
+				books:[
+					{
+						id:1,
+						author:'曹雪芹',
+						name:"红楼梦",
+						price:'32.0'
+					},
+					{
+						id:2,
+						author:"施耐奄",
+						name:'水浒传',
+						price:'30.0'
+					},
+					{
+						id:3,
+						author:'罗贯中',
+						name:'三国演义',
+						price:'24.0'
+					},
+					{
+						id:4,
+						author:'吴承恩',
+						name:'西游记',
+						price:'20.0'
+					}
+				]
+			},
+			methods:{
+				addBook(){
+					// 计算书的id
+					this.book.id=this.books.length+1;
+					this.books.push(this.book);
+					// 添加完成后清空input里面的内容
+					this.book={
+						id:0,
+						author:'',
+						name:'',
+						price:''
+					}
+				},
+				// 删除书籍
+				delBook(book){
+					this.books.splice(book,1)
+				},
+				
+
+			}
+		})
+	</script>
+</body>
+</html>

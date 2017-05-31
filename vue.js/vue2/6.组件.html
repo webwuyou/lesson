@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		.clearfix:after{content: '';clear: both;height: 0;display: block;}
+		.clearfix{zoom: 1;}
+		.card{max-width: 640px;border-bottom: 1px solid #ccc;padding: 10px 20px;}
+		.card h1{font-size: 16px;}
+		.card .info{margin-top: 10px;color: #666;font-size: 14px;float: left;}
+		.card img{float: right;height: 40px;}
+		.original{border: 1px solid #ccc;padding: 3px;}
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<!-- 1、传统的方式实现一个列表组件 -->
+	<div class="card clearfix">
+		<h1>这里是文章的标题</h1>
+		<div class="info">
+			<span>2017年5月16日</span>
+			<span class="original">原创</span>
+		</div>
+		<img src="1.jpg" alt="">
+	</div>
+	
+	<div id="app">
+		<!-- 使用自定义组件 -->
+		<!-- <my-article v-for='item in article' :detial="item"></my-article> -->
+		<my-article 
+            v-for="item in article" 
+            :detail="item">
+    </my-article>
+	</div>
+
+	<script>
+		// 一定要先注册组件，再实例化
+		// 注册组件
+		Vue.component('my-article',{
+			props:['detail'],
+			template:`
+			<div class="card clearfix">
+		<h1>{{detail.title}}</h1>
+		<div class="info">
+			<span>{{detail.date}}</span>
+			<span v-show='detail.is_original' class="original">原创</span>
+		</div>
+		<img :src="detail.img"  alt="">
+	</div>
+			`
+		})
+
+		let card=new Vue({
+			el:"#app",
+			data:{
+				// 把列表数据存储在data中
+				article:[
+					{
+						title:'第一节，vuejs框架是什么',
+						date:'2017年1月2日',
+						is_original:true,
+						img:'1.jpg'
+					},
+					{
+						title:'第二节，创建vue实例',
+						date:'2017年2月14日',
+						is_original:true,
+						img:'2.jpg'
+					},
+					{
+						title:'第三节，vuejs常用配置filters,computed,methods,watch',
+						date:'2017年3月8日',
+						is_original:true,
+						img:'3.jpg'
+					},
+					{
+						title:'第四节，vue中绑定数据',
+						date:'2017年4月20日',
+						is_original:true,
+						img:'4.jpg'
+					}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

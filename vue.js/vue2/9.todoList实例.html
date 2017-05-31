@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.edit{
+		    display:block ;
+		    width:80%;
+		    height: 35px;
+		    line-height: 35px;
+		    margin: 30px auto;
+		    box-sizing: border-box;
+		    padding-left: 4px;
+		    border-radius: 4px;
+		    border:1px solid #ccc;
+		    outline: 0;
+		    box-shadow: 0 0 5px #ccc;
+		 }
+		 ul li{border-bottom: 1px solid #000;padding: 10px 0;position: relative;}
+		 .finished{
+			text-decoration: line-through;color: #ccc
+		 }
+		 .del{
+    background: red;
+    text-decoration: none;
+    position: absolute;
+    right:0;
+    font-size: 12px;
+    border: 0;
+    outline: 0;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: #fff;cursor: pointer;
+ }
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="demo">
+		<input type="text" class="edit" placeholder="编写任务" v-model="task.content" @keyup.enter="addTask">
+		<div class="list">
+			<ul>
+				<li v-for="(item,index) in list">
+					<input
+						type="checkbox"
+						:checked="item.finished"
+						@click="changeState(index)"
+					>
+					<span :class="{finished:item.finished}">{{index+1}}、{{item.content}}</span>
+					<button class="del" @click="deleteTask(index)">删除</button>
+				</li>
+			</ul>
+		</div>
+		<p v-if="list.length==0">对不起，暂无任务</p>
+	</div>
+	<script>
+		let demo1=new Vue({
+			el:"#demo",
+			data:{
+				// 默认
+				task:{
+					content:"",
+					finished:false,//是否完成
+					deleted:false//是否删除
+				},
+				// 定义一个数组，存储用户输入的内容
+				list:[]
+			},
+
+			methods:{
+				addTask(){
+					this.list.push(this.task);
+					console.log(this.list)
+					// 存入list后，重置task
+					this.task={
+						content:"",
+						finished:false,//是否完成
+						deleted:false//是否删除
+					}
+				},
+				changeState(index){
+					let state=this.list[index].finished;
+					this.list[index].finished=!state;
+				},
+				deleteTask(num){
+					this.list.splice(num,1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<!-- 第一种方式，{{}}方式绑定 -->
+	<div id="demo1">{{name}}</div>
+	<script>
+		let demo1=new Vue({
+			el:'#demo1',
+			data:{
+				name:'张三'
+			}
+		})
+	</script>
+
+	<!-- 第二种方式，使用v-html绑定html内容 -->
+	<div id="demo2" v-html="text"></div>
+	<script>
+		let demo2=new Vue({
+			el:"#demo2",
+			data:{
+				text:"<h1>张三</h1>"
+			}
+		})
+	</script>
+	
+	<!-- 第三种，使用v-bind绑定属性 -->
+	<!-- v-bind可以简写为: -->
+	<!-- 当属性值为true时才显示，属性值为false时不显示这个属性 -->
+	<div id="demo3">
+		<a  v-bind:title="title" v-bind:href="href">v-bind绑定属性</a>
+		<button :disabled="boolean_true">我是true</button>
+		<button :disabled="boolean_false">我是false</button>
+	</div>
+	<script>
+		let demo3=new Vue({
+			el:'#demo3',
+			data:{
+				title:'使用v-bind绑定属性',
+				href:'http://www.webwuyou.com',
+				boolean_true:true,
+				boolean_false:false
+			}
+		})
+	</script>
+
+	<!-- 支持javascript表达式 -->
+	<!-- 简单的计算可以直接使用表达式，复杂的计算要用computed来进行 -->
+	<div id="demo4">
+		简单计算：{{num*5}} <br>
+		三元运算符：{{ok ? 'yes':'no'}}
+
+	</div>
+	<script>
+		let demo4=new Vue({
+			el:"#demo4",
+			data:{
+				num:3,
+				ok:false
+			}
+		})
+	</script>
+	
+</body>
+</html>
