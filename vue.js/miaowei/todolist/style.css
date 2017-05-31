@@ -1,0 +1,51 @@
+.ls-top {
+        background: #f00;
+        line-height: 40px;
+        color: #fff
+    }
+    
+    .task-list {}
+    
+    .task-list input[type='radio'],
+    .task-list input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+    }
+    
+    .task-list input+label {
+        position: relative;
+        padding-left: 30px;
+    }
+    
+    .task-list input+label:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #c0c0c0;
+        border-radius: 50%;
+    }
+    
+    .task-list input+label:after {
+        position: absolute;
+        display: none;
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        content: '';
+        border-radius: 50%;
+        background: #3e97eb;
+    }
+    
+    .task-list input:checked+label:after {
+        display: block;
+    }
+    
+    .task-list .btn {
+        display: none;
+    }
+    
+    .task-list li:hover .btn{display: block;}

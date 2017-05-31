@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+</head>
+
+<body>
+	<div id="app">
+    <div class="container-fluid ls-top">
+    <div class="container"> <h3>任务计划列表</h3></div>
+       </div>
+    <div class="container main">
+        <div class="container">
+        	<h3>添加任务</h3>
+        <input type="text" 
+               class="form-control" 
+               placeholder="例如：吃饭睡觉打豆豆；    提示：+回车即可添加任务" 
+               v-model="task.taskName"
+               @keyup.enter="addTask"
+               >
+        </div>
+        <div class="container">
+        	<h1></h1>
+        <span class="pull-left">1个任务未完成</span>
+        <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">所有任务</a></li>
+            <li role="presentation"><a href="#">未完成任务</a></li>
+            <li role="presentation"><a href="#">完成的任务</a></li>
+        </ul>
+        </div>
+        <div class="container">
+        	 <h1></h1>
+         <h3>任务列表</h3>
+        <ul class="list-group task-list">
+            <li class="list-group-item" v-for="item in tasks">
+                <input type="checkbox" name="" :id="item.taskId">
+                <label :for="item.taskId">{{item.taskId}}.{{item.taskName}}</label>
+                <button class="btn btn-danger pull-right" @click="deleteTask(item)">删除</button>
+            </li>
+          
+        </ul>
+        <div class="well" v-show="tasks.length==0">任务为空，请添加</div>
+        </div>
+		
+       
+
+
+
+    </div>
+   
+
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if(!window.localStorage){
+            alert('对不起，您的浏览器不支持localStorage，建议使用谷歌浏览器')
+        }else{
+            localStorage["a"]=1;
+            //写入b字段
+            localStorage.b=2;
+            //写入c字段
+            // 推荐使用setItem的方式设置localStorage的值
+            localStorage.setItem("c",'liusai');
+            localStorage.setItem({
+                name:'webwuyou',
+                age:28
+            })
+
+            // localStorage.setItem('key','value')设置key的值为value
+            // localStorageStorage.getItem('key')获取名称为key的值
+
+
+        }
+    </script>
+</body>
+
+</html>
