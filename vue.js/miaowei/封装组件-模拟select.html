@@ -24,24 +24,25 @@
 			props:{
 				btnVal:{
 					type:String,
-					default:'搜索'
+					default:'搜索2'
 				},
 				list:{
+					type:Array
 				}
 			},
 			template:`
 				<div class="select">
 					<input type="text">
 					<input type="button" value="搜索">
-					<custom-list></custom-list>
+					<custom-list :list2="item"></custom-list>
 				</div>
 			`
 		});
 		Vue.component('custom-list',{
-			props:['list'],
+			props:['list2'],
 			template:`
 				<ul>
-					<li v-for="item in list">item</li>
+					<li v-for="item in list2">item</li>
 				</ul>
 			`
 		})
