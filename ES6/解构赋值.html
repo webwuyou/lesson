@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6解构赋值</title>
+</head>
+<body>
+	<script>
+	// 使用一般方法
+		var arr=[1,2,3];
+		var a=arr[0];
+		var b=arr[1];
+		var c=arr[2];
+		console.log(a);//1
+		console.log(b);//2
+		console.log(c);//3
+
+		 
+		// 数组解构赋值
+		var [a,b,c]=[4,5,6];
+		console.log(a);//4
+		console.log(b);//5
+		console.log(c);//6
+
+		// 嵌套
+		var [a,b,[c,d]]=[10,20,[30,40]];
+		console.log(a);//10
+		console.log(b);//20
+		console.log(c);//30
+		console.log(d);//40
+
+		// 不完全解构赋值
+		var [a,b,c]=[1,2];
+		console.log(a);//1
+		console.log(b);//2
+		console.log(c);//undefined
+
+		var [a,b]=[10,20,30];
+		console.log(a);//10
+		console.log(b);//20
+
+		// 设置默认值
+		var [a,b,c=30]=[10,20];
+		console.log(a);//10
+		console.log(b);//20
+		console.log(c);//30
+
+		var [a,b,c=30]=[10,20,40];
+		console.log(a);//10
+		console.log(b);//20
+		console.log(c);//40
+
+		// 对象解构赋值
+		var {a,b,c}={a:'张三',b:"李四",c:'王五'};
+		console.log(a);//张三
+		console.log(b);//李四
+		console.log(c);//王五
+
+		var {a,b,c}={a:'张三',c:'王五',b:'李四'}
+		console.log(a);//张三
+		console.log(b);//李四
+		console.log(c);//王五
+		// 对象的解构赋值不会受到属性的排列位置影响(数组会影响)，他是跟属性名关联的，变量名和属性名要一致，才能赋值成功
+
+		// 因为变量名和属性名不一致，所以结果为undefined
+		var {a,b,c}={aa:'张三',bb:'李四',cc:'王五'}
+		console.log(a);//undefined
+		console.log(b);//undefined
+		console.log(c);//undefined
+
+		// 对象解构赋值嵌套
+		// var {a,{b}} = {"a":11,{"b":1}};
+    	// console.log(b);//结果：b的值为1
+
+		// var {a,b,{c,d}}={a:'张三',b:'李四',{c:'王五',d:'赵六'}}
+		// var {a,b,{c,d}}={aa:'张三',bb:'李四',cc:'王五'}
+		// console.log(a);//张三
+		// console.log(b);//李四
+		// console.log(c);//王五
+		// console.log(d);//王五
+
+		// 对象解构赋值设置默认值
+		var {a,b,c="习大大"}={a:"张三丰",b:'张无忌'}
+		console.log(a);//
+		console.log(b);//
+		console.log(c);//
+
+		// 字符串的解构赋值
+		var [a,b,c,d,e]="前端无忧网"
+		console.log(a);//前
+		console.log(b);//端
+		console.log(c);//无
+		console.log(d);//忧
+		console.log(e);//网
+
+	// 字符串被转换成一个类似数组的对象，变量a,b,c,d,e都分别赋上对应的值
+
+	// 解构赋值应用-交换变量
+
+	// 传统做法，定义一个中间变量
+	var x=10;
+	var y=20;
+	var z=x;
+	x=y;
+	y=z;
+	console.log(x);//20
+	console.log(y);//10
+
+	var x1=10;
+	var y1=20;
+	[x1,y1]=[y1,x1]
+	console.log(x1);//20
+	console.log(y1);//10
+
+	// 解构赋值应用-获取函数返回的多个值
+	function demo(){
+		return {name:'张三',age:21}
+	}
+	var {name,age}=demo();
+	console.log(name);//张三
+	console.log(age);//21
+
+	// 定义函数参数
+	function demo2({a,b,c}){
+		console.log("姓名："+ a);
+		console.log("身高："+ b);
+		console.log("体重："+ c);
+	}
+
+	demo2({a:"张三",b:"1.72m",c:"50kg",d:"8000"})
+
+	// 通过这种写法，可以很方便的获取到json对象中想要的参数，而不需要关心其他的参数
+
+	// 参数的默认值
+	 function demo3(a){
+        var name;
+        if(a === undefined){//判断参数书否是否传值
+       name= "张三"; //没传，赋默认值
+     }else{
+            name= a;
+        }
+        console.log(name);
+    }
+demo3('aa')
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<test></test>
+	</div>
+	<script>
+	// 全局注册组件
+	Vue.component('test',{
+		template:`<div @click="changeVal">{{msg}}</div>`,
+		data(){
+			return {
+				msg:"全局注册组件"
+			}
+		},
+		// 注意，在全局组件只，data必须使用函数的返回值形式
+		methods:{
+			changeVal(){
+				this.msg="全局组件事件触发"
+			}
+		}
+	})
+	// 创建根实例
+		let vm=new Vue({
+			el:'#app',
+
+		})
+	</script>
+</body>
+</html>

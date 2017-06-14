@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装组件-modal</title>
+	<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	.btn{border: none;background: none;}
+		.modal{width: 500px;border: 1px solid #ccc;-webkit-box-shadow: 0 0 10px #ccc;
+		box-shadow: 0 0 10px #ccc;padding: 20px;margin: 30px;}
+		.modal-header{line-height: 40px;border-bottom: 1px solid #ccc;}
+		.modal-content{padding: 20px 0;}
+		.modal-footer{border-top: 1px solid #ccc;padding-top: 20px;text-align: right;}
+		.modal-footer .btn{border-radius: 10px;border: 1px solid #ccc;padding: 5px 15px;margin: 0 10px;}
+		.modal-footer .btn-success{background: #337ab7;color: #fff}
+		.modal-footer .btn-error{background: #f00;color: #fff}
+	</style>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom-modal modal-title="标题" @on-ok="ok1">
+			<div slot="modal-content">1111</div>
+		</custom-modal>
+		<custom-modal>
+			<ul slot="modal-content">
+				<li v-for="item in list">{{item}}</li>
+			</ul>
+			<input slot="modal-footer" type="button" class="btn btn-error" value="取消">
+		</custom-modal>
+		<custom-modal modal-title="标题" @on-cancel="cancel1"></custom-modal>
+	</div>
+	<script>
+		Vue.component('custom-modal',{
+			props:{
+				modalTitle:{
+					type:String,
+					default:'这里是模态框的标题'
+				}
+			},
+			template:`
+				<div class="modal">
+			<div class="modal-header">
+				<h4>{{modalTitle}}</h4>
+			</div>
+			<div class="modal-content">
+				<div>
+					<slot name="modal-content">这里是内容</slot>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<slot name="modal-footer">
+					<input type="button" class="btn btn-success" value="确定" @click="ok">
+					<input type="button" class="btn" value="取消" @click="cancel">
+				</slot>
+			</div>
+		</div>
+			`,
+			methods:{
+				ok(){
+					this.$emit('on-ok')
+				},
+				cancel(){
+					this.$emit('on-cancel')
+				}
+			}
+		});
+		new Vue({
+			el:'#app',
+			data:{
+				list:[...'前端无忧网']
+			},
+			methods:{
+				ok1(){
+					alert("您点击了确定")
+				},
+				cancel1(){
+					alert("您点击了取消")
+				}
+			}
+		})
+	</script>
+</body>
+</html>

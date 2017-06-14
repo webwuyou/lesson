@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装组件-模拟select</title>
+	<style>
+		*{margin: 0;padding: 0;list-style: none;}
+		input,button{background: none;border: none;}
+		.select{margin: 30px;width: 400px;}
+		.select input[type=text]{border: 1px solid #ccc;line-height: 30px;padding: 0 10px;}
+		.select input[type=button]{border: 1px solid #337ab7;background: #337ab7;color: #fff;line-height: 30px;padding: 0 10px;}
+		.select ul{}
+		.select ul li{padding: 0 10px;line-height: 30px;cursor: pointer;}
+	</style>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom-select :list="list1"></custom-select>
+		<custom-select :list="list2"></custom-select>
+	</div>
+	<script>
+		Vue.component("custom-select",{
+			props:{
+				btnVal:{
+					type:String,
+					default:'搜索'
+				},
+				list:{
+				}
+			},
+			template:`
+				<div class="select">
+					<input type="text">
+					<input type="button" value="搜索">
+					<custom-list></custom-list>
+				</div>
+			`
+		});
+		Vue.component('custom-list',{
+			props:['list'],
+			template:`
+				<ul>
+					<li v-for="item in list">item</li>
+				</ul>
+			`
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				list1:["星期一","星期二","星期三","星期四","星期五","星期六","星期天"],
+				list2:['北京','上海','广州','深圳']
+			}
+		})
+	</script>
+</body>
+</html>

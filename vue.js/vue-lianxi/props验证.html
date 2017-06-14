@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom-component :num=count @myevent="rootAdd">
+			<p>{{count}}</p>
+		</custom-component>
+	</div>
+	<script>
+		Vue.component('custom-component',{
+			props:{
+				num:{
+					type:Number,//类型
+					default:0,//没穿参数时的默认值
+					required:true//必填
+				}
+			},
+			data(){
+				return {
+					mycount:this.num
+				}
+			},
+			template:`<div>
+			<slot></slot>
+			<input type="button" value="增加1" @click="add"/>
+			<p>{{mycount}}</p>
+			</div>`,
+			methods:{
+				add(){
+					this.mycount++;
+					this.$emit('myevent')
+				}
+			}
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				count:10
+			},
+			methods:{
+				rootAdd(){
+					this.count++;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

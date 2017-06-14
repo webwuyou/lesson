@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom-component>
+			<div  slot="one">第1个div元素</div>
+			<div slot="two">第2个div元素</div>
+			<div  slot="three">第3个div元素</div>
+		</custom-component>
+	</div>
+	<script>
+		Vue.component('custom-component',{
+			template:`<div>
+				<slot name="one"><p>第1个p元素</p></slot>
+				<slot name="two"><p>第2个p元素</p></slot>
+				<slot name="three"><p>第3个p元素</p></slot>	
+			</div>`
+		})
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

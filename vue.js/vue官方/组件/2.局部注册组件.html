@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<mycomponent></mycomponent>
+	</div>
+	<script>
+		let vm=new Vue({
+			el:"#app",
+			data:{
+				// msg:"局部注册组件"
+			},
+			components:{
+				"mycomponent":{
+					template:`<div @click="componentEvent">{{msg}}</div>`,
+					data(){
+						return {
+							msg:'局部注册组件'
+						}
+					},
+					methods:{
+						componentEvent(){
+							alert('局部注册组件事件')
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
