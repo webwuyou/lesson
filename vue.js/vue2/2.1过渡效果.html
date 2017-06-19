@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2进阶-transition过渡效果</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div>
+		<h2>transition组件的写法</h2>
+		<transition name="box"></transition>
+
+		<h3>transition组件，会在以下四种情况下起作用</h3>
+		1、条件渲染(v-if)
+		2、条件展示(v-show)
+		3、动态组件
+		4、组件根节点
+
+		<h3>vue会自动嗅探目标元素是否应用了css过渡动画，如果是，在恰当的时候添加/删除css类名</h3>
+		<p>1、v-enter：进入过渡效果刚刚开始的那一刻。在元素被插入或者show的时候生效，在下一帧就会立刻移除，一瞬间的事</p>
+		<p>2、v-enter-active：表示进入过渡的结束状态。在元素被插入时生效，在transition/animation完成以后移除</p>
+		<p>3、v-leave：离开过渡开始的那一刻。在离开过渡被触发时生效，在下一帧移除，也是一瞬间的事。</p>
+		<p>4、v-leave-active：离开过渡的结束状态。在离开过渡的结束状态。在离开过渡被触发时生效，在transition/animation完成之后移除</p>
+		
+		<h3>注意：v-enter中的v只是前缀，如果我们<transiton name="box"></transiton>组件的name值为box，那么它实际的class为box-enter</h3>
+		
+		<h3>自定义过渡类名，他们的优先级高于普通的类名</h3>
+		<p>enter-class,enter-active-class,leave-class,leave-active-class</p>
+	</div>
+	<h2>过渡效果实例</h2>
+	<style>
+		button{background: green;border: none;color: #fff;height: 40px;width: 80px;}
+		.container{width: 200px;height: 200px;border: 1px solid #ccc;overflow: hidden;}
+		.container .box{background: #f00;width: 100%;height: 100%;}
+		.box-enter-active, .box-leave-active{transition: all 0.5s}
+		.box-enter{opacity: 0;margin-left: 100%;}
+		.box-leave-active{opacity: 0;margin-left: 100%;}
+
+	</style>
+	<div id="app">
+		<button @click="toggle">切换</button>
+		<div class="container">
+			<transition name=box>
+				<div class="box" v-show="isShow"></div>
+			</transition>
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				isShow:true
+			},
+			methods:{
+				toggle(){
+					this.isShow=!this.isShow;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

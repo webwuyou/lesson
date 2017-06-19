@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text"   placeholder="请输入你的星座" v-model="xingzuo">
+		<button @click="getVal">确定</button>
+		<p v-text="info"></p>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				xingzuo:'',
+				info:''
+			},
+			methods:{
+				getVal(){
+					switch(this.xingzuo){
+						case '水瓶座':
+							this.info="水瓶座运势";
+							break;
+						case '双鱼座':
+							this.info="双鱼座运势";
+							break;
+						case '白羊座':
+							this.info="白羊座运势";
+							break;
+						case '金牛座':
+							this.info="金牛座运势";
+							break;
+						case '双子座':
+							this.info="双子座运势";
+							break;
+						case '巨蟹座':
+							this.info="巨蟹座运势";
+							break;
+						case '狮子座':
+							this.info="狮子座运势";
+							break;
+						case '处女座':
+							this.info="处女座运势";
+							break;
+						case '天枰座':
+							this.info="天枰座运势";
+							break;
+						case '天蝎座':
+							this.info="天蝎座运势";
+							break;
+						case '射手座':
+							this.info="射手座运势";
+							break;
+						case '摩羯座':
+							this.info="摩羯座运势";
+							break;
+						default:
+							this.info='请输入正确的星座';
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

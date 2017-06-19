@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue计算器</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="num1" @keyup="add"> + <input type="text" v-model="num2" @keyup="add"> = <input type="text" :value="sum">
+		<p><button @click="resetVal">清空数据</button></p>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				num1:'',
+				num2:'',
+				sum:''
+			},
+			methods:{
+				add(){
+					this.sum= Number(this.num1)+Number(this.num2)
+				},
+				resetVal(){
+					this.sum=this.num1=this.num2=''
+				}
+			}
+		})
+	</script>
+</body>
+</html>

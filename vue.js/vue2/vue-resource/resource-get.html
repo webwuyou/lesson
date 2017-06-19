@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-resource-post</title>
+	<script src="../js/vue.js"></script>
+	<script src="../js/vue-resource.js"></script>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<thead>
+				<tr>
+					<td>CustomerId</td>
+					<td>CompanyName</td>
+					<td>Contactname</td>
+					<td>Phone</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<button @click="get">get</button>
+	</div>
+	<script>
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				urlapi:'http://211.149.193.19:8080/api/customers'
+			},
+			methods:{
+				get(){
+					this.$http.get(this.urlapi).then((res)=>{
+						alert(res.body)
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

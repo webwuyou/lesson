@@ -1,0 +1,1 @@
+vue-resource get请求成功

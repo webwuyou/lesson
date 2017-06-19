@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+	<script src="../js/vue-resource.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="get">get请求</button>
+		<button @click="post">post请求</button>
+	</div>
+	<script>
+		let vm=new Vue({
+			el:'#app',
+			data:{
+				msg:'hello vue js'
+			},
+			methods:{
+				// 发送get请求
+				get(){
+					this.$http.get('get.txt').then(function(response){
+						alert(response.body)
+					},function(response){
+						alert("对不起，请求失败")
+					})
+				},
+				// 发送post请求并带参数
+				post(){
+					this.$http.post('post.txt',{a:1,b:2,c:3}).then(function(response){
+						alert(response.body)
+					},function(){
+						alert("对不起，请求失败")
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

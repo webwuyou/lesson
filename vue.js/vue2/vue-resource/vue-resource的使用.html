@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-resource</title>
+	<script src="../js/"></script>
+	<script src="../js/vue-resource.js"></script>
+</head>
+<body>
+	<h2>基本语法</h2>
+	<h3>引入vue-resource后，可以基于全局的Vue对象使用http，也可以基于某个Vue实例使用http</h3>
+	<h4>基于全局Vue对象使用http</h4>
+	<p>	Vue.http.get('/someurl',[options]).then(successCallback,errorCallback)</p>	
+	<p>	Vue.http.post('/someurl',[body],[options]).then(successCallback,errorCallback)</p>
+	<h4>在vue实例里使用$http</h4>
+	<p>this.$http.get('/someurl',[options]).then(successCallback,errorCallback)</p>
+	<p>this.$http.post('/someurl',[options]).then(successCallback,errorCallback)</p>
+	<p>在发送请求后，使用then方法来处理响应结果，第一个是响应成功时的回调函数，第二个参数是响应失败时的回调函数。</p>
+
+	<p>回调函数也有两种写法，一种是传统的函数写法，第二种是es6的写法(箭头函数)</p>
+	<div>
+	this.$http.get('someurl',[body],[options]).then(function(response){
+		<!-- 响应成功的回调 -->
+	},function(response){
+		<!-- 响应失败的回调 -->
+	})
+	</div>
+	<div>
+		this.$http.get('someurl',[options]).then((response)=>{
+		<!-- 响应成功的回调 -->
+		},(response)=>{
+			<!-- 响应失败的回调 -->
+		})
+	</div>
+</body>
+</html>

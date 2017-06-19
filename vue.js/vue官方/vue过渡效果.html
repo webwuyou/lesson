@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue过渡效果</title>
+	<style>
+		/*box节点本身的样式*/
+ .box{
+    width:100%;
+    height:100%;
+    text-align: center;
+    line-height: 200px;
+    background: #ff8282;
+    color: #Fff;
+    /*以下两个默认值，可不写*/
+    /*写上只是为了便于讲解，记住这两个*/
+    opacity: 1;
+    margin-left: 0;
+ }
+ .box-enter-active,.box-leave-active{
+    transition: all .8s;
+ }
+ .box-enter{
+    opacity: 0;
+    margin-left: 100%;
+ }
+ .box-leave-active{
+    opacity: 0;
+    margin-left: 100%;
+ }
+ 
+		
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<!-- 单元素/组件的过渡效果 -->
+	<div id="app">
+	<!-- vue的transition组件 -->
+	
+		<button  @click="seen=!seen">toggle</button>
+		<transition name="box">
+		<p v-show="seen">hello</p>
+		</transition>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				seen:true
+			}
+		})
+	</script>
+</body>
+</html>

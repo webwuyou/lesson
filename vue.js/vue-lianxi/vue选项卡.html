@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		.tab{width: 300px;border: 1px solid #ccc;margin: 30px auto;}
+		.title{background: #ccc;line-height: 40px;width: 100%;overflow: hidden;}
+		.title span{float: left;width: 100px;text-align: center;cursor: pointer;}
+		.title span.active{background: green;color: #fff}
+		.content{height: 100px;text-align: center;padding: 30px;}
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="tab">
+			<div class="title">
+				<span :class="{active:showItem=='tab1'}" @click="changeTab('tab1')">项目1</span>
+				<span :class="{active:showItem=='tab2'}" @click="changeTab('tab2')">项目2</span>
+				<span :class="{active:showItem=='tab3'}" @click="changeTab('tab3')">项目3</span>
+			</div>
+			<div class="content">
+				<div v-show="showItem=='tab1'">111</div>
+				<div v-show="showItem=='tab2'">222</div>
+				<div v-show="showItem=='tab3'">333</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				showItem:'tab1'
+			},
+			methods:{
+				changeTab(inx){
+					this.showItem=inx;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
