@@ -3,6 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>vue-resource-post</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#app{width: 800px;margin: 30px auto;}
+		table,td{border: 1px solid #ccc;border-collapse: collapse;}
+		table{width: 800px;}
+		thead{background: green;color: #fff}
+		td{line-height: 40px;text-align: center;}
+		button{margin: 30px auto;}
+	</style>
 	<script src="../js/vue.js"></script>
 	<script src="../js/vue-resource.js"></script>
 </head>
@@ -11,33 +20,37 @@
 		<table>
 			<thead>
 				<tr>
-					<td>CustomerId</td>
-					<td>CompanyName</td>
-					<td>Contactname</td>
-					<td>Phone</td>
+					<td v-for="title in titles">{{title}}</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<!-- <tr v-for="(item,index) in dataList">
+					<td>{{index}}</td>
+					<td>{{item.companyName}}</td>
+					<td>{{item.contactName}}</td>
+					<td>{{item.phone}}</td>
+				</tr> -->
 			</tbody>
 		</table>
-		<button @click="get">get</button>
+		<button @click="get">get获取</button>
 	</div>
 	<script>
 		let vm=new Vue({
 			el:'#app',
 			data:{
-				urlapi:'http://211.149.193.19:8080/api/customers'
+				titles:['id', 'name', 'author', 'price','time'],
+				dataList:{}
+			},
+			mounted:function(){
+				this.get()
 			},
 			methods:{
 				get(){
-					this.$http.get(this.urlapi).then((res)=>{
-						alert(res.body)
+					that=this;
+					this.$http.get('book.json').then((res)=>{
+						this.$set('dataList',res)
+						// that.dataList=JSON.parse(res.body);
+						console.log(this.dataList)
 					})
 				}
 			}
