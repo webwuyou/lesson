@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<abc></abc>
+		<div class="abc"></div>
+		<div id="abc"></div>
+	</div>
+	<script>
+		var myextend=Vue.extend({
+			template:`<div>propsData选项主要用在全局拓展里面进行数据传递-{{name}}</div>`,
+			props:['name']
+		});
+		new myextend({propsData:{name:"vue.js"}}).$mount("abc");//挂载到标签或者元素上，可以.class或者#id形式
+		// 通过propsData传参
+	</script>
+</body>
+</html>

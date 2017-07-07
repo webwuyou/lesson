@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<p>Mixins一般有两种用途：</p>
+<p>1、在你已经写好了构造器以后，需要增加方法或者临时使用的方法，这时使用Mixins混入会减少源代码的污染</p>
+<p>2、很多地方都会用到的公共方法，用Mixins混入可以减少代码量，实现代码重用</p>
+	<div id="app">
+		<p>num：{{num}}</p>
+		<button @click="add">add</button>
+	</div>
+	<script>
+	// 临时加入一个方法
+	var addLog={
+			// 其实就是生命周期的钩子函数
+            updated:function(){
+                console.log("数据放生变化,变化成"+this.num+".");
+            }
+        }
+		new Vue({
+			el:'#app',
+			data:{
+				num:10
+			},
+			methods:{
+				add(){
+					this.num++
+				}
+			},
+			mixins:[addLog],
+
+			// mixins的调用顺序
+			// 混入的先执行，然后构造器里的再执行，这并不是方法的覆盖，而是执行了两遍
+			updated:function(){
+				console.log("构造器里的updated法法")
+			}
+		})
+
+		// 全局混入方式
+		// 可以定义全局的混入，在需要这段代码的地方直接引用js，就可以拥有这个功能了
+		Vue.mixin({
+			updated:function(){
+				console.log("全局混入")
+			}
+		})
+	</script>
+</body>
+</html>

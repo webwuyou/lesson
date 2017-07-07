@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>今天温度：{{wendu}}</p>
+		<p>穿衣指数：{{chuanyi}}</p>
+		<p><button @click="add">增加温度</button> <button @click="min">降低温度</button></p>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				wendu:15,
+				chuanyi:"天气微凉，要记得穿长袖"
+			},
+			methods:{
+				add:function(){
+					this.wendu+=2
+				},
+				min:function(){
+					this.wendu-=2;
+				}
+			},
+			watch:{
+				// 监控的是wendu值
+				wendu:function(newVal,oldVal){
+					if(this.wendu>=25){
+						this.chuanyi="天气热了，可以穿短袖了"
+					}else if(this.wendu<25&&this.wendu>0){
+						this.chuanyi="天气微凉，要记得穿长袖"
+					}else{
+						this.chuanyi="天气太冷了，要穿羽绒服"
+					}		
+				}
+			}
+		})
+	</script>
+	<div id="app2">
+		<p>今天温度：{{wendu}}</p>
+		<p>穿衣指数：{{chuanyi}}</p>
+		<p><button @click="add">增加温度</button> <button @click="min">降低温度</button></p>
+	</div>
+	<script>
+	var chuanyi=["天气太冷了，要穿羽绒服","天气微凉，要记得穿长袖","天气热了，可以穿短袖了"];
+		var app=new Vue({
+			el:'#app2',
+			data:{
+				wendu:15,
+				chuanyi:chuanyi[1]
+			},
+			methods:{
+				add:function(){
+					this.wendu+=2
+				},
+				min:function(){
+					this.wendu-=2;
+				}
+			}
+		});
+		// 通过实例属性来添加watch监控
+		app.$watch('wendu',function(){
+			if(this.wendu>=25){
+				this.chuanyi=chuanyi[2]
+			}else if(this.wendu<25&&this.wendu>0){
+				this.chuanyi=chuanyi[1]
+			}else{
+				this.chuanyi=chuanyi[0]
+			}	
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{msg}}
+		<p><button @click="add">add</button></p>
+		<p><button @click="add2">add</button></p>
+	</div>
+	<script>
+	// extends通过外部增加对象的形式，对构造器进行拓展，和Mixins混入非常类似
+	var addMethod={
+		created:function(){
+			console.log("我是被拓展出来的")
+		},
+		methods:{
+			add2(){
+				console.log("我是拓展出来的方法")
+			}
+		}
+	}
+		var app=new Vue({
+			el:'#app',
+			data:{
+				msg:"hello vue"
+			},
+			methods:{
+				add:function(){
+					console.log("我是原生方法")
+				}
+			},
+			extends:addMethod
+		})
+	</script>
+</body>
+</html>

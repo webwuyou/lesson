@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		${msg}
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				msg:"hello vue"
+			},
+			// delimiters的作用是改变插值的符号，默认是{{}}，改造之后就变成${}
+			delimiters:['${','}']
+		})
+	</script>
+</body>
+</html>

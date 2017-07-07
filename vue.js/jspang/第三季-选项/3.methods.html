@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>methods Option</title>
+</head>
+<body>
+    <h1>methods Option</h1>
+    <hr>
+    <div id="app">
+        {{ a }}
+        <p><button @click="add(5)">add</button></p>
+    </div>
+ 	<!-- 传递参数 -->
+    <script type="text/javascript">
+        var app=new Vue({
+            el:'#app',
+            data:{
+                a:1
+            },
+            methods:{
+            	// methods中传递参数
+                add:function(num){
+                    if(arguments.length!=0){this.a+=num}
+                    else{
+                    	this.a++
+                    }
+                }
+            }
+        })
+    </script>
+    <div id="app2">
+    	<p>{{num}}</p>
+    	<button @click="add">add</button>
+    </div>
+    <script>
+    // methods中的$event参数
+    	new Vue({
+    		el:'#app2',
+    		data:{
+    			num:1
+    		},
+    		methods:{
+    			add(event){
+    				console.log(event)
+    				this.num++
+    			}
+    		}
+    	})
+    </script>
+    <div id="app3">
+    {{num}}
+    	<p><btncomponent @click.native="add"></btncomponent></p>
+    </div>
+    <button onclick="app.add()">作用域外部调用构造器里的方法</button>
+    <script>
+    // 给组件绑定构造器里的事件
+    	var app=new Vue({
+    		el:"#app3",
+    		data:{
+    			num:1
+    		},
+    		components:{
+    			btncomponent:{
+    				template:`<button>btn组件</button>`,
+    			}
+    		},
+    		methods:{
+    			add(){
+    				this.num++
+    			}
+    		}
+
+    	})
+    </script>
+</body>
+</html>
