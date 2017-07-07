@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<p>{{num}}</p>
+		<button @click="add">加1</button>
+	</div>
+	<button onclick="destroy()">销毁</button>
+	<script>
+		function destroy(){
+			app.$destroy()
+		};
+
+		var app=new Vue({
+			el:'#app',
+			data:{
+				num:10
+			},
+			methods:{
+				add:function(){
+					this.num++;
+				}
+			},
+			beforeCreate:function(){
+				console.log('1-beforeCreate 初始化之后')
+			},
+			created:function(){
+				console.log('2-created 创建完成')
+			},
+			beforeMount:function(){
+				console.log('3-beforeMount 挂载之前')
+			},
+			mounted:function(){
+				console.log('4-mounted 挂载完成，被创建')
+			},
+			beforeUpdate:function(){
+				console.log('5-beforeUpdate 数据更新前')
+			},
+			updated:function(){
+				console.log('6-updated 数据更新后 ')
+			},
+			beforeDestroy:function(){
+				console.log('7-beforeDestroy 销毁之前')
+			},
+			destroyed:function(){
+				console.log('8-destroy 销毁之后')
+			}
+		})
+	</script>
+</body>
+</html>

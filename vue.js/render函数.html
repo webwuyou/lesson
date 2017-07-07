@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>render函数</title>
+	<script src="js/vue.js"></script>
+	<style type="text/css">
+	.red{background: red;}
+	</style>
+</head>
+<body>
+	<div id="app">
+	<h1>vue js</h1>
+	</div>
+	<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+
+		},
+		render(creatElement){
+			// 第一个参数，标签名
+			// 第二个参数，数据对象，元素上的class，id，style等，可选
+			// 第三个参数，子元素
+			return creatElement(
+				"ul",
+				{	
+					// 和v-bind里面绑定的属性一样
+					class:{
+						red:true
+					},
+					style:{
+						fontSize:'30px',
+						color:'#fff'
+					},
+					// 添加自定义属性
+					attrs:{
+						abc:'webwuyou'
+					},
+					domProps:{
+						innerHTML:'<li>通过domProps添加内容，优先级高</li>'
+					}
+				},
+				[
+					creatElement("li",1),
+					creatElement("li",2),
+					creatElement("li",3),
+					creatElement("li",4)
+				]
+			)
+		}
+	})
+	</script>
+</body>
+</html>

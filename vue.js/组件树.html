@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<my-header></my-header>
+	</div>
+	<script type="text/javascript">
+	// 全局注册组件
+	// Vue.component('my-header',{
+	// 	template:'<p>this is my header</p>'
+	// })
+	var myHeaderChild={
+		template:'<p>this is my header child</p>'
+	}
+	var myHeader={
+		template:'<p>this is my header <my-header-child></my-header-child></p>',
+		components:{
+			'my-header-child':myHeaderChild
+		}
+	}
+	new Vue({
+		el:'#app',
+		data:{
+
+		},
+		// 局部注册组件
+		components:{
+			'my-header':myHeader
+		}
+	})
+	</script>
+</body>
+</html>

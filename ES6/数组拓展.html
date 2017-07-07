@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#div{width: 100px;height: 50.5px;background: #f00;}
+	</style>
+</head>
+<body>
+<div id="div"></div>
+	<h2>Array.of将一组值转化为数组</h2>
+	<script>
+		var arr1=Array.of(1,2,3,4,5)
+		console.log(arr1);//[1,2,3,4,5];
+		console.log(Array.of('a','b','c','d','e'));//['a','b','c','d','e']
+
+		// Array.of类似于Array构造函数
+		// var arr2=new Array(43,'fd',98)
+		// console.log(arr2)
+	</script>
+
+	<h2>Array.from</h2>
+	<p>将类似数组的</p>
+
+
+	<h2>find()找出数组中符合条件的第一个元素</h2>
+	<p>find()函数的参数是个匿名函数，数组中的每个元素都会进入匿名函数执行，直到结果为true。若所有元素都不符合匿名函数的条件，find()函数就会返回undefind</p>
+	<script>
+		var arr3=[10,20,30,40]
+		console.log(arr3.find(function(value){
+			return value>20;//30
+		}))
+		arr3.find(function(value){
+			return value>50;//undefind
+		})
+	</script>
+
+	<h2>findIndex()返回符合条件的第一个元素的下标</h2>
+	<script>
+		var arr4=[10,20,30,40]
+		console.log(
+			arr4.findIndex(function(value){
+				return value>20;//返回2，30的下标为2
+			})
+			)
+	</script>
+</body>
+</html>

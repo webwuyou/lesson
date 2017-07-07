@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom-list :detail="list" @myevent="dialog2"></custom-list>
+	</div>
+	<script type="text/javascript">
+	Vue.component('custom-list',{
+		props:['detail'],
+		template:`
+		<ul>
+		<li v-for="item in detail" @click="dialog(item)">{{item}}</li>
+		</ul>
+		`,
+		methods:{
+			dialog(a){
+				this.$emit('myevent',a)
+			}
+		}
+	})
+	new Vue({
+		el:'#app',
+		data:{
+			msg:'我是父组件的数据',
+			list:[1,2,3,4,5,6]
+		},
+		methods:{
+			dialog2(value){
+				alert('我被触发了，值为：'+value)
+			}
+		}
+	})
+	</script>
+</body>
+</html>

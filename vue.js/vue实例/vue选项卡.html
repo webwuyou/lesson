@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	.tab{width: 400px;margin: 50px auto;border: 1px solid #ccc;}
+	.tab .title{width: 100%;background: #ccc;line-height: 40px;overflow: hidden;}
+	.tab .title span{width:25%;text-align: center;cursor: pointer;float: left;}
+	.tab .title span.active{background: #f00;color: #fff;}
+	.content{text-align: center;height: 200px;padding: 30px;}
+	</style>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="tab">
+			<div class="title">
+				<span :class="{active:s
+				howItem=='tab1'}" @click="changeTab('tab1')">项目1</span>
+				<span :class="{active:showItem=='tab2'}" @click="changeTab('tab2')">项目2</span>
+				<span :class="{active:showItem=='tab3'}" @click="changeTab('tab3')">项目3</span>
+				<span :class="{active:showItem=='tab4'}" @click="changeTab('tab4')">项目4</span>
+			</div>
+			<div class="content">
+				<div v-show="showItem=='tab1'">内容111</div>
+				<div v-show="showItem=='tab2'">内容222</div>
+				<div v-show="showItem=='tab3'">内容333</div>
+				<div v-show="showItem=='tab4'">内容444</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			showItem:'tab1'
+		},
+		methods:{
+			changeTab(str){
+				this.showItem=str;
+			}
+		}
+	})
+	</script>
+</body>
+</html>

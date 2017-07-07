@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<author></author>
+	<div class="demo1"></div>
+	<div id="demo2"></div>
+	<script type="text/javascript">
+	var myExtend=Vue.extend({
+		template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+		data:function(){
+			return {
+				authorName:"liusai",
+				authorUrl:"http://www.webwuyou.com"
+			}
+		}
+	});
+
+	new myExtend().$mount('author');
+	new myExtend().$mount(".demo1");
+	new myExtend().$mount('#demo2')
+	</script>
+</body>
+</html>

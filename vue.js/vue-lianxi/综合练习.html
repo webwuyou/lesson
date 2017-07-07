@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-for="a in list">{{a}}</p>
+		<p>{{msg}}</p>
+		<input type="text" v-model.number="txt">
+		<p>{{txt}}</p>
+
+		<ol>
+			<todo-item :todo="item" v-for="item in food">
+				dswdw
+			</todo-item>
+		</ol>
+		<!-- 过滤器 -->
+		<p>{{filter| firstUpperCase}}</p>
+		<p>{{filter.split('').reverse().join('') | firstUpperCase}}</p>
+		
+		<div :style="{color:'red','font-size':'24px',transform:'rotate(360deg)'}">v-bind style</div>
+
+		<p>v-if</p>
+		<div v-if="type=='A'">A</div>
+		<div v-else-if="type=='B'">B</div>
+		<div v-else-if="type=='C'">C</div>
+		<div v-else>其他</div>
+
+		<p>template v-if</p>
+		<div>默认情况下，切换login后，用户输入的内容会被保留</div>		
+		<div>可以添加key值，让每次输入时，输入框都重新渲染</div>
+		<div>
+			<template v-if="login">
+				<label for="">username</label>
+				<input type="text" key="username-input">
+			</template>
+			<template v-else>
+				<label for="">email</label>
+				<input type="text" key="email-input">
+			</template>
+			<button @click="changeLogin">toggle login</button>
+		</div>
+	
+	<p>v-show不支持template形式语法</p>
+	<p>v-if和v-for一起使用时，v-for有更高的优先级</p>
+
+	<div v-for="item in arrArray">{{item}}</div>
+	</div>
+	<script>
+		Vue.component('todo-item',{
+			props:['todo'],
+			template:'<li>{{todo.text}}</li>'
+		});
+		let vm=new Vue({
+			el:"#app",
+			data:{
+				list:[...'前端无忧网'],
+				msg:'前端无忧网',
+				txt:'',
+				food:[
+					{text:'蔬菜'},
+					{text:'奶酪'},
+					{text:'水果'}
+				],
+				filter:"get-element-by-id",
+				type:'A',
+				login:true,
+				arrArray:[1,2,63,4,78,43,33],
+			},
+			methods:{
+				changeLogin(){
+					this.login=!this.login;
+				}
+			},
+			filters:{
+				firstUpperCase:function(val){
+					return val.charAt(0).toUpperCase()+val.substring('1')
+				},
+				now(){
+					return new Date();
+				},
+			}
+		})
+	</script>
+</body>
+</html>

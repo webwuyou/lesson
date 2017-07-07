@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	#app{width: 800px;margin: 20px auto;}
+	table,td{border: 1px solid #ccc;border-collapse: collapse;text-align: center;line-height: 40px;}
+	table{width: 800px;margin: 20px auto;}
+	fieldset{padding: 30px;}
+	fieldset p{line-height: 40px;}
+	</style>
+	<script src="../js/vue.js"></script>	
+</head>
+<body>
+	<div id="app">
+	<table>
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>书名</td>
+				<td>作者</td>
+				<td>价格</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="(book,index) in books">
+				<td>{{book.id}}</td>
+				<td>{{book.name}}</td>
+				<td>{{book.author}}</td>
+				<td>{{book.price}}</td>
+				<td><button @click="delBook(index)">删除</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<fieldset>
+	<legend>新增图书</legend>
+	<p>书名：<input type="text" v-model="newBook.name" placeholder="请输入书名"></p>
+	<p>作者：<input type="text" v-model="newBook.author"></p>
+	<p>价格：<input type="text" v-model="newBook.price"></p>
+	<p><button @click="addBook">提交</button></p>
+	</fieldset>
+	</div>
+	<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+			books:[
+				{
+					id:1,
+					name:'红楼梦',
+					author:'曹雪芹',
+					price:'82.89'
+				},
+				{
+					id:2,
+					name:'西游记',
+					author:'吴承恩',
+					price:'38.5'
+				},
+				{
+					id:3,
+					name:'水浒传',
+					author:'施耐奄',
+					price:'54.7'
+				},
+				{
+					id:4,
+					name:'三国演义',
+					author:'罗贯中',
+					price:'29.43'
+				}
+			],
+			newBook:{
+				id:0,
+				name:'',
+				author:'',
+				price:'0'
+			}
+		},
+		methods:{
+			delBook(ind){
+				this.books.splice(ind,1)
+			},
+			addBook(){
+				this.newBook.id=this.books.length+1;
+				this.books.push(this.newBook);
+				this.newBook={}
+			}
+		}
+	})
+	</script>
+</body>
+</html>

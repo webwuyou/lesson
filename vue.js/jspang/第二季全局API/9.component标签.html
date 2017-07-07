@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<!-- 注意，component是vue提供的固有标签 -->
+	<!-- 使用component标签可以切换不同的组件显示 -->
+		<component :is="name"></component>
+		<component-a></component-a>	
+		<component-b></component-b>	
+		<component-c></component-c>	
+		<button @click="change">切换组件</button>
+	</div>
+	<script type="text/javascript">
+	// 可以在vue实例外定义好组件需要的内容
+	var componentA={
+		template:`<div style="color:red">I'm componentA</div>`
+	};
+	var componentB={
+		template:`<div style="color:blue">I'm componentB</div>`
+	};
+	var componentC={
+		template:`<div style="color:green">I'm componentC</div>`
+	}
+	new Vue({
+		el:'#app',
+		data:{
+			name:"componentA"
+		},
+		components:{
+			"componentA":componentA,
+			"componentB":componentB,
+			"componentC":componentC
+		},
+		methods:{
+			change(){
+				if(this.name=="componentA"){
+					this.name="componentB"
+				}else if(this.name=="componentB"){
+					this.name="componentC"
+				}else{
+					this.name="componentA"
+				}
+			}
+		}
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>props验证</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<custom-component :count="count"></custom-component>
+	</div>
+	<script>
+	Vue.component('custom-component',{
+		props:{
+			count:{
+				// type:Number,//参数类型必须是数字
+				// type:[Number,String],//参数可以是数字和字符串
+				// type的值：Number String Boolean Function Object
+				// default:"默认值",
+				// required:true,
+				// 自定义验证规则
+				validator:function(value){
+					console.log(value)
+					// 这里的value就是count
+					// value>10才能通过验证
+					return value>10
+				}
+			}
+		},
+		data(){
+			return {
+				num:this.count
+			}
+		},
+		template:`<div>
+		<h1>props验证</h1>
+		<input type="button" value="增加1" @click="add" />
+		{{num}}
+		</div>`,
+		methods:{
+			add(){
+				this.num++;
+			}
+		}
+	})
+	new Vue({
+		el:'#app',
+		data:{
+			count:0
+		}
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{msg}}
+		<p><my-component></my-component></p>
+		<component2></component2>
+	</div>
+	<script>
+	// 组件名定义时可以使用驼峰和烤串形式，但是使用时只能使用烤串形式
+		Vue.component('my-component',{
+			template:'<div>全局注册组件</div>'
+		})
+		let app=new Vue({
+			el:'#app',
+			data:{
+				msg:'component组件'
+			},
+			components:{
+				component2:{
+					template:'<div>局部注册组件</div>'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

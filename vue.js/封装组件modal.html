@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<!-- 注意，自定义属性名定义的时候用驼峰形式，使用的时候用烤串形式 -->
+	<custom-modal modal-title=""></custom-modal>
+	</div>
+	<script type="text/javascript">
+		Vue.component('custom-modal',{
+			props:{
+				modalTitle:{
+					type:String,
+					default:'这里是标题'
+				}
+			},
+			template:`<div class="mymodal panel panel-prima	ry">
+		<div class="panel-head">
+		<h4>{{modalTitle}}</h4>
+		</div>
+		<div class="panel-body">
+			<div>
+			在这里添加内容
+			</div>
+		</div>
+		<div class="panel-footer">
+		<button class="btn btn-primary">确定</button>
+		<button class="btn btn-default">取消</button>
+		</div>
+	</div>`,
+		});
+		let vm=new Vue({
+			el:"#app",
+			data:{
+
+			}
+		})
+	</script>
+</body>
+</html>

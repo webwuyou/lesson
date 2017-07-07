@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 
+</head>
+<body>
+单项数据流：数据从父组件传递给子组件，只能单向绑定，在子组件内部不应该修改父组件传递过来的数据。
+如果要改的话，可以把这个数据作为data中的初始值，或者用计算属性
+	<div id="app">
+	<!-- 在父组件中也使用count -->
+		<p>{{count}}</p>
+		<custom-component :a="count" @myevent="add3"></custom-component>
+	</div>
+	<script type="text/javascript">
+	// 全局组件
+	Vue.component('custom-component',{
+		props:['a'],
+		data(){
+			return {
+				num:this.a
+			}
+		},
+		computed:{
+			add2(){
+				return this.num;
+			}
+		},
+		template:`
+			<div>
+			<h2>我是一个自定义组件</h2>
+			<input type="button" value="修改count的值" @click="add" />
+			{{add2}}
+			</div>
+		`,
+		methods:{
+			add(){
+				this.num++;
+				//要通知父组件发生了改变
+				this.$emit('myevent')
+			}
+		}
+	})
+	let vm=new Vue({
+		el:'#app',
+		data:{
+			count:0
+		},
+		methods:{
+			add3(){
+				// alert("子组件点击了");
+				this.count++;
+			}
+		}
+	})
+	</script>
+</body>
+</html>

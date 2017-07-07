@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-component :name="name"></my-component>
+		<component2></component2>
+	</div>
+	<script type="text/javascript">
+		Vue.component('my-component',{
+			props:['name'],
+			template:'<div>全局注册组件的作者是{{name}}</div>'
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				name:"刘赛2"
+			},
+			components:{
+				"component2":{
+					template:"<div>局部注册组件</div>"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

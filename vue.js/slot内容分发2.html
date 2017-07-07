@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom-component>
+		<div>我是div元素</div>
+		<!-- 直接在这里写的内容都会被覆盖 -->
+		</custom-component>
+	</div>
+	<script type="text/javascript">
+	Vue.component('custom-component',{
+		template:`
+			<div>
+				
+					<slot>
+					<p>我是第1个P元素</p>
+					<p>我是第2个P元素</p>
+					<p>我是第3个P元素</p>
+					</slot>
+
+			</div>
+		`
+	})
+	new Vue({
+		el:'#app',
+		data:{
+
+		}
+	})
+	</script>
+</body>
+</html>

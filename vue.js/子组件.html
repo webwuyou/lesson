@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	input{border-radius: 20px;background: none;border: none;}
+	input[type="text"]{background: #ccc;width: 100%;margin-right: -80px;padding: 10px 0;float: left;}
+	ul,li{list-style-type: none;line-height: 24px;}
+	ul{padding-left: 30px;}
+	.selecct{background: #f5f5f5;width: 500px;margin: 40px auto;}
+	input[type="button"]{background: #f90;color: #fff;width: 80px;padding: 10px 0;float: right;}
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+
+	<div id="app">
+	<!-- 元素限制，比如ul里面必须放li，select里面必须放option，table里面必须放tr，td -->
+		<h2>第1个下拉框</h2>
+		<!-- 如果直接这样使用，custom-select会解析到table的外面 -->
+		<table><custom-select btn-value="搜索" :list="list1"></custom-select></table>
+	<h1>dd</h1>
+		<table>
+		<!-- 自定义属性名使用的时候必须是烤串形式 -->
+		<tr is="custom-select" btn-value="查询" :list="list2"></tr>
+		</table>
+		<!-- is="组件名" -->
+		<!-- 通过这种形式可以强制自定义组件放到table里面 -->
+		
+		
+	</div>
+	<script type="text/javascript">
+
+	
+
+	// 全局注册组件
+	// 注册组件的时候，组件名可以是驼峰形式的，也可以是烤串形式的
+	Vue.component('custom-select',{
+		// data:{
+		// 	selectShow:false
+		// },
+		// 组件里面的data必须用函数的形式	返回对象
+		data(){
+			return {
+				selectShow:false,
+				val:'2',
+			}
+		},
+		// props自定义属性名必须驼峰形式
+		props:['btnValue','list'],
+		template:`<div class="selecct">
+			<div>
+				<input type="text" @click="selectShow=!selectShow" :value="val">
+				<input type="button" :value="btnValue">
+			</div>
+			<custom-list v-show="selectShow" :list11="list"></custom-list>
+		</div>`
+	});
+	Vue.component('custom-list',{
+		props:['list11'],
+		template:`<ul>
+				<li v-for="item in list11" @click="selectValue(item)">{{item}}</li>
+			</ul>`,
+			methods:{
+				selectValue(item){
+					// 在子组件中点击了li，将li的值放在父组件的input里面
+					// 通过自定义事件
+				}
+			}
+	});
+
+	new Vue({
+		el:'#app',
+		data:{
+			list1:['html5','css3','javascript','jquery','vue.js'],
+			list2:['星期一','星期二','星期三','星期四','星期五',]
+		}
+	})
+	</script>
+</body>
+</html>

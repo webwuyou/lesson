@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	input{border-radius: 20px;background: none;border: none;}
+	input[type="text"]{background: #ccc;width: 100%;margin-right: -80px;padding: 10px 0;float: left;}
+	ul,li{list-style-type: none;line-height: 24px;}
+	ul{padding-left: 30px;}
+	.selecct{background: #f5f5f5;width: 500px;margin: 40px auto;}
+	input[type="button"]{background: #f90;color: #fff;width: 80px;padding: 10px 0;float: right;}
+	</style>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+
+	<div id="app">
+		<h2>第1个下拉框</h2>
+
+		<!-- 使用组件时，组件名必须是烤串形式的 -->
+		<custom-select btn-value="查询"></custom-select>
+		<h2>第2个下拉框</h2>
+		<!-- 使用自定义属性名必须是烤串形式 -->
+		<custom-select btn-value="搜索"></custom-select>
+	</div>
+	<script type="text/javascript">
+	// 全局注册组件
+	// 注册组件的时候，组件名可以是驼峰形式的，也可以是烤串形式的
+	Vue.component('custom-select',{
+		// data:{
+		// 	selectShow:false
+		// },
+		// 组件里面的data必须用函数的形式	返回对象
+		data(){
+			return {
+				selectShow:false
+			}
+		},
+		// props自定义属性名必须驼峰形式
+		props:['btnValue'],
+		template:`<div class="selecct">
+			<div>
+				<input type="text" @click="selectShow=!selectShow">
+				<input type="button" :value="btnValue">
+			</div>
+			<ul v-show="selectShow">
+				<li>001</li>
+				<li>002</li>
+				<li>003</li>
+				<li>004</li>
+				<li>005</li>
+			</ul>
+		</div>`
+	});
+	new Vue({
+		el:'#app',
+		data:{
+
+		}
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-focus>
+	</div>
+	<script>
+	// 注册全局指令v-focus
+		Vue.directive('focus',{
+			inserted:function(el){
+				// 获得焦点
+				el.focus()
+			}
+		});
+
+		new Vue({
+			el:'#app',
+			data:{
+				msg:"aa"
+			}
+		})
+	</script>
+<p></p>
+	<div id="app2">
+		<input type="text" v-radius>
+	</div>
+	<script>
+		new Vue({
+			el:"#app2",
+			data:{
+
+			},
+			// 注册局部指令
+			directives:{
+				'radius':{
+					inserted:function(el){
+						el.focus();
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

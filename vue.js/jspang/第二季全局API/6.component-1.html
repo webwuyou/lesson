@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+		<component2></component2>
+	</div>
+	<script type="text/javascript">
+		// 注册组件的时候，可以使用驼峰和烤串形式，使用组件的时候，只能使用烤串形式
+		// 组件模板里面只能有一个根元素
+		Vue.component('my-component',{
+			template:'<div>全局注册组件</div>'
+		})
+		new Vue({
+			el:'#app',
+			components:{
+				"component2":{
+					template:"<div>局部注册组件</div>"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

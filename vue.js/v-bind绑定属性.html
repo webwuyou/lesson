@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<img :src="src">
+	<p>图片名称</p>
+	</div>
+	<script type="text/javascript">
+	var app=new Vue({
+		el:'#app',
+		data:{
+			src:'http://img.idyjy.com/pic/uploadimg/2016-5/13977.jpg'
+		}
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-my-directive="color">{{num}}</p>
+		<button @click="add">加1</button>
+	</div>
+	<button onclick="unbind()">使用原生js解绑</button>
+	<script>
+		function unbind(){
+			app.$destroy();//解绑
+		}
+		// 简写方式
+		/**
+		Vue.directive('my-directive',function(el,binding,vnode){
+			console.log(el);
+			console.log(binding);
+			console.log(binding.name);//my-direction
+			console.log(binding.value);//red
+			console.log(binding.expression);//color
+			console.log(vnode);
+			el.style.color=binding.value
+		})
+		**/
+		Vue.directive('my-directive',{
+			bind:function(){
+				console.log(`1-bind 只调用一次，指令第一次绑定到元素上时调用。`)
+			},
+			inserted:function(){
+				console.log(`2-inserted 被绑定的元素插入父节点时调用（父节点存在即可调用，不必存在于document中）`)
+			},
+			update:function(){
+				console.log(`3-update 被绑定元素所在的模板更新时调用`)
+			},
+			componentUpdated:function(){
+				console.log(`4-componentUpdated 完成更新时调用`)
+			},
+			unbind:function(){
+				console.log(`5-unbind 解绑时调用`)
+			}
+		})
+		var app=new Vue({
+			el:"#app",
+			data:{
+				num:10,
+				color:'red'
+			},
+			methods:{
+				add(){
+					this.num++
+				}
+			}
+		})
+	</script>
+</body>
+</html>

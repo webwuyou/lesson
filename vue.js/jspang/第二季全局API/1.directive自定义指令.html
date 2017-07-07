@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<p v-color="color">{{num}}</p>
+	<button @click='add'>加1</button>
+	</div>
+	<p><button onclick="unbind()">解绑</button></p>
+	<script type="text/javascript">
+	// 使用js来解绑vue
+	function unbind(){
+		app.$destroy();
+	}
+
+	// 定义自定义指令的时候不需要加v-
+	Vue.directive('color',{
+		// 钩子函数
+		bind:function(){
+			// 被绑定时调用，初始化
+			// 只调用一次，指令第一次绑定到元素时调用
+			console.log("1-bind")
+		},
+		inserted:function(el,binding,vnode){
+			console.log('2-inserted')
+			console.log(el);
+			console.log(binding);
+			// 常用的binding的属性
+			console.log(binding.name);//指令名称color
+			console.log(binding.value);//指令的值，red
+			console.log(binding.expression);//表达式的值，color
+			console.log(vnode)
+			el.style.color=binding.value;
+			// 绑定到节点时调用
+			// 被绑定元素插入父节点时调用，（父节点存在即可调用，不必存在于document中）
+		},
+		update:function(){
+			// 被绑定的元素所在的模板更新时调用，(更新时调用)
+			console.log('3-update')
+		},
+		componentUpdated:function(){
+			// 被绑定元素所在模板完成一次更新周期时调用，(更新完成时调用)
+			console.log('4-componentUpdated')
+		},
+		unbind:function(){
+			// 只调用一次，指令与元素解绑时调用
+			console.log('5-unbind')
+		}
+	});
+
+	// 钩子函数参数
+	// el:指令所绑定的元素，可以用来直接操作DOM
+	// binding，一个对象，包含以下属性：
+	// 	name，自定义指令名
+	// 	value，指令的绑定值，v-my-directive="1+1",value就是2
+	// 	oldValue,指令绑定的前一个值，尽在update和componentUpdate钩子中可以使用
+	// 	expression,绑定值的字符串形式。v-my-directive="1+1",expression的值是"1+1"
+	// 	arg:传给指令的参数，v-my-directive:foo  arg就是foo
+	// 	modifiers: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }
+
+	// vnode：vue编译生成的虚拟节点。
+	// oldVnode，上一个虚拟节点，尽在update和componentUpdate钩子中可用
+
+	// 简写形式
+	Vue.directive('color2',function(el,bindind){
+		el.style.color=binding.value
+	})
+	var app=new Vue({
+		el:'#app',
+		data:{
+			num:10,
+			color:"red"
+		},
+		methods:{
+			add(){
+				this.num++;
+			}
+		}
+	})
+	</script>
+</body>
+</html>

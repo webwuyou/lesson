@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<p>{{msg}}</p>
+		<p><extend-name></extend-name></p>
+		<p id="extend-name"></p>
+		<p class="extend-name"></p>
+	</div>
+	<script>
+		var myextend=Vue.extend({
+			template:'<div>{{msg}}</div>',
+			data:function(){
+				return {
+					msg:"Vue.extend拓展"
+				}
+			}
+		});
+		new myextend().$mount('#extend-name');
+		new myextend().$mount('extend-name');
+		new myextend().$mount('.extend-name')
+	</script>
+</body>
+</html>

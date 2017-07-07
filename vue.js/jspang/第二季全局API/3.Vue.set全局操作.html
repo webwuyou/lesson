@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<p>{{count}}</p>
+	</div>
+	<p><button onclick="add()">加1</button></p>
+	<script>
+	function add(){
+		// Vue.set(outData,'count',6);//使用Vue.set改变数据
+		// app.count++;//使用app.count
+		outData.count++;//直接使用outData
+
+	};
+	var outData={
+		count:1,
+		name:'vue.js'
+	}
+	var app=new Vue({
+		el:'#app',
+		data:outData
+	})
+	</script>
+</body>
+</html>

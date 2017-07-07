@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<p>{{num1 |parseIn}}</p>
+	<p>{{num2 |parseIn}}</p>
+	<p>{{num3 |parseIn}}</p>
+	</div>
+	<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+			num1:323.434,
+			num2:434.656,
+			num3:57485.656
+		},
+		filters:{
+			parseIn(value){
+				return parseInt(value);
+			}
+		}
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>let用来声明变量，和var用法类似，但是let所声明的变量，只在let命令所在的代码块内有效</h2>
+	<script>
+		{
+			var a='a';
+			let b="b"
+		}
+		console.log(a);//a
+		// console.log(b);//b is not defined
+
+		var arr=[];
+		for (var i = 0; i < 10; i++) {
+			arr[i]=function(){
+				alert(i)
+			}
+		}
+		arr[1]()
+	</script>
+</body>
+</html>

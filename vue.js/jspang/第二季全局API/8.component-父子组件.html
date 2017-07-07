@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<component-father></component-father>
+	</div>
+	<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+
+		},
+		components:{
+			"componentFather":{
+				template:`
+					<div>
+						<p>我是父组件</p>
+						<componentson></componentson>
+					</div>
+				`,
+				// 注意：局部组件中的子组件直接在父组件里面的components中声明
+				components:{
+					"componentson":{
+						template:"<p style='color:#f00'>我是子组件</p>"
+					}
+				}
+			}
+		}
+	})
+	</script>
+</body>
+</html>

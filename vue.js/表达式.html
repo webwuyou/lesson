@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	{{num==1?'张国立':'蒋文林'}}
+</div>
+	
+<script>
+var app=new Vue({
+  el: '#app',
+  data: {
+	num:1
+  }
+})
+</script>
+</body>
+</html>

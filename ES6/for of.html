@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr=[..."abcdef"];
+		// for循环
+		for (var i = 0; i < arr.length; i++) {
+			console.log(arr[i])
+		}
+		// for循环的缺点就是代码不够简洁
+
+		// forEach
+		arr.forEach(function(value,index,arr){
+			console.log(value)
+			console.log(index)
+			console.log(arr)
+		})
+		// forEach第一个参数是数组的内容，第二个参数是下标，第三个参数是数组本身
+		// 缺点是不能使用break和continue来中断循环
+
+		// for in
+		for(var i in arr){
+		console.log(i);
+		console.log(typeof(i));//string
+		}
+		// for in常用语对象的循环，如果用在数组中，获取的是下标0,1，2……，但是类型是string
+
+		for(var i of arr){
+			console.log(i);
+			console.log(typeof(i))
+		}
+		// for of获取的是数组的值
+
+		var arr2=[10,20,30,40];
+		for(var i of arr2){
+			if(i==20)
+				// for of可以终止循环
+				break
+			console.log(i);//10
+		}
+
+		for(var value of arr2){
+			if(value==20)
+				// 跳过当前循坏
+				continue;
+			console.log(value);//10,30,40	
+		}
+
+		// 得到数字类型的索引
+		for(var index of arr2.keys()){
+			console.log(index);//获得下标0,1,2,3
+			console.log(typeof(index));//number
+		}
+
+		// 遍历字符串
+		let str="前端无忧网";
+		for(let s of str){
+			console.log(s);//前，端，无，忧，网
+		}
+
+	</script>
+</body>
+</html>

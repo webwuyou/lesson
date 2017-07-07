@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+	<style>
+	.red{
+		background: red
+	}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+
+			},
+			render(creatElement){
+				var obj=creatElement('ul',{
+					class:{
+						red:true
+					},
+					style:{
+						padding:0,
+						fontSize:'30px'
+					}
+				},[
+					creatElement('li',1),
+					creatElement('li',2),
+					creatElement('li',3)
+				]
+				)
+				return obj;
+			}
+		})
+	</script>
+</body>
+</html>

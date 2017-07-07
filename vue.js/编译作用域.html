@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<custom-component>
+	<!-- 渲染的是父组件的数据 -->
+	<!-- app里面的作用域都属于父组件的 -->
+	<!-- 父组件模板的内容在 父组件的作用域内编译 -->
+	<!-- 子组件模板的内容在子组件的作用域内编译 -->
+	{{message}}
+	</custom-component>
+	</div>
+	<script type="text/javascript">
+	Vue.component("custom-component",{
+		template:`<div>
+		{{message}}
+		<p>我是第一个提醒</p>
+		<slot></slot>
+		</div>`,
+		data(){
+			return{
+				message:"我是子组件的数据"
+			}
+		}
+	})
+	new Vue({
+		el:"#app",
+		data:{
+			message:"我是父组件的数据"
+		}
+	})
+	</script>
+</body>
+</html>

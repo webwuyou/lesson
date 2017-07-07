@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<comstome-list :mynum="num"></comstome-list>
+	</div>
+	<script type="text/javascript">
+	Vue.component('comstome-list',{ 
+		props:['mynum'],
+		template:`
+			<div>
+			<h1>通过Vue.component创建全局组件</h1>
+			<input type="button" value="增加1"  v-on:click="addNum" />
+			<p>{{mynum}}</p>
+			</div>
+		`,
+		methods:{
+			addNum(){
+				this.mynum++;
+			}
+		}
+	})
+	var app=new Vue({
+		el:'#app',
+		data:{
+			num:0
+		}
+	})
+	</script>
+</body>
+</html>
